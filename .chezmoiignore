@@ -1,0 +1,5 @@
+.config/ext_nvim
+.config/ext_vim
+ext_scripts
+README.md
+AGENTS.md
