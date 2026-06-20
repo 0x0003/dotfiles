@@ -7,3 +7,6 @@
 [submodule "ext_scripts"]
 	path = scripts_submodule
 	url = https://github.com/0x0003/scripts.git
+[submodule "dot_config/home-manager_submodule"]
+	path = dot_config/home-manager_submodule
+	url = https://github.com/0x0003/home.nix

@@ -2,4 +2,5 @@ README.md
 AGENTS.md
 .config/nvim_submodule
 .config/vim_submodule
+.config/home-manager_submodule
 scripts_submodule

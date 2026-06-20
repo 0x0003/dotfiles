@@ -83,13 +83,13 @@ abbr -a -- hm   "home-manager"
 
 # chezmoi
 abbr -a -- cmad "chezmoi add"
-abbr -a -- cmed "chezmoi edit"
+abbr -a -- cmed "chezmoi edit --wait"
 abbr -a -- cmre "chezmoi re-add"
-abbr -a -- cmdr "chezmoi apply -n -v"
-abbr -a -- cmdi "chezmoi diff"
-abbr -a -- cmap "chezmoi apply"
+abbr -a -- cmdr "chezmoi apply --dry-run -v"
+abbr -a -- cmst "chezmoi diff"
+abbr -a -- cmap "chezmoi apply -v"
 abbr -a -- cmfo "chezmoi forget"
-abbr -a -- cmre "chezmoi remove"
+abbr -a -- cmrm "chezmoi remove"
 
 # tmux
 abbr -a -- tn  "tmux new-session"
