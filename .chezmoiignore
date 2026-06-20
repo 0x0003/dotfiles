@@ -1,5 +1,5 @@
-.config/ext_nvim
-.config/ext_vim
-ext_scripts
 README.md
 AGENTS.md
+.config/nvim_submodule
+.config/vim_submodule
+scripts_submodule

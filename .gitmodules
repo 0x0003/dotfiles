@@ -1,9 +1,9 @@
 [submodule "dot_config/ext_nvim"]
-	path = dot_config/external_nvim
+	path = dot_config/nvim_submodule
 	url = https://github.com/0x0003/nvimrc.git
 [submodule "dot_config/ext_vim"]
-	path = dot_config/external_vim
+	path = dot_config/vim_submodule
 	url = https://github.com/0x0003/vimrc.git
 [submodule "ext_scripts"]
-	path = external_scripts
+	path = scripts_submodule
 	url = https://github.com/0x0003/scripts.git
