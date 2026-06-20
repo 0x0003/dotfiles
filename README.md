@@ -7,7 +7,7 @@ Secrets are handled by [pass](https://www.passwordstore.org/).
 ## Bootstrap
 
 ```sh
-chezmoi init --apply 0x0003
+chezmoi init --mode symlink --apply 0x0003
 ```
 
 ## Workflow
