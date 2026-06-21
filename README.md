@@ -8,19 +8,26 @@ Secrets encrypted with [age](https://age-encryption.org/).
 
 One-liners below pull the `chezmoi` binary, clone this repo into `~/.local/share/chezmoi`, attempt to bootstrap Nix (Linux) or Scoop (Windows), install software (including `chezmoi` itself), apply configuration, then remove the bootstrap binary (no longer needed once chezmoi is installed by a package manager).
 
+> Run with the `--exclude=encrypted` argument to skip encrypted files.
+
 ### Linux
 > [!NOTE]
-> Setting up Nix daemon requires root. Set `run_home_manager: false` in `home/.chezmoidata/config.yaml` to skip.
+> Setting up Nix daemon requires root.  
+> Remove `--promptDefaults` flag and answer `false` in the prompt to skip Nix bootstrap.  
+> Can later be changed by running `chezmoi edit-config`.
 ```sh
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --purge-binary 0x0003
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --promptDefaults --purge-binary 0x0003
 ```
 
 ### Windows
+> [!NOTE]
+> Windows needs a special setting to enable creation of symlinks (lol)  
+> gpedit.msc -> Computer Configuration -> Windows Settings -> Security Settings -> Local Policies -> User Rights Assignment -> Create symbolic links -> click "Add User or Group" -> type your username -> click "Check Names" -> Apply -> REBOOT  
+> Remove `--promptDefaults` flag and answer `false` in the prompt to not attempt to create symlinks on windows.  
+> Can later be changed by running `chezmoi edit-config`.
 ```ps1
-iex "&{ $(irm 'https://get.chezmoi.io/ps1') } -- init --apply --purge-binary 0x0003"
+iex "&{ $(irm 'https://get.chezmoi.io/ps1') } -- init --apply --promptDefaults --purge-binary 0x0003"
 ```
-
-> Run with the `--exclude=encrypted` argument to skip encrypted files.
 
 ## Structure
 
@@ -31,7 +38,6 @@ home/
 ├── .chezmoi.toml.tmpl              # init-time config (encryption, mode, identity)
 ├── .chezmoiignore.tmpl             # OS filtering + git submodule exclusions
 ├── .chezmoidata/
-│   ├── config.yaml                 # flags for internal use
 │   └── pkgs/windows.yaml           # scoop packages
 ├── secrets/                        # inline age stubs (not managed)
 ├── dot_config/
