@@ -1,13 +1,10 @@
 {{- $runHomeManager := false -}}
 {{- $useWinSymlinks := false -}}
-{{- $hasData := false -}}
 {{- if eq .chezmoi.os "linux" -}}
   {{- $runHomeManager = promptBoolOnce . "run_home_manager" "Bootstrap Nix and run home-manager? (does nothing if Nix is already installed)" true -}}
-  {{- $hasData = true -}}
 {{- end -}}
 {{- if eq .chezmoi.os "windows" -}}
   {{- $useWinSymlinks = promptBoolOnce . "use_win_symlinks" "Use Windows symlinks? (requires manual setup, see README.md)" true -}}
-  {{- $hasData = true -}}
 {{- end -}}
 encryption = "age"
 mode = "file"
@@ -17,10 +14,5 @@ identity = "~/.config/age/dots-key.txt"
 recipient = "age1y3gurxw9qm55agwwqzlqe5xtp0476q48mga5t53nrpp7ckqjh44qkfje6j"
 
 [data]
-{{- if eq .chezmoi.os "linux" }}
 run_home_manager = {{ $runHomeManager }}
-{{- end }}
-{{- if eq .chezmoi.os "windows" }}
 use_win_symlinks = {{ $useWinSymlinks }}
-{{- end }}
-{{- end }}
