@@ -70,9 +70,9 @@ home/
 ├── symlink_ahk.tmpl                # ^
 └── .chezmoiscripts/                # bootstrap scripts
     ├── linux/
-    │   └── run_once_before_01-bootstrap-home-manager.sh.tmpl
+    │   └── run_once_before_01-home-manager.sh.tmpl
     └── windows/
-        └── run_once_before_01-bootstrap-install-scoop.ps1.tmpl
+        └── run_once_before_01-install-scoop.ps1.tmpl
 ```
 
 ## Git submodules
