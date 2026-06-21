@@ -15,7 +15,9 @@
   <img alt="Windows" src="https://custom-icon-badges.demolab.com/badge/Windows-0078D6?style=for-the-badge&logo=windows11&logoColor=white"/>
 </div>
 
-![screenshot](https://github.com/user-attachments/assets/6b27cbe1-0126-480a-8efa-b6a44073c87e)
+| Terminal                                                                                  | Firefox... and a terminal                                                                   |
+| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| ![term](https://github.com/user-attachments/assets/6b27cbe1-0126-480a-8efa-b6a44073c87e)  | ![ff](https://github.com/user-attachments/assets/493178cf-2702-4e14-8106-8e094d540ab8)      |
 
 ## Bootstrap
 
@@ -75,13 +77,13 @@ home/
 
 ## Git submodules
 
-| Source dir                                                               | Symlink template               | Target           |
-|--------------------------------------------------------------------------|--------------------------------|------------------|
-| /dot_config/[submodule_nvim](https://github.com/0x0003/nvimrc)           | `dot_config/symlink_nvim.tmpl` | `~/.config/nvim` |
-| /dot_config/[submodule_vim](https://github.com/0x0003/vimrc)             | `dot_config/symlink_nvim.tmpl` | `~/.config/nvim` |
-| /dot_config/[submodule_home-manager](https://github.com/0x0003/home.nix) | `dot_config/symlink_nvim.tmpl` | `~/.config/nvim` |
-| /[submodule_scripts](https://github.com/0x0003/scripts)                  | `dot_config/symlink_nvim.tmpl` | `~/.config/nvim` |
-| /[submodule_ahk](https://github.com/0x0003/ahk)                          | `dot_config/symlink_nvim.tmpl` | `~/.config/nvim` |
+| Source dir                                                               | Symlink template                       | Target                   |
+| ------------------------------------------------------------------------ | -------------------------------------- | ------------------------ |
+| /dot_config/[submodule_nvim](https://github.com/0x0003/nvimrc)           | `dot_config/symlink_nvim.tmpl`         | `~/.config/nvim`         |
+| /dot_config/[submodule_vim](https://github.com/0x0003/vimrc)             | `dot_config/symlink_vim.tmpl`          | `~/.config/vim`          |
+| /dot_config/[submodule_home-manager](https://github.com/0x0003/home.nix) | `dot_config/symlink_home-manager.tmpl` | `~/.config/home-manager` |
+| /[submodule_scripts](https://github.com/0x0003/scripts)                  | `/symlink_scripts.tmpl`                | `~/scripts`              |
+| /[submodule_ahk](https://github.com/0x0003/ahk)                          | `/symlink_ahk.tmpl`                    | `~/ahk`                  |
 
 The symlink templates contain just the source path, e.g. `{{ .chezmoi.sourceDir }}/dot_config/submodule_nvim`. Each target path gets an entry in `.chezmoiignore.tmpl` so chezmoi doesn't descend into the symlink.
 
