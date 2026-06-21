@@ -90,6 +90,7 @@ abbr -a -- cmdr "chezmoi apply --dry-run -v"
 abbr -a -- cmst "chezmoi status"
 abbr -a -- cmdi "chezmoi diff"
 abbr -a -- cmap "chezmoi apply -v"
+abbr -a -- cmup "chezmoi update -v"
 abbr -a -- cmfo "chezmoi forget"
 abbr -a -- cmrm "chezmoi remove"
 

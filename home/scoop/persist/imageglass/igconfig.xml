@@ -62,7 +62,7 @@
       <Item key="SlideShowInterval" value="3" />
       <Item key="SlideShowIntervalTo" value="20" />
       <Item key="ThumbnailDimension" value="96" />
-      <Item key="ThumbnailBarWidth" value="1204" />
+      <Item key="ThumbnailBarWidth" value="1185" />
       <Item key="ImageBoosterCachedCount" value="1" />
       <Item key="NumberImagesNotify" value="5" />
       <Item key="ZoomLockValue" value="100" />
