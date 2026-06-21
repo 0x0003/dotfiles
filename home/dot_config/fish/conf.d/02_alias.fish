@@ -82,8 +82,9 @@ abbr -a -- ndr  "nix-direnv-reload"
 abbr -a -- hm   "home-manager"
 
 # chezmoi
+abbr -a -- cmin "chezmoi init"
 abbr -a -- cmad "chezmoi add"
-abbr -a -- cmed "chezmoi edit --wait"
+abbr -a -- cmed "chezmoi edit --watch"
 abbr -a -- cmre "chezmoi re-add"
 abbr -a -- cmdr "chezmoi apply --dry-run -v"
 abbr -a -- cmst "chezmoi diff"
