@@ -10,7 +10,7 @@ chezmoi apply
 
 - Sync back to source after editing a live file directly
 > [!NOTE]
-> Templates and unencrypted files are ignored!
+> Files generated from templates are ignored!
 ```sh
 chezmoi re-add # all changed files
 chezmoi re-add .config/somefile # target only
