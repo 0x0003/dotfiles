@@ -5,13 +5,13 @@ if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
 }
 
 # Add buckets
-$buckets = {{ .pkgs.windows.scoop.buckets | toJson }}
+$buckets = '{{ .pkgs.windows.scoop.buckets | toJson }}' | ConvertFrom-Json
 foreach ($bucket in $buckets) {
     scoop bucket add $bucket *>$null
 }
 
 # Install packages
-$packages = {{ .pkgs.windows.scoop.packages | toJson }}
+$packages = '{{ .pkgs.windows.scoop.packages | toJson }}' | ConvertFrom-Json
 foreach ($pkg in $packages) {
     if ($pkg -is [string]) {
         scoop install $pkg
