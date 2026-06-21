@@ -1,6 +1,19 @@
-Dotfiles managed by [chezmoi](https://www.chezmoi.io/).
+<div align=center>
+  <a href="https://www.chezmoi.io/">
+    <img alt="Chezmoi" src="https://img.shields.io/badge/chezmoi-4051B5?style=for-the-badge&logo=HomeAdvisor&logoColor=white"/>
+  </a>
+  <a href="https://nixos.org/">
+    <img alt="Nix" src="https://img.shields.io/badge/Nix-66ABDE?style=for-the-badge&logo=nixos&logoColor=white"/>
+  </a>
+  <a href="https://scoop.sh/">
+    <img alt="Nix" src="https://img.shields.io/badge/Scoop-3B3B3B?style=for-the-badge&logo=iced&logoColor=white"/>
+  </a>
+</div>
 
-Secrets encrypted with [age](https://age-encryption.org/).
+<div align=center>
+  <img alt="Linux" src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"/>
+  <img alt="Windows" src="https://custom-icon-badges.demolab.com/badge/Windows-0078D6?style=for-the-badge&logo=windows11&logoColor=white"/>
+</div>
 
 ![screenshot](https://github.com/user-attachments/assets/6b27cbe1-0126-480a-8efa-b6a44073c87e)
 
@@ -28,6 +41,8 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --promptDefaults --purge-bi
 ```ps1
 iex "&{ $(irm 'https://get.chezmoi.io/ps1') } -- init --apply --promptDefaults --purge-binary 0x0003"
 ```
+
+> Windows will not purge binary, but it will echo its location to stdout at the end.
 
 ## Structure
 
@@ -60,26 +75,24 @@ home/
 
 ## Git submodules
 
-| Source dir                           | Symlink template                       | Target                   |
-|--------------------------------------|----------------------------------------|--------------------------|
-| `/dot_config/submodule_nvim`         | `dot_config/symlink_nvim.tmpl`         | `~/.config/nvim`         |
-| `/dot_config/submodule_vim`          | `dot_config/symlink_vim.tmpl`          | `~/.config/vim`          |
-| `/dot_config/submodule_home-manager` | `dot_config/symlink_home-manager.tmpl` | `~/.config/home-manager` |
-| `/submodule_scripts`                 | `symlink_scripts.tmpl`                 | `~/scripts`              |
-| `/submodule_ahk`                     | `symlink_ahk.tmpl`                     | `~/ahk`                  |
+| Source dir                                                               | Symlink template               | Target           |
+|--------------------------------------------------------------------------|--------------------------------|------------------|
+| /dot_config/[submodule_nvim](https://github.com/0x0003/nvimrc)           | `dot_config/symlink_nvim.tmpl` | `~/.config/nvim` |
+| /dot_config/[submodule_vim](https://github.com/0x0003/vimrc)             | `dot_config/symlink_nvim.tmpl` | `~/.config/nvim` |
+| /dot_config/[submodule_home-manager](https://github.com/0x0003/home.nix) | `dot_config/symlink_nvim.tmpl` | `~/.config/nvim` |
+| /[submodule_scripts](https://github.com/0x0003/scripts)                  | `dot_config/symlink_nvim.tmpl` | `~/.config/nvim` |
+| /[submodule_ahk](https://github.com/0x0003/ahk)                          | `dot_config/symlink_nvim.tmpl` | `~/.config/nvim` |
 
 The symlink templates contain just the source path, e.g. `{{ .chezmoi.sourceDir }}/dot_config/submodule_nvim`. Each target path gets an entry in `.chezmoiignore.tmpl` so chezmoi doesn't descend into the symlink.
 
 ## Secrets
 
+Encrypted with [age](https://age-encryption.org/).
+
 Chezmoi looks for age key at `~/.config/age/dots-key.txt`.
 
-- **Whole-file** (`encrypted_` prefix): auto-decrypts on apply. Encrypt with:
-  ```sh
-  age -a -r "$(age-keygen -y ~/.config/age/dots-key.txt)" \
-    -o home/encrypted_dot_<path>.age <plaintext>
-  ```
-- **Inline** (`home/secrets/*.age`): stubs consumed in templates via `{{ decrypt (include "secrets/<name>.age" | trim) }}`. Encrypt the same way but output to `home/secrets/<name>.age`.
+- **Whole-file** (`encrypted_` prefix): auto-decrypts on apply.
+- **Inline** (`home/secrets/*.age`): stubs consumed in templates via `{{ decrypt (include "secrets/<name>.age") | trim -}}`.
 
 ---
 
