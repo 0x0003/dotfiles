@@ -1,3 +1,6 @@
+flake.nix
+flake.lock
+.envrc
 README.md
 .config/nvim_submodule
 .config/vim_submodule
