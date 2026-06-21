@@ -1,0 +1,27 @@
+# Install Scoop if not present
+if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    Invoke-RestMethod -Uri get.scoop.sh | Invoke-Expression
+}
+
+# Add buckets
+$buckets = {{ .pkgs.windows.scoop.buckets | toJson }}
+foreach ($bucket in $buckets) {
+    scoop bucket add $bucket *>$null
+}
+
+# Install packages
+$packages = {{ .pkgs.windows.scoop.packages | toJson }}
+foreach ($pkg in $packages) {
+    if ($pkg -is [string]) {
+        scoop install $pkg
+    } else {
+        $pkgName = $pkg.name
+        $installTarget = if ($pkg.version) { "$pkgName@$($pkg.version)" } else { $pkgName }
+        scoop install $installTarget
+        if ($pkg.hold) {
+            scoop hold $pkgName
+        }
+    }
+}
+

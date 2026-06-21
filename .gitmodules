@@ -1,12 +1,15 @@
-[submodule "dot_config/ext_nvim"]
-	path = dot_config/nvim_submodule
-	url = https://github.com/0x0003/nvimrc.git
-[submodule "dot_config/ext_vim"]
-	path = dot_config/vim_submodule
-	url = https://github.com/0x0003/vimrc.git
-[submodule "ext_scripts"]
-	path = scripts_submodule
-	url = https://github.com/0x0003/scripts.git
-[submodule "dot_config/home-manager_submodule"]
-	path = dot_config/home-manager_submodule
+[submodule "home/dot_config/submodule_home-manager"]
+	path = home/dot_config/submodule_home-manager
 	url = https://github.com/0x0003/home.nix
+[submodule "home/dot_config/submodule_nvim"]
+	path = home/dot_config/submodule_nvim
+	url = https://github.com/0x0003/nvimrc
+[submodule "home/dot_config/submodule_vim"]
+	path = home/dot_config/submodule_vim
+	url = https://github.com/0x0003/vimrc
+[submodule "home/submodule_scripts"]
+	path = home/submodule_scripts
+	url = https://github.com/0x0003/scripts
+[submodule "home/submodule_ahk"]
+	path = home/submodule_ahk
+	url = https://github.com/0x0003/ahk

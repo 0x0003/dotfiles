@@ -1,0 +1,41 @@
+# Git submodules
+.config/submodule_nvim
+.config/submodule_vim
+.config/submodule_home-manager
+submodule_ahk
+submodule_scripts
+
+# Encrypted secret stubs
+secrets/**
+
+{{- if ne .chezmoi.os "linux" }}
+# Ignore linux files on non-linux
+.chezmoiscripts/linux/**
+.config/bc/**
+.config/fish/**
+.config/htop/**
+.config/nix/**
+.config/opencode/**
+.config/qalculate/**
+.config/rg/**
+.config/sesh/**
+.config/tmux/**
+.irssi/**
+.proxychains/**
+.config/nvim
+.config/vim
+.config/home-manager
+.wegorc
+scripts
+{{ end }}
+
+{{- if ne .chezmoi.os "windows" }}
+# Ignore windows files on non-windows
+.chezmoiscripts/windows/**
+.config/scoop/**
+ahk/**
+AppData/**
+Documents/**
+scoop/**
+.wslconfig
+{{- end }}
