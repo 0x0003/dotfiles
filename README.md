@@ -15,9 +15,9 @@
   <img alt="Windows" src="https://custom-icon-badges.demolab.com/badge/Windows-0078D6?style=for-the-badge&logo=windows11&logoColor=white"/>
 </div>
 
-| Terminal                                                                                  | Firefox... and a terminal                                                                   |
-| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| ![term](https://github.com/user-attachments/assets/6b27cbe1-0126-480a-8efa-b6a44073c87e)  | ![ff](https://github.com/user-attachments/assets/493178cf-2702-4e14-8106-8e094d540ab8)      |
+| Terminal                                                                                  | Firefox and mpv                                                                           |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| ![term](https://github.com/user-attachments/assets/6b27cbe1-0126-480a-8efa-b6a44073c87e)  | ![ffmpv](https://github.com/user-attachments/assets/99156e5b-7ce3-49a2-b9e7-57086d1c9202) |
 
 ## Bootstrap
 
