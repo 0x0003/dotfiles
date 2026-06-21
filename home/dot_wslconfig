@@ -1,0 +1,9 @@
+[wsl2]
+guiApplications=false
+memory=4GB
+dnsProxy=false
+networkingMode=nat
+kernel=C:\\Users\\tuna\\scoop\\apps\\xanmod-WSL2\\7.0.12-1.1\\bzImage-x64v3
+kernelModules=C:\\Users\\tuna\\scoop\\apps\\xanmod-WSL2-addons\\7.0.12-1.1\\bzImage-x64v3-addons.vhdx
+[experimental]
+bestEffortDnsParsing=true
