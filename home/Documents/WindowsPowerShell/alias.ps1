@@ -54,6 +54,7 @@ function cmdr { chezmoi apply --dry-run -v }
 function cmst { chezmoi status }
 function cmdi { chezmoi diff @args }
 function cmap { chezmoi apply -v }
+function cmup { chezmoi update }
 function cmfo { chezmoi forget @args }
 function cmrm { chezmoi remove @args }
 function cmgc { Push-Location "$env:USERPROFILE\.local\share\chezmoi"; git gc; Pop-Location }
