@@ -58,6 +58,7 @@ function cmup { chezmoi update }
 function cmfo { chezmoi forget @args }
 function cmrm { chezmoi remove @args }
 function cmgc { Push-Location "$env:USERPROFILE\.local\share\chezmoi"; git gc; Pop-Location }
+function cmcd { Set-Location "$env:USERPROFILE\.local\share\chezmoi" }
 
 # Cloudflare WARP
 function warpmasque() {
