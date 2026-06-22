@@ -8,7 +8,7 @@ submodule_scripts
 # Encrypted secret stubs
 secrets/**
 
-{{- if not (hasPrefix .os_id "linux") }}
+{{- if not (hasPrefix "linux" .os_id) }}
 # Ignore linux files on non-linux
 .config/bc/**
 .config/fish/**
