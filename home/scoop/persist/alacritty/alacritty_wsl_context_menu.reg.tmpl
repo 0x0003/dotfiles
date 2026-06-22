@@ -2,8 +2,8 @@
 
 [HKEY_CLASSES_ROOT\Directory\background\shell\alacritty_WSL]
 @="Open WSL terminal here"
-"Icon"="C:\\Users\\{{ .chezmoi.username }}\\scoop\\persist\\alacritty\\wsl.ico"
+"Icon"="C:\\Users\\{{ .chezmoi.username | splitList "\\" | last }}\\scoop\\persist\\alacritty\\wsl.ico"
 
 [HKEY_CLASSES_ROOT\Directory\background\shell\alacritty_WSL\command]
-@="C:\\Users\\{{ .chezmoi.username }}\\scoop\\apps\\alacritty\\current\\alacritty.exe --config-file C:\\Users\\{{ .chezmoi.username }}\\scoop\\persist\\alacritty\\alacritty.toml --command wsl"
+@="C:\\Users\\{{ .chezmoi.username | splitList "\\" | last }}\\scoop\\apps\\alacritty\\current\\alacritty.exe --config-file C:\\Users\\{{ .chezmoi.username | splitList "\\" | last }}\\scoop\\persist\\alacritty\\alacritty.toml --command wsl"
 
