@@ -69,9 +69,11 @@ home/
 ├── submodule_ahk/                  # ^
 ├── symlink_ahk.tmpl                # ^
 └── .chezmoiscripts/                # bootstrap scripts
-    ├── linux/
+    ├── linux
+    │   ├── run_once_after_01-set-login-shell.sh.tmpl
     │   └── run_once_before_01-home-manager.sh.tmpl
-    └── windows/
+    └── windows
+        ├── run_once_after_01-configure-scoop.ps1.tmpl
         └── run_once_before_01-install-scoop.ps1.tmpl
 ```
 
