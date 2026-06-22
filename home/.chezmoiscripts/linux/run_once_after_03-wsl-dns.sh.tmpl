@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+{{ if and .have_root .is_wsl -}}
+
+if [ ! -f /etc/systemd/system/wsl-dns.service ]; then
+  sudo tee /etc/systemd/system/wsl-dns.service > /dev/null <<'EOF'
+[Unit]
+Description=Update resolv.conf with WSL gateway
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/env bash -c 'ip route | awk "/default/ {print \$3}" | xargs -I{} sh -c "echo nameserver {} > /etc/resolv.conf"'
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+  sudo systemctl daemon-reload && sudo systemctl enable wsl-dns.service && sudo systemctl start wsl-dns.service
+
+  echo "Restart WSL instance to finalize."
+fi
+
+{{ end -}}

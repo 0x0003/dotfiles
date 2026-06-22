@@ -1,16 +1,20 @@
-{{- $runHomeManager := false -}}
-{{- $useWinSymlinks := false -}}
+{{- $haveRoot := false -}}
+{{- $homeManager := false -}}
+{{- $winSymlinks := false -}}
 {{- $isWSL := false -}}
+{{- $os_id := .chezmoi.os -}}
 {{- if eq .chezmoi.os "linux" -}}
-  {{- if stdinIsATTY -}}
-  {{- $runHomeManager = promptBoolOnce . "run_home_manager" "Bootstrap Nix and run home-manager?" true -}}
+  {{- if hasKey .chezmoi.osRelease "id" -}}
+    {{- $os_id = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+  {{- end -}}
+  {{- $haveRoot = promptBoolOnce . "have_root" "Do you have root access via sudo?" true -}}
+  {{- if $haveRoot -}}
+    {{- $homeManager = promptBoolOnce . "home_manager" "Bootstrap Nix and run home-manager?" true -}}
   {{- end -}}
   {{- $isWSL = .chezmoi.kernel.osrelease | lower | contains "microsoft" | or (.chezmoi.kernel.osrelease | lower | contains "wsl") -}}
 {{- end -}}
 {{- if eq .chezmoi.os "windows" -}}
-  {{- if stdinIsATTY -}}
-  {{- $useWinSymlinks = promptBoolOnce . "use_win_symlinks" "Use Windows symlinks? (requires manual setup, see README.md)" true -}}
-  {{- end -}}
+    {{- $winSymlinks = promptBoolOnce . "win_symlinks" "Use Windows symlinks? (requires manual setup, see README.md)" true -}}
 {{- end -}}
 encryption = "age"
 mode = "file"
@@ -20,8 +24,10 @@ identity = "~/.config/age/dots-key.txt"
 recipient = "age1y3gurxw9qm55agwwqzlqe5xtp0476q48mga5t53nrpp7ckqjh44qkfje6j"
 
 [data]
-run_home_manager = {{ $runHomeManager }}
-use_win_symlinks = {{ $useWinSymlinks }}
+have_root = {{ $haveRoot }}
+home_manager = {{ $homeManager }}
+win_symlinks = {{ $winSymlinks }}
+os_id = "{{ $os_id }}"
 is_wsl = {{ $isWSL }}
 
 [diff]

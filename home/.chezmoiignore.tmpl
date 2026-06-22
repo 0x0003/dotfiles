@@ -8,7 +8,7 @@ submodule_scripts
 # Encrypted secret stubs
 secrets/**
 
-{{- if ne .chezmoi.os "linux" }}
+{{- if not (hasPrefix .os_id "linux") }}
 # Ignore linux files on non-linux
 .chezmoiscripts/linux/**
 .config/bc/**
@@ -29,7 +29,7 @@ secrets/**
 scripts
 {{ end }}
 
-{{- if ne .chezmoi.os "windows" }}
+{{- if ne .os_id "windows" }}
 # Ignore windows files on non-windows
 .chezmoiscripts/windows/**
 AppData/**

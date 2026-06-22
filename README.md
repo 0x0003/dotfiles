@@ -27,9 +27,9 @@ One-liners below pull the `chezmoi` binary, clone this repo into `~/.local/share
 
 ### Linux
 > [!NOTE]
-> Setting up Nix daemon requires root.  
-> Remove `--promptDefaults` flag and answer `false` in the prompt to skip Nix bootstrap.  
-> Can later be changed by running `chezmoi edit-config`.
+> Two prompts during init: `have_root` (sudo access) gates all sudo-requiring scripts; `home_manager` (Nix/home-manager bootstrap) only asked if `have_root` is true.  
+> Remove `--promptDefaults` to answer interactively.  
+> Can later be changed via `chezmoi edit-config`.
 ```sh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --promptDefaults --purge-binary 0x0003
 ```
@@ -38,8 +38,8 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --promptDefaults --purge-bi
 > [!NOTE]
 > Windows needs a special setting to enable creation of symlinks (lol)  
 > gpedit.msc -> Computer Configuration -> Windows Settings -> Security Settings -> Local Policies -> User Rights Assignment -> Create symbolic links -> click "Add User or Group" -> type your username -> click "Check Names" -> Apply -> REBOOT  
-> Remove `--promptDefaults` flag and answer `false` in the prompt to not attempt to create symlinks on windows.  
-> Can later be changed by running `chezmoi edit-config`.
+> Remove `--promptDefaults` and answer `false` to the `win_symlinks` prompt to skip symlink creation.  
+> Can later be changed via `chezmoi edit-config`.
 ```ps1
 iex "&{ $(irm 'https://get.chezmoi.io/ps1') } -- init --apply --promptDefaults --purge-binary 0x0003"
 ```
@@ -70,7 +70,9 @@ home/
 ├── symlink_ahk.tmpl                # ^
 └── .chezmoiscripts/                # bootstrap scripts
     ├── linux
-    │   ├── run_once_after_01-post-setup.sh.tmpl
+    │   ├── run_once_after_01-post-home-manager.sh.tmpl
+    │   ├── run_once_after_02-wsl-config.sh.tmpl
+    │   ├── run_once_after_03-wsl-dns.sh.tmpl
     │   └── run_once_before_01-home-manager.sh.tmpl
     └── windows
         ├── run_once_after_01-configure-scoop.ps1.tmpl
