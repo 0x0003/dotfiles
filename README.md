@@ -15,7 +15,7 @@
   <img alt="Windows" src="https://custom-icon-badges.demolab.com/badge/Windows-0078D6?style=for-the-badge&logo=windows11&logoColor=white"/>
 </div>
 
-| Terminal running neovim inside tmux                                                       | Firefox and mpv                                                                           |
+| Alacritty running neovim inside tmux                                                      | Firefox and mpv                                                                           |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | ![term](https://github.com/user-attachments/assets/6b27cbe1-0126-480a-8efa-b6a44073c87e)  | ![ffmpv](https://github.com/user-attachments/assets/99156e5b-7ce3-49a2-b9e7-57086d1c9202) |
 
@@ -72,16 +72,16 @@ Source tree showing only things of interest.
     │   └── pkgs/windows.yaml # scoop packages
     ├── secrets/              # inline age stubs (not managed)
     ├── dot_config/
-    │   ├── submodule_nvim/            # git submodule (not managed)
-    │   ├── symlink_nvim.tmpl          # creates a symlink referencing the submodule above
-    │   ├── submodule_vim/             # ^
-    │   ├── symlink_vim.tmpl           # ^
-    │   ├── submodule_home-manager/    # ^
-    │   └── symlink_home-manager.tmpl  # ^
-    ├── submodule_scripts/             # ^
-    ├── symlink_scripts.tmpl           # ^
-    ├── submodule_ahk/                 # ^
-    └── symlink_ahk.tmpl               # ^
+    │   ├── submodule_nvim/           # git submodule (not managed)
+    │   ├── symlink_nvim.tmpl         # creates a symlink referencing the submodule above
+    │   ├── submodule_vim/            # ^
+    │   ├── symlink_vim.tmpl          # ^
+    │   ├── submodule_home-manager/   # ^
+    │   └── symlink_home-manager.tmpl # ^
+    ├── submodule_scripts/            # ^
+    ├── symlink_scripts.tmpl          # ^
+    ├── submodule_ahk/                # ^
+    └── symlink_ahk.tmpl              # ^
 ```
 
 ## Git submodules
