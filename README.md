@@ -15,7 +15,7 @@
   <img alt="Windows" src="https://custom-icon-badges.demolab.com/badge/Windows-0078D6?style=for-the-badge&logo=windows11&logoColor=white"/>
 </div>
 
-| Terminal                                                                                  | Firefox and mpv                                                                           |
+| Terminal running neovim inside tmux                                                       | Firefox and mpv                                                                           |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | ![term](https://github.com/user-attachments/assets/6b27cbe1-0126-480a-8efa-b6a44073c87e)  | ![ffmpv](https://github.com/user-attachments/assets/99156e5b-7ce3-49a2-b9e7-57086d1c9202) |
 
@@ -50,10 +50,11 @@ iex "&{ $(irm 'https://get.chezmoi.io/ps1') } -- init --apply --promptDefaults -
 
 ## Structure
 
-Source tree showing only things of interest, dotfiles aren't shown.
+Source tree showing only things of interest.
 ```
 . # repo root
-├── .chezmoiroot # sets chezmoi root to home/
+├── .chezmoiversion # minimum chezmoi version required to interpret the source state
+├── .chezmoiroot    # sets chezmoi root to home/
 └── home/
     ├── .chezmoiscripts/
     │   ├── linux
