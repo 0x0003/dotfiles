@@ -1,4 +1,4 @@
-{{ if .scoop -}}
+{{ if and (eq .os_id "windows") .use_scoop -}}
 # Install/update scoop packages from YAML data
 # Re-runs when package list changes
 

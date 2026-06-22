@@ -1,4 +1,4 @@
-{{ if and (hasPrefix "linux" .os_id) .have_root .is_wsl -}}
+{{ if and (hasPrefix "linux" .os_id) .has_root .is_wsl -}}
 #!/usr/bin/env bash
 set -euo pipefail
 
