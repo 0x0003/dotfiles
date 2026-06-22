@@ -39,8 +39,3 @@ use_scoop = {{ $use_scoop }}
 
 [diff]
 exclude = ["scripts"]
-{{- if eq .chezmoi.os "linux" }}
-pager = "nvim -R -c 'set ft=diff nomodifiable' -"
-{{- else if eq .chezmoi.os "windows" }}
-pager = "less"
-{{- end }}
