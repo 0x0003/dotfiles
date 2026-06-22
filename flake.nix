@@ -11,7 +11,11 @@
       devShells.${system}.default = pkgs.mkShellNoCC {
         packages = with pkgs; [
           gitleaks
+          shellcheck
         ];
+        shellHook = ''
+          echo && chezmoi status && echo
+        '';
       };
     };
 }
