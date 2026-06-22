@@ -11,7 +11,7 @@
         }
       },
       "options": {
-        "baseURL": "http://{{ output "sh" "-c" "ip route | awk '/default/ {print $3}'" | trim }}:5001/v1"
+        "baseURL": "http://{{ if .is_wsl }}{{ output "sh" "-c" "ip route | awk '/default/ {print $3}'" | trim }}{{ else }}127.0.0.1{{ end }}:5001/v1"
       }
     }
   }
