@@ -27,7 +27,7 @@ One-liners below pull the `chezmoi` binary, clone this repo into `~/.local/share
 
 ### Linux
 > [!NOTE]
-> Two prompts during init: `have_root` (sudo access) gates all sudo-requiring scripts; `home_manager` (Nix/home-manager bootstrap) only asked if `have_root` is true.  
+> Two prompts during init: `has_root` (sudo access) gates all sudo-requiring scripts; `use_home_manager` (Nix/home-manager bootstrap) only asked if `has_root` is true.  
 > Remove `--promptDefaults` to answer interactively.  
 > Can later be changed via `chezmoi edit-config`.
 ```sh
@@ -36,7 +36,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --promptDefaults --purge-bi
 
 ### Windows
 > [!NOTE]
-> Two prompts during init: `win_symlinks` (symlink privilege setup) and `scoop` (Scoop + package install).  
+> Two prompts during init: `create_symlinks` (symlink privilege setup) and `use_scoop` (Scoop + package install).  
 > Remove `--promptDefaults` to answer interactively.  
 > Can later be changed via `chezmoi edit-config`.
 >
@@ -53,18 +53,18 @@ iex "&{ $(irm 'https://get.chezmoi.io/ps1') } -- init --apply --promptDefaults -
 Source tree showing only things of interest, dotfiles aren't shown.
 ```
 . # repo root
-├── .chezmoiscripts/
-│   ├── linux
-│   │   ├── run_once_before_01-home-manager.sh.tmpl     # bootstrap Nix and home-manager
-│   │   ├── run_once_after_01-post-home-manager.sh.tmpl # sets up packages installed by home-manager
-│   │   ├── run_once_after_02-wsl-config.sh.tmpl        # populates /etc/wsl.conf
-│   │   └── run_once_after_03-wsl-dns.sh.tmpl           # creates a service for wsl NAT networking mode
-│   └── windows
-│       ├── run_once_before_01-install-scoop.ps1.tmpl       # bootstrap scoop and add buckets
-│       ├── run_onchange_after_02-install-packages.ps1.tmpl # scoop install packages from YAML
-│       └── run_once_after_01-configure-scoop.ps1.tmpl      # scoop config
+├── .chezmoiroot # sets chezmoi root to home/
 └── home/
-    ├── .chezmoiroot          # chezmoi treats this directory as $HOME
+    ├── .chezmoiscripts/
+    │   ├── linux
+    │   │   ├── run_once_before_01-home-manager.sh.tmpl     # bootstrap Nix and home-manager
+    │   │   ├── run_once_after_01-post-home-manager.sh.tmpl # sets up packages installed by home-manager
+    │   │   ├── run_once_after_02-wsl-config.sh.tmpl        # populates /etc/wsl.conf
+    │   │   └── run_once_after_03-wsl-dns.sh.tmpl           # creates a service for wsl NAT networking mode
+    │   └── windows
+    │       ├── run_once_before_01-install-scoop.ps1.tmpl       # bootstrap scoop and add buckets
+    │       ├── run_onchange_after_02-install-packages.ps1.tmpl # scoop install packages from YAML
+    │       └── run_once_after_01-configure-scoop.ps1.tmpl      # scoop config
     ├── .chezmoi.toml.tmpl    # init-time config
     ├── .chezmoiignore.tmpl   # OS filtering + git submodule exclusions
     ├── .chezmoidata/

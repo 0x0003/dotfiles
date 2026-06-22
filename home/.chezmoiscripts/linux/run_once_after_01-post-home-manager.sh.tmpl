@@ -1,8 +1,8 @@
-{{ if and (hasPrefix "linux" .os_id) .have_root -}}
+{{ if and (hasPrefix "linux" .os_id) .has_root -}}
 #!/usr/bin/env bash
 set -euo pipefail
 
-{{ if .home_manager | default false -}}
+{{ if .use_home_manager | default false -}}
 
 FISH="$HOME/.nix-profile/bin/fish"
 

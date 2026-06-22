@@ -1,4 +1,4 @@
-{{ if and (hasPrefix "linux" .os_id) .have_root (.home_manager | default false) -}}
+{{ if and (hasPrefix "linux" .os_id) .has_root (.use_home_manager | default false) -}}
 #!/usr/bin/env bash
 set -euo pipefail
 

@@ -1,22 +1,22 @@
-{{- $haveRoot := false -}}
-{{- $homeManager := false -}}
-{{- $winSymlinks := false -}}
-{{- $scoop := false -}}
+{{- $hasRoot := false -}}
+{{- $useHomeManager := false -}}
+{{- $createSymlinks := false -}}
+{{- $use_scoop := false -}}
 {{- $isWSL := false -}}
 {{- $os_id := .chezmoi.os -}}
 {{- if eq .chezmoi.os "linux" -}}
   {{- if hasKey .chezmoi.osRelease "id" -}}
     {{- $os_id = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
   {{- end -}}
-  {{- $haveRoot = promptBoolOnce . "have_root" "Do you have root access via sudo?" true -}}
-  {{- if $haveRoot -}}
-    {{- $homeManager = promptBoolOnce . "home_manager" "Bootstrap Nix and run home-manager?" true -}}
+  {{- $hasRoot = promptBoolOnce . "has_root" "Do you have root access via sudo?" true -}}
+  {{- if $hasRoot -}}
+    {{- $useHomeManager = promptBoolOnce . "use_home_manager" "Bootstrap Nix and run home-manager?" true -}}
   {{- end -}}
   {{- $isWSL = .chezmoi.kernel.osrelease | lower | contains "microsoft" | or (.chezmoi.kernel.osrelease | lower | contains "wsl") -}}
 {{- end -}}
 {{- if eq .chezmoi.os "windows" -}}
-    {{- $winSymlinks = promptBoolOnce . "win_symlinks" "Use Windows symlinks? (requires manual setup, see README.md)" true -}}
-    {{- $scoop = promptBoolOnce . "scoop" "Install Scoop and packages?" true -}}
+    {{- $createSymlinks = promptBoolOnce . "create_symlinks" "Use Windows symlinks? (requires manual setup, see README.md)" true -}}
+    {{- $use_scoop = promptBoolOnce . "use_scoop" "Install Scoop and packages?" true -}}
 {{- end -}}
 encryption = "age"
 mode = "file"
@@ -26,15 +26,21 @@ identity = "~/.config/age/dots-key.txt"
 recipient = "age1y3gurxw9qm55agwwqzlqe5xtp0476q48mga5t53nrpp7ckqjh44qkfje6j"
 
 [data]
-have_root = {{ $haveRoot }}
-home_manager = {{ $homeManager }}
-win_symlinks = {{ $winSymlinks }}
-scoop = {{ $scoop }}
 os_id = "{{ $os_id }}"
+{{- if eq .chezmoi.os "linux" }}
+has_root = {{ $hasRoot }}
+use_home_manager = {{ $useHomeManager }}
 is_wsl = {{ $isWSL }}
+{{- end }}
+{{- if eq .chezmoi.os "windows" }}
+create_symlinks = {{ $createSymlinks }}
+use_scoop = {{ $use_scoop }}
+{{- end }}
 
 [diff]
 exclude = ["scripts"]
 {{- if eq .chezmoi.os "linux" }}
 pager = "nvim -R -c 'set ft=diff nomodifiable' -"
+{{- else if eq .chezmoi.os "windows" }}
+pager = "less"
 {{- end }}

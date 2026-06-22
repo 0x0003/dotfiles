@@ -1,4 +1,4 @@
-{{ if .scoop -}}
+{{ if and (eq .os_id "windows") .use_scoop -}}
 # Install Scoop if not present
 if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
