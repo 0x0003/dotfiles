@@ -1,8 +1,8 @@
 # toggle proxy in current and consecutive shell sessions
 function prx
   set -l prx_state $HOME/.cache/fish/prx_state
-  if test -f $prx_state
-    rm $prx_state
+  if set -q http_proxy
+    rm -f $prx_state
     set -e -g http_proxy
     set -e -g https_proxy
     set -e -g HTTP_PROXY
