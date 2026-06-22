@@ -7,8 +7,8 @@ networkingMode=nat
 kernel={{ (output "scoop" "prefix" "xanmod-WSL2" | trim | replace "\\" "\\\\") }}\\bzImage-x64v3
 kernelModules={{ (output "scoop" "prefix" "xanmod-WSL2-addons" | trim | replace "\\" "\\\\") }}\\bzImage-x64v3-addons.vhdx
 {{ else -}}
-kernel=C:\\Users\\{{ .chezmoi.username }}\\scoop\\apps\\xanmod-WSL2\\current\\bzImage-x64v3
-kernelModules=C:\\Users\\{{ .chezmoi.username }}\\scoop\\apps\\xanmod-WSL2-addons\\current\\bzImage-x64v3-addons.vhdx
+kernel=C:\\Users\\{{ .chezmoi.username | splitList "\\" | last }}\\scoop\\apps\\xanmod-WSL2\\current\\bzImage-x64v3
+kernelModules=C:\\Users\\{{ .chezmoi.username | splitList "\\" | last }}\\scoop\\apps\\xanmod-WSL2-addons\\current\\bzImage-x64v3-addons.vhdx
 {{ end -}}
 [experimental]
 bestEffortDnsParsing=true
