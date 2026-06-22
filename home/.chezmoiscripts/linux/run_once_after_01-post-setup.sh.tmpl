@@ -15,3 +15,20 @@ if [ "$SHELL" != "$FISH" ]; then
 fi
 
 {{ end -}}
+
+{{ if .is_wsl -}}
+
+sudo tee /etc/wsl.conf > /dev/null <<'EOF'
+[boot]
+systemd=true
+
+[automount]
+enabled = true
+options = "metadata"
+mountFsTab = true
+
+[network]
+generateResolvConf = false
+EOF
+
+{{ end -}}
