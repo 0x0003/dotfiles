@@ -27,18 +27,16 @@ One-liners below pull the `chezmoi` binary, clone this repo into `~/.local/share
 
 ### Linux
 > [!NOTE]
-> Two prompts during init: `has_root` (sudo access) gates all sudo-requiring scripts; `use_home_manager` (Nix/home-manager bootstrap) only asked if `has_root` is true.  
+> Two init conditionals, default to true: `has_root` and `use_home_manager` (only asked if `has_root` is true).  
 > Remove `--promptDefaults` to answer interactively.  
-> Can later be changed via `chezmoi edit-config`.
 ```sh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --promptDefaults --purge-binary 0x0003
 ```
 
 ### Windows
 > [!NOTE]
-> Two prompts during init: `create_symlinks` (symlink privilege setup) and `use_scoop` (Scoop + package install).  
+> Two init conditionals, default to true: `create_symlinks` and `use_scoop`.  
 > Remove `--promptDefaults` to answer interactively.  
-> Can later be changed via `chezmoi edit-config`.
 >
 > Windows needs a special setting to enable creation of symlinks (lol)  
 > gpedit.msc -> Computer Configuration -> Windows Settings -> Security Settings -> Local Policies -> User Rights Assignment -> Create symbolic links -> click "Add User or Group" -> type your username -> click "Check Names" -> Apply -> REBOOT
@@ -47,6 +45,8 @@ iex "&{ $(irm 'https://get.chezmoi.io/ps1') } -- init --apply --promptDefaults -
 ```
 
 > Windows will not purge binary, but it will echo its location to stdout at the end.
+
+*Init conditionals' state can be changed manually with `chezmoi edit-config`.*
 
 ## Structure
 
