@@ -1,7 +1,6 @@
+{{ if and (hasPrefix .os_id "linux") .have_root .is_wsl -}}
 #!/usr/bin/env bash
 set -euo pipefail
-
-{{ if and .have_root .is_wsl -}}
 
 sudo tee /etc/wsl.conf > /dev/null <<'EOF'
 [boot]

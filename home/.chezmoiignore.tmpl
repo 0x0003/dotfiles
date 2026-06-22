@@ -10,7 +10,6 @@ secrets/**
 
 {{- if not (hasPrefix .os_id "linux") }}
 # Ignore linux files on non-linux
-.chezmoiscripts/linux/**
 .config/bc/**
 .config/fish/**
 .config/htop/**
@@ -31,7 +30,6 @@ scripts
 
 {{- if ne .os_id "windows" }}
 # Ignore windows files on non-windows
-.chezmoiscripts/windows/**
 AppData/**
 Documents/**
 scoop/**

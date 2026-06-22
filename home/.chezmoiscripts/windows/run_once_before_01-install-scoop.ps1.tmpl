@@ -1,27 +1,19 @@
+{{ if .scoop -}}
 # Install Scoop if not present
 if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
     Invoke-RestMethod -Uri get.scoop.sh | Invoke-Expression
 }
 
-# Add buckets
+# Add buckets (package install is handled by run_onchange script)
 $buckets = '{{ .pkgs.windows.scoop.buckets | toJson }}' | ConvertFrom-Json
 foreach ($bucket in $buckets) {
-    scoop bucket add $bucket *>$null
-}
-
-# Install packages
-$packages = '{{ .pkgs.windows.scoop.packages | toJson }}' | ConvertFrom-Json
-foreach ($pkg in $packages) {
-    if ($pkg -is [string]) {
-        scoop install $pkg
+    $name, $repo = $bucket -split ' ', 2
+    if ($repo) {
+        scoop bucket add $name $repo 6>$null
     } else {
-        $pkgName = $pkg.name
-        $installTarget = if ($pkg.version) { "$pkgName@$($pkg.version)" } else { $pkgName }
-        scoop install $installTarget
-        if ($pkg.hold) {
-            scoop hold $pkgName
-        }
+        scoop bucket add $name 6>$null
     }
 }
+{{ end -}}
 
