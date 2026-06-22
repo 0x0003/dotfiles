@@ -1,6 +1,7 @@
 {{- $haveRoot := false -}}
 {{- $homeManager := false -}}
 {{- $winSymlinks := false -}}
+{{- $scoop := false -}}
 {{- $isWSL := false -}}
 {{- $os_id := .chezmoi.os -}}
 {{- if eq .chezmoi.os "linux" -}}
@@ -15,6 +16,7 @@
 {{- end -}}
 {{- if eq .chezmoi.os "windows" -}}
     {{- $winSymlinks = promptBoolOnce . "win_symlinks" "Use Windows symlinks? (requires manual setup, see README.md)" true -}}
+    {{- $scoop = promptBoolOnce . "scoop" "Install Scoop and packages?" true -}}
 {{- end -}}
 encryption = "age"
 mode = "file"
@@ -27,8 +29,12 @@ recipient = "age1y3gurxw9qm55agwwqzlqe5xtp0476q48mga5t53nrpp7ckqjh44qkfje6j"
 have_root = {{ $haveRoot }}
 home_manager = {{ $homeManager }}
 win_symlinks = {{ $winSymlinks }}
+scoop = {{ $scoop }}
 os_id = "{{ $os_id }}"
 is_wsl = {{ $isWSL }}
 
 [diff]
 exclude = ["scripts"]
+{{- if eq .chezmoi.os "linux" }}
+pager = "nvim -R -c 'set ft=diff nomodifiable' -"
+{{- end }}

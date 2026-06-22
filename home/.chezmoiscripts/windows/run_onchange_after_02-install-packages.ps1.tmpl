@@ -1,0 +1,21 @@
+{{ if .scoop -}}
+# Install/update scoop packages from YAML data
+# Re-runs when package list changes
+
+$pkgData = '{{ .pkgs.windows.scoop.packages | toJson }}' | ConvertFrom-Json
+$allPkgLists = $pkgData.PSObject.Properties.Value
+foreach ($pkgList in $allPkgLists) {
+    foreach ($pkg in $pkgList) {
+        if ($pkg -is [string]) {
+            scoop install $pkg 6>$null
+        } else {
+            $pkgName = $pkg.name
+            $installTarget = if ($pkg.version) { "$pkgName@$($pkg.version)" } else { $pkgName }
+            scoop install $installTarget 6>$null
+            if ($pkg.hold) {
+                scoop hold $pkgName 6>$null
+            }
+        }
+    }
+}
+{{ end -}}

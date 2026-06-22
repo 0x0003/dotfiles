@@ -1,7 +1,6 @@
+{{ if and (hasPrefix .os_id "linux") .have_root -}}
 #!/usr/bin/env bash
 set -euo pipefail
-
-{{ if .have_root -}}
 
 {{ if .home_manager | default false -}}
 

@@ -3,51 +3,59 @@ pkgs:
     scoop:
       buckets:
         - extras
-        - 0x0003-s-bucket
-        - sniffer
+        - 0x0003-s-bucket https://github.com/0x0003/0x0003-s-bucket
+        - sniffer https://github.com/Locietta/sniffer
       packages:
-        - 7zip
-        - adb
-        - age
-        - alacritty
-        - name: calibre
-          version: "8.14.0"
-          hold: true
-        - crystaldiskinfo
-        - crystaldiskmark
-        - dnscrypt-proxy
-        - name: fancontrol
-          version: "237"
-          hold: true
-        - fastfetch
-        - ffmpeg
-        - firefox-esr
-        - gallery-dl
-        - git
-        - grep
-        - 0x0003-s-bucket/imageglass
-        - koboldcpp
-        - lessmsi
-        - librehardwaremonitor
-        - megatools
-        - mpv
-        - nicotine-plus
-        - nmap
-        - ntop
-        - chezmoi
-        - proxychains
-        - qbittorrent
-        - 0x0003-s-bucket/sing-box-extended
-        - sioyek
-        - smartmontools
-        - throne
-        - tor
-        - trippy
-        - ungoogled-chromium
-        - 0x0003-s-bucket/usque
-        - which
-        - win32yank
-        - 0x0003-s-bucket/wireproxy-awg
-        - sniffer/xanmod-WSL2
-        - sniffer/xanmod-WSL2-addons
-        - yt-dlp
+        core:
+          - 7zip
+          - age
+          - git
+          - grep
+          - less
+          - which
+          - win32yank
+        cli:
+          - fastfetch
+          - ffmpeg
+          - gallery-dl
+          - megatools
+          - nmap
+          - ntop
+          - trippy
+          - yt-dlp
+        dev:
+          - adb
+          - chezmoi
+          - sioyek
+        net:
+          - dnscrypt-proxy
+          - proxychains
+          - 0x0003-s-bucket/sing-box-extended
+          - tor
+          - 0x0003-s-bucket/wireproxy-awg
+        sys:
+          - crystaldiskinfo
+          - crystaldiskmark
+          - koboldcpp
+          - lessmsi
+          - librehardwaremonitor
+          - smartmontools
+        apps:
+          - alacritty
+          - name: calibre
+            version: "8.14.0"
+            hold: true
+          - name: fancontrol
+            version: "237"
+            hold: true
+          - firefox-esr
+          - 0x0003-s-bucket/imageglass
+          - mpv
+          - nicotine-plus
+          - qbittorrent
+          - throne
+          - ungoogled-chromium
+          - 0x0003-s-bucket/usque
+        wsl:
+          - sniffer/xanmod-WSL2
+          - sniffer/xanmod-WSL2-addons
