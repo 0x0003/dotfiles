@@ -70,7 +70,7 @@ home/
 ├── symlink_ahk.tmpl                # ^
 └── .chezmoiscripts/                # bootstrap scripts
     ├── linux
-    │   ├── run_once_after_01-set-login-shell.sh.tmpl
+    │   ├── run_once_after_01-post-setup.sh.tmpl
     │   └── run_once_before_01-home-manager.sh.tmpl
     └── windows
         ├── run_once_after_01-configure-scoop.ps1.tmpl

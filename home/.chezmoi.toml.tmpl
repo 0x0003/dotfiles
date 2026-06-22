@@ -2,11 +2,15 @@
 {{- $useWinSymlinks := false -}}
 {{- $isWSL := false -}}
 {{- if eq .chezmoi.os "linux" -}}
+  {{- if stdinIsATTY -}}
   {{- $runHomeManager = promptBoolOnce . "run_home_manager" "Bootstrap Nix and run home-manager?" true -}}
+  {{- end -}}
   {{- $isWSL = .chezmoi.kernel.osrelease | lower | contains "microsoft" | or (.chezmoi.kernel.osrelease | lower | contains "wsl") -}}
 {{- end -}}
 {{- if eq .chezmoi.os "windows" -}}
+  {{- if stdinIsATTY -}}
   {{- $useWinSymlinks = promptBoolOnce . "use_win_symlinks" "Use Windows symlinks? (requires manual setup, see README.md)" true -}}
+  {{- end -}}
 {{- end -}}
 encryption = "age"
 mode = "file"
