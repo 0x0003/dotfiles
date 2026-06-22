@@ -1,2 +1,3 @@
 * text=auto eol=lf
+home/dot_config/fish/**.fish.tmpl linguist-language=Fish
 home/scoop/persist/mpv/portable_config/scripts/** linguist-vendored

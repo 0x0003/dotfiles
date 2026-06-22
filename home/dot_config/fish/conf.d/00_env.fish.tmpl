@@ -1,4 +1,6 @@
-set -x PATH ~/scripts ~/scripts/wsl $PATH
+set -x PATH ~/scripts \
+  {{ if .is_wsl -}} ~/scripts/wsl \
+  {{ end -}} $PATH
 
 export EDITOR='nvim'
 
@@ -21,11 +23,15 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/rg/rg.conf"
 # ncurses programs by default have 100ms delay when pressing escape
 export ESCDELAY=0
 
-# proxy (see `ip route | grep default` for WSL host IP)
+{{ if .is_wsl -}}
+# proxy - WSL: dynamically resolve Windows host IP
 export PROXYADDRESS=http://(ip route | awk '/default/ {print $3}'):2080
+{{ else -}}
+# proxy - native Linux
+export PROXYADDRESS=http://127.0.0.1:2080
+{{ end -}}
 # export PROXYADDRESS=socks5://192.168.x.x:2080
 # export PROXYADDRESS=http://192.168.x.x:2080
-# export PROXYADDRESS=http://127.0.0.1:2080
 
 if test -f $HOME/.cache/fish/prx_state
   set -x http_proxy $PROXYADDRESS

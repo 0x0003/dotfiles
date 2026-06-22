@@ -1,7 +1,9 @@
 {{- $runHomeManager := false -}}
 {{- $useWinSymlinks := false -}}
+{{- $isWSL := false -}}
 {{- if eq .chezmoi.os "linux" -}}
-  {{- $runHomeManager = promptBoolOnce . "run_home_manager" "Bootstrap Nix and run home-manager? (does nothing if Nix is already installed)" true -}}
+  {{- $runHomeManager = promptBoolOnce . "run_home_manager" "Bootstrap Nix and run home-manager?" true -}}
+  {{- $isWSL = .chezmoi.kernel.osrelease | lower | contains "microsoft" | or (.chezmoi.kernel.osrelease | lower | contains "wsl") -}}
 {{- end -}}
 {{- if eq .chezmoi.os "windows" -}}
   {{- $useWinSymlinks = promptBoolOnce . "use_win_symlinks" "Use Windows symlinks? (requires manual setup, see README.md)" true -}}
@@ -16,6 +18,7 @@ recipient = "age1y3gurxw9qm55agwwqzlqe5xtp0476q48mga5t53nrpp7ckqjh44qkfje6j"
 [data]
 run_home_manager = {{ $runHomeManager }}
 use_win_symlinks = {{ $useWinSymlinks }}
+is_wsl = {{ $isWSL }}
 
 [diff]
 exclude = ["scripts"]
