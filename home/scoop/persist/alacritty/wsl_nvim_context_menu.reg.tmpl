@@ -1,0 +1,9 @@
+﻿Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\Neovim]
+@="Open in Neovim"
+"Icon"="C:\\Users\\{{ .chezmoi.username }}\\scoop\\persist\\alacritty\\neovim.ico"
+
+[HKEY_CLASSES_ROOT\*\shell\Neovim\command]
+@="C:\\Users\\{{ .chezmoi.username }}\\scoop\\apps\\alacritty\\current\\alacritty.exe --config-file C:\\Users\\{{ .chezmoi.username }}\\scoop\\persist\\alacritty\\alacritty.toml -o \"window.dimensions.lines=45\" -o \"window.dimensions.columns=110\" -o \"window.position.x=1287\" -o \"window.position.y=110\" --command wsl --shell-type login \"tmux new-session -s scratch nvim (wslpath '%1') \\; rename-window (basename (wslpath '%1')) || tmux attach -t scratch \\; new-window nvim (wslpath '%1') \\; rename-window (basename (wslpath '%1'))\""
+

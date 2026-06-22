@@ -1,0 +1,9 @@
+﻿Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\background\shell\alacritty_PS]
+@="Open PSH terminal here"
+"Icon"="C:\\Users\\{{ .chezmoi.username }}\\scoop\\persist\\alacritty\\psh.ico"
+
+[HKEY_CLASSES_ROOT\Directory\background\shell\alacritty_PS\command]
+@="C:\\Users\\{{ .chezmoi.username }}\\scoop\\apps\\alacritty\\current\\alacritty.exe --config-file C:\\Users\\{{ .chezmoi.username }}\\scoop\\persist\\alacritty\\alacritty.toml"
+
