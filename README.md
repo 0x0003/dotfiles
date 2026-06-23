@@ -23,7 +23,7 @@
 
 One-liners below pull the `chezmoi` binary, clone this repo into `~/.local/share/chezmoi`, attempt to bootstrap Nix (Linux) or Scoop (Windows), install software (including `chezmoi` itself), apply configuration, then remove the bootstrap binary (no longer needed once chezmoi is installed by a package manager).
 
-> Run with the `--exclude=encrypted` argument to skip encrypted files.
+> Run with `--exclude=encrypted` to skip encrypted files, `--exclude=externals` to skip external downloads. Separate multiple: `--exclude=encrypted,externals`.
 
 ### Linux
 > [!NOTE]
