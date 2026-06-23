@@ -19,6 +19,8 @@
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | ![term](https://github.com/user-attachments/assets/6b27cbe1-0126-480a-8efa-b6a44073c87e)  | ![ffmpv](https://github.com/user-attachments/assets/99156e5b-7ce3-49a2-b9e7-57086d1c9202) |
 
+![repo size](https://img.shields.io/github/repo-size/0x0003/dotfiles?style=for-the-badge&color=8c997d&labelColor=121212)
+
 ## Bootstrap
 
 One-liners below pull the `chezmoi` binary, clone this repo into `~/.local/share/chezmoi`, attempt to bootstrap Nix (Linux) or Scoop (Windows), install software (including `chezmoi` itself), apply configuration, then remove the bootstrap binary (no longer needed once chezmoi is installed by a package manager).
@@ -26,27 +28,37 @@ One-liners below pull the `chezmoi` binary, clone this repo into `~/.local/share
 > Run with `--exclude=encrypted` to skip encrypted files, `--exclude=externals` to skip external downloads. Separate multiple: `--exclude=encrypted,externals`.
 
 ### Linux
-> [!NOTE]
-> Two init conditionals, default to true: `has_root` and `use_home_manager` (only asked if `has_root` is true).  
-> Remove `--promptDefaults` to answer interactively.  
 ```sh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --promptDefaults --purge-binary 0x0003
 ```
+<details>
+<summary>Init prompts</summary>
+  <ul>
+    <li>`has_root`: boolean; default true - whether you have sudo/root access
+    <li> `use_home_manager`: boolean; default true - whether to set up home-manager (only prompted if `has_root` is true) </li>
+  </ul>
+
+> Remove `--promptDefaults` to answer interactively.
+</details>
 
 ### Windows
 > [!NOTE]
-> Two init conditionals, default to true: `create_symlinks` and `use_scoop`.  
-> Remove `--promptDefaults` to answer interactively.  
->
 > Windows needs a special setting to enable creation of symlinks (lol)  
 > gpedit.msc -> Computer Configuration -> Windows Settings -> Security Settings -> Local Policies -> User Rights Assignment -> Create symbolic links -> click "Add User or Group" -> type your username -> click "Check Names" -> Apply -> REBOOT
+>
+> Windows will not purge binary, but it will echo its location to stdout at the end.
 ```ps1
 iex "&{ $(irm 'https://get.chezmoi.io/ps1') } -- init --apply --promptDefaults --purge-binary 0x0003"
 ```
+<details>
+<summary>Init prompts</summary>
+  <ul>
+    <li>`create_symlinks`: boolean; default true - whether to enable creation of symlinks (see note above)</li>
+    <li>`use_scoop`: boolean; default true - whether to install packages via Scoop</li>
+  </ul>
 
-> Windows will not purge binary, but it will echo its location to stdout at the end.
-
-*Init conditionals' state can be changed manually with `chezmoi edit-config`.*
+> Remove `--promptDefaults` to answer interactively.
+</details>
 
 ## Structure
 
