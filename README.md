@@ -19,17 +19,19 @@
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | ![term](https://github.com/user-attachments/assets/6b27cbe1-0126-480a-8efa-b6a44073c87e)  | ![ffmpv](https://github.com/user-attachments/assets/99156e5b-7ce3-49a2-b9e7-57086d1c9202) |
 
-![repo size](https://img.shields.io/github/repo-size/0x0003/dotfiles?style=for-the-badge&color=8c997d&labelColor=121212)
+![repo size](https://img.shields.io/endpoint?style=for-the-badge&color=8c997d&labelColor=121212&url=https%3A%2F%2Fraw.githubusercontent.com%2F0x0003%2Fdotfiles%2Fbadge-data%2Fsize.json)
 
 ## Bootstrap
 
-One-liners below pull the `chezmoi` binary, clone this repo into `~/.local/share/chezmoi`, attempt to bootstrap Nix (Linux) or Scoop (Windows), install software (including `chezmoi` itself), apply configuration, then remove the bootstrap binary (no longer needed once chezmoi is installed by a package manager).
+One-liners below pull the chezmoi binary, `git clone --recurse-submodules` this repo into `~/.local/share/chezmoi`, bootstrap Nix (Linux) or Scoop (Windows), install software (including chezmoi itself), apply configuration, then attempt to remove the bootstrap binary.
 
-> Run with `--exclude=encrypted` to skip encrypted files, `--exclude=externals` to skip external downloads. Separate multiple: `--exclude=encrypted,externals`.
+> Run with `--exclude=encrypted` to skip encrypted files;  
+> `--exclude=externals` to skip external downloads;  
+> `--promptDefaults` to skip interactive init prompts.
 
 ### Linux
 ```sh
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --promptDefaults --purge-binary 0x0003
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --purge-binary 0x0003
 ```
 <details>
 <summary>Init prompts</summary>
@@ -37,18 +39,16 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --promptDefaults --purge-bi
     <li>`has_root`: boolean; default true - whether you have sudo/root access
     <li> `use_home_manager`: boolean; default true - whether to set up home-manager (only prompted if `has_root` is true) </li>
   </ul>
-
-> Remove `--promptDefaults` to answer interactively.
 </details>
 
 ### Windows
 > [!NOTE]
-> Windows needs a special setting to enable creation of symlinks (lol)  
+> Windows needs a special setting to enable creation of symlinks 🙄  
 > gpedit.msc -> Computer Configuration -> Windows Settings -> Security Settings -> Local Policies -> User Rights Assignment -> Create symbolic links -> click "Add User or Group" -> type your username -> click "Check Names" -> Apply -> REBOOT
 >
 > Windows will not purge binary, but it will echo its location to stdout at the end.
 ```ps1
-iex "&{ $(irm 'https://get.chezmoi.io/ps1') } -- init --apply --promptDefaults --purge-binary 0x0003"
+iex "&{ $(irm 'https://get.chezmoi.io/ps1') } -- init --apply --purge-binary 0x0003"
 ```
 <details>
 <summary>Init prompts</summary>
@@ -56,8 +56,6 @@ iex "&{ $(irm 'https://get.chezmoi.io/ps1') } -- init --apply --promptDefaults -
     <li>`create_symlinks`: boolean; default true - whether to enable creation of symlinks (see note above)</li>
     <li>`use_scoop`: boolean; default true - whether to install packages via Scoop</li>
   </ul>
-
-> Remove `--promptDefaults` to answer interactively.
 </details>
 
 ## Structure
@@ -71,9 +69,9 @@ Source tree showing only things of interest.
     ├── .chezmoiscripts/
     │   ├── linux
     │   │   ├── run_once_before_01-home-manager.sh.tmpl     # bootstrap Nix and home-manager
-    │   │   ├── run_once_after_01-post-home-manager.sh.tmpl # sets up packages installed by home-manager
-    │   │   ├── run_once_after_02-wsl-config.sh.tmpl        # populates /etc/wsl.conf
-    │   │   └── run_once_after_03-wsl-dns.sh.tmpl           # creates a service for wsl NAT networking mode
+    │   │   ├── run_once_after_01-post-home-manager.sh.tmpl # extra root-owned system configuration
+    │   │   ├── run_once_after_02-wsl-config.sh.tmpl        # populate /etc/wsl.conf
+    │   │   └── run_once_after_03-wsl-dns.sh.tmpl           # create a service for wsl NAT networking mode
     │   └── windows
     │       ├── run_once_before_01-install-scoop.ps1.tmpl       # bootstrap scoop and add buckets
     │       ├── run_onchange_after_02-install-packages.ps1.tmpl # scoop install packages from YAML
