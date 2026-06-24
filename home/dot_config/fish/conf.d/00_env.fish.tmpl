@@ -1,7 +1,13 @@
 set -x PATH ~/scripts \
   {{ if .is_wsl -}} ~/scripts/wsl \
   {{ end -}} $PATH
+{{ if .use_home_manager -}}
 
+if not contains $HOME/.nix-profile/share/fish/vendor_completions.d $fish_complete_path
+  set -ga fish_complete_path $HOME/.nix-profile/share/fish/vendor_completions.d
+end
+
+{{- end }}
 export EDITOR='nvim'
 
 # bc - math lib, quiet, bcrc file
