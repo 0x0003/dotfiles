@@ -2,8 +2,8 @@ function prx {
   $proxyaddress = 'http://127.0.0.1:2080'
   $stateFile = Join-Path (Split-Path $PSScriptRoot -Parent) "prx_state"
 
-  if (Test-Path $stateFile) {
-    Remove-Item $stateFile
+  if ($env:HTTP_PROXY) {
+    Remove-Item $stateFile -ErrorAction Ignore
     [System.Net.WebRequest]::DefaultWebProxy = New-Object System.Net.WebProxy($null)
     [System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
     [System.Net.WebRequest]::DefaultWebProxy.BypassProxyOnLocal = $false
