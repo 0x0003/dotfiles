@@ -4,6 +4,7 @@
 #Write-Host ''
 
 # source other parts
+. "$PSScriptRoot\env.ps1"
 . "$PSScriptRoot\functions\prompt.ps1"
 . "$PSScriptRoot\functions\cd.ps1"
 . "$PSScriptRoot\alias.ps1"

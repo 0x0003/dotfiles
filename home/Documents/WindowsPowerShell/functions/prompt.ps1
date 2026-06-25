@@ -10,7 +10,7 @@
   Write-Host " " -NoNewline
   Write-Host $path -NoNewline -ForegroundColor gray
   Write-Host " " -NoNewline
-  if ($global:proxy_is_on) { Write-Host "`` " -NoNewline -ForegroundColor yellow }
+  if ($env:HTTP_PROXY) { Write-Host "`` " -NoNewline -ForegroundColor yellow }
   Write-Host "λ." -NoNewline -ForegroundColor darkblue
   return " "
 }
