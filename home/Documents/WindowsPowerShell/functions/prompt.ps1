@@ -10,7 +10,14 @@
   Write-Host " " -NoNewline
   Write-Host $path -NoNewline -ForegroundColor gray
   Write-Host " " -NoNewline
-  if ($env:HTTP_PROXY) { Write-Host "`` " -NoNewline -ForegroundColor yellow }
+  if ($env:HTTP_PROXY) {
+    $right = "``"
+    $raw = $Host.UI.RawUI
+    $pos = $raw.CursorPosition
+    $raw.CursorPosition = New-Object System.Management.Automation.Host.Coordinates ($raw.WindowSize.Width - $right.Length), $pos.Y
+    Write-Host $right -NoNewline -ForegroundColor yellow
+    $raw.CursorPosition = $pos
+  }
   Write-Host "λ." -NoNewline -ForegroundColor darkblue
   return " "
 }
