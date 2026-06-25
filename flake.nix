@@ -12,6 +12,7 @@
         packages = with pkgs; [
           gitleaks
           shellcheck
+          git-filter-repo
         ];
         shellHook = ''
           echo && chezmoi status && echo
