@@ -1,4 +1,8 @@
-# alias `start` to `open`
+# curl -> scoop's curl.exe
+Remove-Item alias:\curl
+New-Alias -Name curl -Value "C:\users\$env:USERNAME\scoop\apps\curl\current\bin\curl.exe"
+
+# start -> open
 function open() {
     param([string] $arg)
     start $arg
