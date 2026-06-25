@@ -5,7 +5,9 @@
 {{- $isWSL := false -}}
 {{- $userName := .chezmoi.username -}}
 {{- if eq .chezmoi.os "windows" -}}
-  {{- $userName = .chezmoi.username | splitList "\\" | last -}}
+  {{- if contains "\\" .chezmoi.username -}}
+    {{- $userName = .chezmoi.username | splitList "\\" | last -}}
+  {{- end -}}
 {{- end -}}
 {{- $os_id := .chezmoi.os -}}
 {{- if eq .chezmoi.os "linux" -}}
