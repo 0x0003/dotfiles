@@ -2,8 +2,8 @@
 
 [HKEY_CLASSES_ROOT\Directory\background\shell\alacritty_PS]
 @="Open PSH terminal here"
-"Icon"="C:\\Users\\{{ .chezmoi.username | splitList "\\" | last }}\\scoop\\persist\\alacritty\\psh.ico"
+"Icon"="C:\\Users\\{{ .user_name }}\\scoop\\persist\\alacritty\\psh.ico"
 
 [HKEY_CLASSES_ROOT\Directory\background\shell\alacritty_PS\command]
-@="C:\\Users\\{{ .chezmoi.username | splitList "\\" | last }}\\scoop\\apps\\alacritty\\current\\alacritty.exe --config-file C:\\Users\\{{ .chezmoi.username | splitList "\\" | last }}\\scoop\\persist\\alacritty\\alacritty.toml"
+@="C:\\Users\\{{ .user_name }}\\scoop\\apps\\alacritty\\current\\alacritty.exe --config-file C:\\Users\\{{ .user_name }}\\scoop\\persist\\alacritty\\alacritty.toml"
 

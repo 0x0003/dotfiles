@@ -73,52 +73,52 @@ path = "/mnt/g/"
 # windows side
 [[session]]
 name = "chezmoi win"
-path = "/mnt/c/Users/{{ .chezmoi.username }}/.local/share/chezmoi/"
+path = "/mnt/c/Users/{{ .user_name }}/.local/share/chezmoi/"
 startup_command = "ll"
 
 [[session]]
 name = "alacritty cfg"
-path = "/mnt/c/Users/{{ .chezmoi.username }}/scoop/persist/alacritty"
+path = "/mnt/c/Users/{{ .user_name }}/scoop/persist/alacritty"
 startup_command = "nvim"
 
 [[session]]
 name = "pwsh cfg"
-path = "/mnt/c/Users/{{ .chezmoi.username }}/Documents/WindowsPowerShell"
+path = "/mnt/c/Users/{{ .user_name }}/Documents/WindowsPowerShell"
 startup_command = "nvim"
 
 [[session]]
 name = "scoop cfg"
-path = "/mnt/c/Users/{{ .chezmoi.username }}/.config/scoop"
+path = "/mnt/c/Users/{{ .user_name }}/.config/scoop"
 startup_command = "nvim"
 
 [[session]]
 name = "mpv cfg"
-path = "/mnt/c/Users/{{ .chezmoi.username }}/scoop/persist/mpv/portable_config"
+path = "/mnt/c/Users/{{ .user_name }}/scoop/persist/mpv/portable_config"
 startup_command = "nvim"
 
 [[session]]
 name = "sioyek cfg"
-path = "/mnt/c/Users/{{ .chezmoi.username }}/scoop/persist/sioyek"
+path = "/mnt/c/Users/{{ .user_name }}/scoop/persist/sioyek"
 startup_command = "nvim"
 
 [[session]]
 name = "tor cfg"
-path = "/mnt/c/Users/{{ .chezmoi.username }}/scoop/persist/tor"
+path = "/mnt/c/Users/{{ .user_name }}/scoop/persist/tor"
 startup_command = "nvim"
 
 [[session]]
 name = "ffox cfg"
-path = "/mnt/c/Users/{{ .chezmoi.username }}/scoop/persist/firefox-esr/profile"
+path = "/mnt/c/Users/{{ .user_name }}/scoop/persist/firefox-esr/profile"
 startup_command = "nvim"
 
 [[session]]
 name = "dnscrypt-proxy cfg"
-path = "/mnt/c/Users/{{ .chezmoi.username }}/scoop/persist/dnscrypt-proxy"
+path = "/mnt/c/Users/{{ .user_name }}/scoop/persist/dnscrypt-proxy"
 startup_command = "nvim"
 
 [[session]]
 name = "ahk"
-path = "/mnt/c/Users/{{ .chezmoi.username }}/ahk"
+path = "/mnt/c/Users/{{ .user_name }}/ahk"
 startup_command = "nvim"
 
 {{ decrypt (include "secrets/sesh-personal-wsl.toml.age") | trim }}
