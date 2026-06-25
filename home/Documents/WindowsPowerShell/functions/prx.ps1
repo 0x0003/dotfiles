@@ -1,19 +1,28 @@
 function prx {
   $proxyaddress = 'http://127.0.0.1:2080'
+  $stateFile = Join-Path (Split-Path $PSScriptRoot -Parent) "prx_state"
 
-  if ($global:proxy_is_on) {
+  if (Test-Path $stateFile) {
+    Remove-Item $stateFile
     [System.Net.WebRequest]::DefaultWebProxy = New-Object System.Net.WebProxy($null)
     [System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
     [System.Net.WebRequest]::DefaultWebProxy.BypassProxyOnLocal = $false
-    Remove-Item Env:\http_proxy 2>$null
-    Remove-Item Env:\https_proxy 2>$null
-    $global:proxy_is_on = $false
+    Remove-Item Env:HTTP_PROXY -ErrorAction SilentlyContinue
+    Remove-Item Env:HTTPS_PROXY -ErrorAction SilentlyContinue
+    Remove-Item Env:http_proxy -ErrorAction SilentlyContinue
+    Remove-Item Env:https_proxy -ErrorAction SilentlyContinue
+    Remove-Item Env:all_proxy -ErrorAction SilentlyContinue
     Write-Host "OFF"
   } else {
-    [System.Net.WebRequest]::DefaultWebProxy = New-Object System.Net.Webproxy($proxyaddress)
+    Set-Content $stateFile -Value $proxyaddress
+    [System.Net.WebRequest]::DefaultWebProxy = New-Object System.Net.WebProxy($proxyaddress)
     [System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
     [System.Net.WebRequest]::DefaultWebProxy.BypassProxyOnLocal = $true
-    $global:proxy_is_on = $true
+    $env:HTTP_PROXY = $proxyaddress
+    $env:HTTPS_PROXY = $proxyaddress
+    $env:http_proxy = $proxyaddress
+    $env:https_proxy = $proxyaddress
+    $env:all_proxy = $proxyaddress
     Write-Host "ON @ $proxyaddress"
   }
 }
