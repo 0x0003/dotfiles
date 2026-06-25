@@ -1,7 +1,7 @@
-CacheDirectory "C:/Users/{{ .chezmoi.username }}/scoop/apps/tor/current/cache"
-DataDirectory "C:/Users/{{ .chezmoi.username }}/scoop/persist/tor/data"
-GeoIPFile "C:/Users/{{ .chezmoi.username }}/scoop/persist/tor/data/geoip"
-GeoIPv6File "C:/Users/{{ .chezmoi.username }}/scoop/persist/tor/data/geoip6"
+CacheDirectory "C:/Users/{{ .user_name }}/scoop/apps/tor/current/cache"
+DataDirectory "C:/Users/{{ .user_name }}/scoop/persist/tor/data"
+GeoIPFile "C:/Users/{{ .user_name }}/scoop/persist/tor/data/geoip"
+GeoIPv6File "C:/Users/{{ .user_name }}/scoop/persist/tor/data/geoip6"
 
 DisableDebuggerAttachment 1
 SafeLogging 1
@@ -52,8 +52,8 @@ SocksPort 9050
 DNSPort 9053
 
 UseBridges 1
-ClientTransportPlugin conjure exec C:/Users/{{ .chezmoi.username }}/scoop/apps/tor/current/tor/pluggable_transports/conjure-client.exe -registerURL https://registration.refraction.network/api
-ClientTransportPlugin meek_lite,obfs2,obfs3,obfs4,scramblesuit,snowflake,webtunnel exec C:/Users/{{ .chezmoi.username }}/scoop/apps/tor/current/tor/pluggable_transports/lyrebird.exe
+ClientTransportPlugin conjure exec C:/Users/{{ .user_name }}/scoop/apps/tor/current/tor/pluggable_transports/conjure-client.exe -registerURL https://registration.refraction.network/api
+ClientTransportPlugin meek_lite,obfs2,obfs3,obfs4,scramblesuit,snowflake,webtunnel exec C:/Users/{{ .user_name }}/scoop/apps/tor/current/tor/pluggable_transports/lyrebird.exe
 
 {{ decrypt (include "secrets/tor-bridges.age") | trim }}
 
