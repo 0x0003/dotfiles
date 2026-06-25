@@ -1,0 +1,9 @@
+# proxy tunnel via Match exec
+{{ if eq .os_id "windows" -}}
+Match exec="powershell.exe -NoProfile -NonInteractive -Command \"& {if (-not (Test-Path Env:SSH_PROXY)) {exit 1}}\""
+  ProxyCommand connect.exe -h %h %p
+{{ else -}}
+Match exec="test -n \"$SSH_PROXY\""
+  ProxyCommand ncat --proxy "$SSH_PROXY" %h %p
+{{ end }}
+{{ decrypt (include "secrets/ssh-ids.age") | trim }}
