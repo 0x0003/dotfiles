@@ -43,5 +43,6 @@ if test -f $HOME/.cache/fish/prx_state
   set -x HTTP_PROXY $PROXYADDRESS
   set -x HTTPS_PROXY $PROXYADDRESS
   set -x all_proxy $PROXYADDRESS
+  set -x SSH_PROXY (string replace 'http://' '' -- $PROXYADDRESS)
 end
 

@@ -10,5 +10,7 @@ if (Test-Path $prxState) {
   [System.Net.WebRequest]::DefaultWebProxy = New-Object System.Net.WebProxy($proxy)
   [System.Net.WebRequest]::DefaultWebProxy.Credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials
   [System.Net.WebRequest]::DefaultWebProxy.BypassProxyOnLocal = $true
+  $prx_uri = [uri]$proxy
+  $env:SSH_PROXY = "$($prx_uri.Host):$($prx_uri.Port)"
 }
 

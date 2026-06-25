@@ -8,6 +8,7 @@ function prx
     set -e -g HTTP_PROXY
     set -e -g HTTPS_PROXY
     set -e -g all_proxy
+    set -e -g SSH_PROXY
     echo "OFF"
   else
     mkdir -p (dirname $prx_state)
@@ -17,6 +18,8 @@ function prx
     set -gx HTTP_PROXY $PROXYADDRESS
     set -gx HTTPS_PROXY $PROXYADDRESS
     set -gx all_proxy $PROXYADDRESS
+    set -l prx_uri (string replace 'http://' '' -- $PROXYADDRESS)
+    set -gx SSH_PROXY $prx_uri
     echo "ON @ $PROXYADDRESS"
   end
 end

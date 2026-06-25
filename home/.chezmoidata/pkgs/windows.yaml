@@ -28,6 +28,7 @@ pkgs:
           - chezmoi
           - sioyek
         net:
+          - connect
           - dnscrypt-proxy
           - proxychains
           - 0x0003-s-bucket/sing-box-extended

@@ -1,3 +1,4 @@
+# toggle proxy in current and consecutive shell sessions
 function prx {
   $proxyaddress = 'http://127.0.0.1:2080'
   $stateFile = Join-Path (Split-Path $PSScriptRoot -Parent) "prx_state"
@@ -12,6 +13,7 @@ function prx {
     Remove-Item Env:http_proxy -ErrorAction SilentlyContinue
     Remove-Item Env:https_proxy -ErrorAction SilentlyContinue
     Remove-Item Env:all_proxy -ErrorAction SilentlyContinue
+    Remove-Item Env:SSH_PROXY -ErrorAction SilentlyContinue
     Write-Host "OFF"
   } else {
     Set-Content $stateFile -Value $proxyaddress
@@ -23,6 +25,8 @@ function prx {
     $env:http_proxy = $proxyaddress
     $env:https_proxy = $proxyaddress
     $env:all_proxy = $proxyaddress
+    $prx_uri = [uri]$proxyaddress
+    $env:SSH_PROXY = "$($prx_uri.Host):$($prx_uri.Port)"
     Write-Host "ON @ $proxyaddress"
   }
 }
