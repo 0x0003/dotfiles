@@ -13,7 +13,6 @@ pkgs:
           - grep
           - less
           - which
-          - win32yank
         cli:
           - fastfetch
           - ffmpeg
@@ -23,6 +22,7 @@ pkgs:
           - ntop
           - trippy
           - yt-dlp
+          - curl
         dev:
           - adb
           - chezmoi
@@ -59,3 +59,4 @@ pkgs:
         wsl:
           - sniffer/xanmod-WSL2
           - sniffer/xanmod-WSL2-addons
+          - win32yank
