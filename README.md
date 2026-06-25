@@ -108,7 +108,7 @@ The symlink templates contain just the source path, e.g. `{{ .chezmoi.sourceDir 
 
 ## Secrets
 
-Chezmoi looks for [age](https://age-encryption.org/) key at `~/.config/age/dots-key.txt`.
+Chezmoi looks for [age](https://age-encryption.org/) key at `~/.config/age/keys.txt`.
 
 - **Whole-file** (`encrypted_` prefix): auto-decrypts on apply.
 - **Inline** (`home/secrets/*.age`): stubs consumed in templates via `{{ decrypt (include "secrets/<name>.age") | trim -}}`.
