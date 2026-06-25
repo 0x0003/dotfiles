@@ -231,7 +231,6 @@ user_pref("experiments.manifest.uri", 0);
 user_pref("experiments.supported", false);
 user_pref("experiments.activeExperiment", false);
 user_pref("network.allow-experiments", false);
-user_pref("toolkit.telemetry.cachedClientID", "");
 
 // "Features"
 user_pref("browser.uitour.enabled", false); // Disable UITour
