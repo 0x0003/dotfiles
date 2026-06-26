@@ -78,16 +78,13 @@ function warpwire() {
 }
 
 # koboldcpp
-function koboldroci() {
-    koboldcpp.exe --model "C:\Software\ai\llm\Rocinante-12B-v1.1-Q5_K_M.gguf" --quiet --skiplauncher --usecublas --gpulayers -1 --contextsize 16384
-}
-
-function koboldnemo() {
-    koboldcpp.exe --model "C:\Software\ai\llm\Mistral-Nemo-12B-Instruct-2407-Q5_K_M.gguf" --quiet --skiplauncher --usecublas --gpulayers -1 --contextsize 16384
+# 32768
+function koboldgemma() {
+    koboldcpp.exe --model "C:\Software\ai\llm\gemma-4-12b-it-UD-Q5_K_XL.gguf" --mmproj "C:\Software\ai\llm\mmproj-F16.gguf" --jinja --quiet --skiplauncher --usecublas --gpulayers -1 --flash-attn --contextsize 24576
  }
 
 function koboldqwen() {
-    koboldcpp.exe --model "C:\Software\ai\llm\Qwen3.6-27B-Q3_K_M.gguf" --quiet --skiplauncher --usecublas --gpulayers 999 --contextsize 100000
+    koboldcpp.exe --model "C:\Software\ai\llm\Qwen3.6-27B-Q3_K_M.gguf" --quiet --skiplauncher --usecublas --gpulayers 40 --flash-attn --contextsize 100000
  }
 
 # ffmpeg
