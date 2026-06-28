@@ -440,14 +440,14 @@ reader-mode-button,
   display: contents;
 }
 
-:root[sessionrestored] :where(#nav-bar,
+:root[sessionrestored]:not([inFullscreen]) :where(#nav-bar,
   #PersonalToolbar,
   #tab-notification-deck,
   .global-notificationbox) {
   transform: translateY(var(--uc-navbar-transform));
 }
 
-:root:is([customizing], [chromehidden*="toolbar"]) :where(#nav-bar,
+:root:is([customizing], [chromehidden*="toolbar"], [inFullscreen]) :where(#nav-bar,
   #PersonalToolbar,
   #tab-notification-deck,
   .global-notificationbox) {
@@ -455,7 +455,7 @@ reader-mode-button,
   opacity: 1 !important;
 }
 
-#nav-bar:not([customizing]) {
+#nav-bar:not([customizing]):not([inFullscreen]) {
   opacity: 0;
   position: relative;
   z-index: 2;
@@ -489,7 +489,7 @@ reader-mode-button,
   opacity: 1;
 }
 
-:root[sessionrestored] #urlbar[popover] {
+:root[sessionrestored]:not([inFullscreen]) #urlbar[popover] {
   opacity: 0;
   pointer-events: none;
   transform: translateY(var(--uc-navbar-transform));
@@ -517,7 +517,7 @@ reader-mode-button,
 }
 
 /* Move up the content view */
-:root[sessionrestored]:not([chromehidden~="toolbar"])>body>#browser {
+:root[sessionrestored]:not([chromehidden~="toolbar"]):not([inFullscreen])>body>#browser {
   margin-top: var(--uc-navbar-transform);
 }
 
