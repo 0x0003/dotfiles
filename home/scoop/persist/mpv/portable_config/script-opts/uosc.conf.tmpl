@@ -1,3 +1,4 @@
+{{- $p := index .theme.palettes .active_theme -}}
 # timeline size when fully retracted, 0 will hide it completely
 timeline_size_min=2
 # timeline size when fully expanded, in pixels, 0 to disable
@@ -16,7 +17,7 @@ timeline_border=0
 timeline_step=5
 # display seekable buffered ranges for streaming videos, syntax `color:opacity`,
 # color is an BBGGRR hex code, set to `none` to disable
-timeline_cached_ranges=345433:0.5
+timeline_cached_ranges={{ $p.applications.mpv.uosc_cached }}:0.5
 # comma separated states when timeline should always be visible. available: paused, audio
 timeline_persistency=
 
@@ -75,10 +76,10 @@ flash_duration=500
 proximity_in=25
 proximity_out=80
 # BBGGRR - BLUE GREEN RED hex color codes
-color_foreground=EEEEEE
-color_foreground_text=151515
-color_background=151515
-color_background_text=EEEEEE
+color_foreground={{ $p.applications.mpv.uosc_fg }}
+color_foreground_text={{ $p.applications.mpv.uosc_bg }}
+color_background={{ $p.applications.mpv.uosc_bg }}
+color_background_text={{ $p.applications.mpv.uosc_fg }}
 # show total time instead of time remaining
 total_time=no
 # hide UI when mpv autohides the cursor

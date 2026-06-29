@@ -1,7 +1,8 @@
+{{- $p := index .theme.palettes .active_theme -}}
 :root {
-  --sfwindow: #121212;
-  --sfsecondary: #1b1b1b;
-  --sfactivetab: #343434;
+  --sfwindow: {{ $p.background }};
+  --sfsecondary: {{ $p.applications.firefox.secondary }};
+  --sfactivetab: {{ $p.applications.firefox.activetab }};
   --urlbar-height: 20px !important;
   --urlbar-container-height: 20px !important;
   --urlbar-min-height: 20px !important;
@@ -40,7 +41,7 @@ private-browsing-indicator,
 #main-window {
   border: 0px !important;
   -moz-appearance: none !important;
-  background-color: #1b1b1b !important;
+  background-color: {{ $p.applications.firefox.secondary }} !important;
   /* margin-top: -1px !important; */
   /* margin-bottom: -1px !important; */
   /* margin-left: -1px !important; */
@@ -88,8 +89,8 @@ private-browsing-indicator,
 }
 
 .tab-close-button:hover {
-  background-color: #888 !important;
-  color: #121212 !important;
+  background-color: {{ $p.applications.firefox.close_hover }} !important;
+  color: {{ $p.background }} !important;
 }
 
 #nav-bar:not([tabs-hidden='true']) {
@@ -187,7 +188,7 @@ private-browsing-indicator,
 }
 
 .urlbar-input-box:hover {
-  background-color: #2a2a2a !important;
+  background-color: {{ $p.applications.firefox.hover }} !important;
 }
 
 #navigator-toolbox {
@@ -404,7 +405,7 @@ reader-mode-button,
 /* fix white flash on new tab */
 #tabbrowser-tabpanels,
 #appcontent>#content {
-  background: #121212 !important;
+  background: {{ $p.background }} !important;
 }
 
 /* === AUTOHIDE URLBAR === */
@@ -575,7 +576,7 @@ reader-mode-button,
 }
 
 #TabsToolbar[brighttext] .tab-throbber[busy]:not([selected=true])::before {
-  fill: #717171;
+  fill: {{ $p.applications.firefox.throbber_busy }};
   opacity: 1;
 }
 
@@ -585,6 +586,6 @@ reader-mode-button,
 }
 
 #TabsToolbar[brighttext] .tab-throbber[progress]:not([selected=true])::before {
-  fill: #8da3b9;
+  fill: {{ $p.normal.blue }};
 }
 

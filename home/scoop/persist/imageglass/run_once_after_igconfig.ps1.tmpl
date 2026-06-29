@@ -1,3 +1,4 @@
+{{- $p := index .theme.palettes .active_theme -}}
 $configPath = "$env:USERPROFILE\scoop\persist\imageglass\igconfig.xml"
 
 $writeDefaults = $false
@@ -113,7 +114,7 @@ if ($writeDefaults) {
       <Item key="SinglePageFormats" value="*.heic;*.heif;*.psd;" />
       <Item key="KeyComboActions" value="LeftRight:PrevNextImage;PageUpDown:PrevNextImage;SpaceBack:PauseSlideshow;UpDown:PanUpDown;" />
       <Item key="DisabledMenus" value="" />
-      <Item key="BackgroundColor" value="#1F1F1F" />
+      <Item key="BackgroundColor" value="{{ $p.ext.element }}" />
       <Item key="FrmMainWindowBound" value="0;0;2560;1440" />
       <Item key="FrmSettingsWindowBound" value="280;125;1050;750" />
       <Item key="FrmExifToolWindowBound" value="280;125;800;600" />
