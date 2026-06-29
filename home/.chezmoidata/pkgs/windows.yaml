@@ -8,55 +8,57 @@ pkgs:
       packages:
         core:
           - 7zip
-          - age
+          - chezmoi
           - git
+          - age
           - grep
           - less
           - which
-        cli:
+          - curl
+        sys:
+          - alacritty
           - fastfetch
-          - ffmpeg
-          - gallery-dl
+          - crystaldiskinfo
+          - crystaldiskmark
+          - lessmsi
+          - librehardwaremonitor
+          - smartmontools
+          - name: fancontrol
+            version: "237"
+            hold: true
+        net:
           - megatools
           - nmap
           - ntop
           - trippy
-          - yt-dlp
-          - curl
-        dev:
-          - adb
-          - chezmoi
-          - sioyek
-        net:
           - connect
           - dnscrypt-proxy
           - proxychains
-          - 0x0003-s-bucket/sing-box-extended
           - tor
+          - throne
+          - 0x0003-s-bucket/sing-box-extended
           - 0x0003-s-bucket/wireproxy-awg
-        sys:
-          - crystaldiskinfo
-          - crystaldiskmark
-          - koboldcpp
-          - lessmsi
-          - librehardwaremonitor
-          - smartmontools
-        apps:
-          - alacritty
+          - 0x0003-s-bucket/usque
+        browser:
+          - firefox-esr
+          - ungoogled-chromium
+        p2p:
+          - nicotine-plus
+          - qbittorrent
+        media:
+          - ffmpeg
+          - gallery-dl
+          - yt-dlp
+          - mpv
+          - sioyek
+          - 0x0003-s-bucket/imageglass
           - name: calibre
             version: "8.14.0"
             hold: true
-          - name: fancontrol
-            version: "237"
-            hold: true
-          - firefox-esr
-          - 0x0003-s-bucket/imageglass
-          - mpv
-          - nicotine-plus
-          - qbittorrent
-          - throne
-          - ungoogled-chromium
-          - 0x0003-s-bucket/usque
+        dev:
+          - adb
+        ai:
+          - koboldcpp
         wsl:
           - sniffer/xanmod-WSL2
           - sniffer/xanmod-WSL2-addons
