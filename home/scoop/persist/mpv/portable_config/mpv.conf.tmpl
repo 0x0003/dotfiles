@@ -1,3 +1,4 @@
+{{- $p := index .theme.palettes .active_theme -}}
 # less verbose terminal output
 quiet
 
@@ -9,15 +10,15 @@ osd-bar = no
 osd-scale-by-window = yes
 osd-font-size       = 16
 osd-font            = "IosevkaCustom Medium"
-osd-color           = "#EEEEEE"
-osd-border-color    = "#151515"
+osd-color           = "{{ $p.applications.mpv.osd_fg }}"
+osd-border-color    = "{{ $p.applications.mpv.osd_border }}"
 osd-border-size     = "2"
 osd-bar-align-y     = 0
 osd-duration        = 2000
 osd-playing-msg     = "${filename}\n${!playlist-count==1:${playlist-pos-1}/${playlist-count}}"
 
 # window
-background-color = "#070707"
+background-color = "{{ $p.applications.mpv.background }}"
 title        = "${filename} - mpv"
 geometry     = 1920x1080+50%+50%
 force-window = yes

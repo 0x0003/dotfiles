@@ -1,3 +1,4 @@
+{{- $p := index .theme.palettes .active_theme -}}
 [general]
 live_config_reload = false
 
@@ -367,45 +368,42 @@ y = 15
 [colors]
 draw_bold_text_with_bright_colors = true
 
-# paradise-ed
-# --------------------------------------------------
 [colors.primary]
-background = "#121212"
-foreground = "#C5C8C6"
+background = "{{ $p.background }}"
+foreground = "{{ $p.foreground }}"
 
 [colors.cursor]
-cursor = "#C5C8C6"
+cursor = "{{ $p.cursor }}"
 # cursor = "#c29448"
-text = "#000000"
+text = "{{ $p.cursor_text }}"
 
 [colors.normal]
-black = "#5a5b5c"
-blue = "#8da3b9"
-cyan = "#8aa6a2"
-green = "#8c997d"
-magenta = "#a988b0"
-red = "#b66467"
-white = "#e8e3e3"
-yellow = "#d9bc8c"
+black = "{{ $p.normal.black }}"
+blue = "{{ $p.normal.blue }}"
+cyan = "{{ $p.normal.cyan }}"
+green = "{{ $p.normal.green }}"
+magenta = "{{ $p.normal.magenta }}"
+red = "{{ $p.normal.red }}"
+white = "{{ $p.normal.white }}"
+yellow = "{{ $p.normal.yellow }}"
 
 [colors.bright]
-black = "#3d3e3d"
-blue = "#5d7a97"
-cyan = "#62817d"
-green = "#69735c"
-magenta = "#845d8c"
-red = "#8f4346"
-white = "#8e8e8e"
-yellow = "#c29448"
+black = "{{ $p.bright.black }}"
+blue = "{{ $p.bright.blue }}"
+cyan = "{{ $p.bright.cyan }}"
+green = "{{ $p.bright.green }}"
+magenta = "{{ $p.bright.magenta }}"
+red = "{{ $p.bright.red }}"
+white = "{{ $p.bright.white }}"
+yellow = "{{ $p.bright.yellow }}"
 
 [colors.search.focused_match]
-background = "#8f4346"
-foreground = "#3d3e3d"
+background = "{{ $p.search.focused_bg }}"
+foreground = "{{ $p.search.focused_fg }}"
 
 [colors.search.matches]
-background = "#8c997d"
-foreground = "#3d3e3d"
-# --------------------------------------------------
+background = "{{ $p.search.match_bg }}"
+foreground = "{{ $p.search.match_fg }}"
 
 # # gruvbox material dark
 # # --------------------------------------------------
