@@ -1,0 +1,27 @@
+{{- $p := index .theme.palettes .active_theme -}}
+vim.g.colors_name = 'themed'
+return {
+  base00 = '{{ $p.background }}',
+  base01 = '{{ $p.ext.element }}',
+  base02 = '{{ $p.ext.selection }}',
+  base03 = '{{ $p.ext.comment }}',
+  base04 = '{{ $p.normal.white }}',
+  base05 = '{{ $p.normal.white }}',
+  base06 = '{{ $p.ext.subtle }}',
+  base07 = '{{ $p.bright.white }}',
+  base08 = '{{ $p.normal.red }}',
+  base09 = '{{ $p.normal.yellow }}',
+  base0A = '{{ $p.normal.yellow }}',
+  base0B = '{{ $p.normal.green }}',
+  base0C = '{{ $p.normal.cyan }}',
+  base0D = '{{ $p.normal.blue }}',
+  base0E = '{{ $p.normal.magenta }}',
+  base0F = '{{ $p.ext.border }}',
+  extra04 = '{{ $p.ext.extra_white }}',
+  extra09 = '{{ $p.ext.extra_yellow }}',
+  extra0D = '{{ $p.ext.extra_blue }}',
+  diff08 = '{{ $p.diff.delete_bg }}',
+  diff0B = '{{ $p.diff.add_bg }}',
+  diff0D = '{{ $p.diff.change_bg }}',
+  popup00 = '{{ $p.ext.surface }}',
+}
