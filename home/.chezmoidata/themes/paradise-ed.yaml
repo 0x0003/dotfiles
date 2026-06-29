@@ -3,6 +3,7 @@ theme:
     paradise-ed:
       background: "#121212"
       foreground: "#c5c8c6"
+      # cursor: "#c29448"
       cursor: "#c5c8c6"
       cursor_text: "#000000"
 
@@ -33,7 +34,7 @@ theme:
         focused_fg: "#3d3e3d"
 
       ext:
-        surface: "#0C0C0C"
+        surface: "#0c0c0c"
         element: "#1f1f1f"
         selection: "#282828"
         comment: "#5a5b5c"
@@ -63,9 +64,10 @@ theme:
           throbber_progress: "#8da3b9"
 
         mpv:
-          osd_fg: "#EEEEEE"
+          osd_fg: "#eeeeee"
           osd_border: "#151515"
           background: "#070707"
-          uosc_fg: "EEEEEE"
+          # uosc uses BBGGRR
+          uosc_fg: "eeeeee"
           uosc_bg: "151515"
           uosc_cached: "345433"
