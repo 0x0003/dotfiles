@@ -4,12 +4,8 @@
 {{- $use_scoop := false -}}
 {{- $isWSL := false -}}
 {{- $userName := .chezmoi.username -}}
-{{- if eq .chezmoi.os "windows" -}}
-  {{- if contains "\\" .chezmoi.username -}}
-    {{- $userName = .chezmoi.username | splitList "\\" | last -}}
-  {{- end -}}
-{{- end -}}
 {{- $os_id := .chezmoi.os -}}
+{{- /* linux-specific */ -}}
 {{- if eq .chezmoi.os "linux" -}}
   {{- if hasKey .chezmoi.osRelease "id" -}}
     {{- $os_id = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
@@ -20,9 +16,34 @@
   {{- end -}}
   {{- $isWSL = .chezmoi.kernel.osrelease | lower | contains "microsoft" | or (.chezmoi.kernel.osrelease | lower | contains "wsl") -}}
 {{- end -}}
+{{- /* windows-specific */ -}}
 {{- if eq .chezmoi.os "windows" -}}
     {{- $createSymlinks = promptBoolOnce . "create_symlinks" "Use Windows symlinks? (requires manual setup, see README.md)" true -}}
     {{- $use_scoop = promptBoolOnce . "use_scoop" "Install Scoop and packages?" true -}}
+{{- end -}}
+{{- if eq .chezmoi.os "windows" -}}
+  {{- if contains "\\" .chezmoi.username -}}
+    {{- $userName = .chezmoi.username | splitList "\\" | last -}}
+  {{- end -}}
+{{- end -}}
+{{- /* system theme detection */ -}}
+{{- $activeTheme := "paradise-ed" -}}
+{{- $scheme := "" -}}
+{{- if eq .chezmoi.os "linux" -}}
+  {{- $out := output "sh" "-c" "busctl call --user org.freedesktop.portal.Desktop /org/freedesktop/portal/desktop org.freedesktop.portal.Settings Read ss org.freedesktop.appearance color-scheme 2>/dev/null || true" -}}
+  {{- $out = trim $out -}}
+  {{- if contains " 1" $out -}}{{- $scheme = "dark" -}}{{- end -}}
+  {{- if contains " 2" $out -}}{{- $scheme = "light" -}}{{- end -}}
+{{- else if eq .chezmoi.os "windows" -}}
+  {{- $out := output "cmd.exe" "/c" "reg query HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize /v AppsUseLightTheme 2>nul || echo 0x1" -}}
+  {{- $out = trim $out -}}
+  {{- if contains "0x0" $out -}}{{- $scheme = "dark" -}}{{- end -}}
+  {{- if contains "0x1" $out -}}{{- $scheme = "light" -}}{{- end -}}
+{{- end -}}
+{{- if eq $scheme "dark" -}}
+  {{- $activeTheme = "paradise-ed" -}}
+{{- else if eq $scheme "light" -}}
+  {{- $activeTheme = "flexoki-light" -}}
 {{- end -}}
 encryption = "age"
 mode = "file"
@@ -34,7 +55,7 @@ recipient = "age1y3gurxw9qm55agwwqzlqe5xtp0476q48mga5t53nrpp7ckqjh44qkfje6j"
 [data]
 # dark: paradise-ed, gruvbox-material-dark, kanagawa-wave, kape
 # light: gruvbox-light, papercolor-light, flexoki-light
-active_theme = "paradise-ed"
+active_theme = "{{ $activeTheme }}"
 os_id = "{{ $os_id }}"
 user_name = "{{ $userName }}"
 {{- if eq .chezmoi.os "linux" }}
