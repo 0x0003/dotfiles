@@ -476,8 +476,8 @@ reader-mode-button,
 
 /* Show when toolbox is focused, like when urlbar has received focus */
 #navigator-toolbox:focus-within>.browser-toolbar {
-  transform: translateY(0);
-  opacity: 1;
+  transform: translateY(0) !important;
+  opacity: 1 !important;
 }
 
 /* Show when toolbox is hovered */
@@ -485,8 +485,8 @@ reader-mode-button,
 .browser-titlebar:hover~ :is(#nav-bar, #PersonalToolbar),
 #nav-bar:hover,
 #nav-bar:hover+#PersonalToolbar {
-  transform: translateY(0);
-  opacity: 1;
+  transform: translateY(0) !important;
+  opacity: 1 !important;
 }
 
 :root[sessionrestored]:not([inFullscreen]) #urlbar[popover] {
@@ -502,9 +502,9 @@ reader-mode-button,
 .browser-titlebar:is(:hover, :focus-within)~#nav-bar #urlbar[popover],
 #nav-bar:is(:hover, :focus-within) #urlbar[popover],
 #urlbar-container>#urlbar[popover]:is([focused], [open]) {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
 }
 
 /* This ruleset is separate, because not having :has support breaks other selectors as well */
@@ -512,8 +512,8 @@ reader-mode-button,
     #selection-shortcut-action-panel,
     #chat-shortcuts-options-panel,
     #tab-preview-panel))~#navigator-toolbox>.browser-toolbar {
-  transform: translateY(0);
-  opacity: 1;
+  transform: translateY(0) !important;
+  opacity: 1 !important;
 }
 
 /* Move up the content view */
