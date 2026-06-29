@@ -5,11 +5,14 @@
 *.fish.tmpl linguist-language=Fish
 *.ps1.tmpl linguist-language=PowerShell
 *.json.tmpl linguist-language=JSON
+*.lua.tmpl linguist-language=Lua
 *.reg.tmpl linguist-language=INI
+*.conf.tmpl linguist-language=INI
 
 home/dot_wslconfig.tmpl linguist-language=INI
 home/dot_wegorc.tmpl linguist-language=INI
 
 # ignore
 home/scoop/persist/mpv/portable_config/scripts/** linguist-vendored
+home/scoop/persist/firefox-esr/** linguist-vendored
 
