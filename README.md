@@ -66,20 +66,21 @@ Source tree showing only things of interest.
 ├── .chezmoiversion # minimum chezmoi version required to interpret the source state
 ├── .chezmoiroot    # sets chezmoi root to home/
 └── home/
+    ├── .chezmoi.toml.tmpl  # init-time config
+    ├── .chezmoiignore.tmpl # OS filtering + git submodule exclusions
     ├── .chezmoiscripts/
     │   ├── linux
     │   │   ├── run_once_before_01-home-manager.sh.tmpl     # bootstrap Nix and home-manager
     │   │   ├── run_once_after_01-post-home-manager.sh.tmpl # extra root-owned system configuration
     │   │   ├── run_once_after_02-wsl-config.sh.tmpl        # populate /etc/wsl.conf
-    │   │   └── run_once_after_03-wsl-dns.sh.tmpl           # create a service for wsl NAT networking mode
+    │   │   └── run_once_after_03-wsl-dns.sh.tmpl           # create a service for wsl NAT networking
     │   └── windows
     │       ├── run_once_before_01-install-scoop.ps1.tmpl       # bootstrap scoop and add buckets
     │       ├── run_onchange_after_02-install-packages.ps1.tmpl # scoop install packages from YAML
     │       └── run_once_after_01-configure-scoop.ps1.tmpl      # scoop config
-    ├── .chezmoi.toml.tmpl    # init-time config
-    ├── .chezmoiignore.tmpl   # OS filtering + git submodule exclusions
     ├── .chezmoidata/
-    │   └── pkgs/windows.yaml # scoop packages
+    │   ├── pkgs/windows.yaml # scoop packages
+    │   └── themes            # colorschemes, applied through templates
     ├── secrets/              # inline age stubs (not managed)
     ├── dot_config/
     │   ├── submodule_nvim/           # git submodule (not managed)
