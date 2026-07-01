@@ -30,24 +30,6 @@ function scl() {
     param([string] $x)
     scoop cleanup $x
 }
-function sgc {
-    $repos = @(
-      "C:\users\$env:USERNAME\scoop\buckets\main",
-      "C:\users\$env:USERNAME\scoop\buckets\extras"
-      "C:\users\$env:USERNAME\scoop\buckets\sniffer"
-    )
-    $jobs = foreach ($repo in $repos) {
-        Start-Job -ScriptBlock {
-            param($path)
-            if (Test-Path $path) {
-                Write-Host "Running git gc in $path"
-                Set-Location $path
-                git gc
-            }
-        } -ArgumentList $repo
-    }
-    $jobs | Wait-Job | Receive-Job
-}
 
 # chezmoi
 function cmin { chezmoi init @args }
@@ -61,7 +43,6 @@ function cmap { chezmoi apply -v }
 function cmup { chezmoi update }
 function cmfo { chezmoi forget @args }
 function cmrm { chezmoi remove @args }
-function cmgc { Push-Location "$env:USERPROFILE\.local\share\chezmoi"; git gc; Pop-Location }
 function cmcd { Set-Location "$env:USERPROFILE\.local\share\chezmoi"; git status; echo " "; chezmoi status }
 
 # Cloudflare WARP
