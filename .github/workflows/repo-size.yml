@@ -1,0 +1,35 @@
+name: Report clone size
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  measure:
+    permissions:
+      contents: write
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Measure total size
+        run: |
+          total=$(du -sh . | cut -f1)
+          echo "${total}B" > size.txt
+
+      - name: Publish badge
+        run: |
+          git checkout --orphan badge-data
+          msg=$(cat size.txt)
+          jq -n --arg msg "$msg" \
+            '{schemaVersion:1, label:"clone size", message:$msg, color:"#8c997d", labelColor:"#121212"}' \
+            > size.json
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add size.json
+          git commit -m "update repo size [skip ci]"
+          git push origin badge-data --force

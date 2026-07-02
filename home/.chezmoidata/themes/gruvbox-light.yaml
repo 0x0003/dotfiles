@@ -1,0 +1,76 @@
+theme:
+  palettes:
+    gruvbox-light:
+
+      # background: "#f9f5d7" # hard contrast
+      # background: "#fbf1c7" # medium contrast
+      background: "#f2e5bc" # soft contrast
+      # background: "#fffcf0" # flexoki
+      foreground: "#3c3836"
+      cursor: "#3c3836"
+      cursor_text: "#fbf1c7"
+
+      normal:
+        black: "#928374"
+        red: "#cc241d"
+        green: "#98971a"
+        yellow: "#d79921"
+        blue: "#458588"
+        magenta: "#b16286"
+        cyan: "#689d6a"
+        white: "#7c6f64"
+
+      bright:
+        black: "#928374"
+        red: "#9d0006"
+        green: "#79740e"
+        yellow: "#b57614"
+        blue: "#076678"
+        magenta: "#8f3f71"
+        cyan: "#427b58"
+        white: "#3c3836"
+
+      search:
+        match_bg: "#98971a"
+        match_fg: "#fbf1c7"
+        focused_bg: "#cc241d"
+        focused_fg: "#fbf1c7"
+
+      ext:
+        surface: "#fbf1c7"
+        element: "#ebdbb2"
+        selection: "#d5c4a1"
+        comment: "#928374"
+        subtle: "#a89984"
+        border: "#bdab93"
+        extra_white: "#fbf1c7"
+        extra_yellow: "#d79921"
+        extra_blue: "#458588"
+
+      diff:
+        add_bg: "#d5e0c5"
+        add_fg: "#79740e"
+        delete_bg: "#f0d0c5"
+        delete_fg: "#9d0006"
+        change_bg: "#c5d8e0"
+        hunk_fg: "#458588"
+        highlight_add_fg: "#a9b665"
+        highlight_remove_fg: "#ea6962"
+
+      applications:
+        firefox:
+          secondary: "#ebdbb2"
+          activetab: "#d5c4a1"
+          hover: "#e8d8b8"
+          close_hover: "#cc241d"
+          throbber_busy: "#928374"
+          throbber_progress: "#458588"
+
+        mpv:
+          osd_fg: "#eeeeee"
+          osd_border: "#151515"
+          background: "#f2e5bc"
+          # uosc uses BBGGRR
+          uosc_fg: "151515"
+          uosc_bg: "eeeeee"
+          uosc_cached: "345433"

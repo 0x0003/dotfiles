@@ -1,0 +1,406 @@
+{{- $p := index .theme.palettes .active_theme -}}
+[general]
+live_config_reload = false
+
+[bell]
+animation = "EaseOutExpo"
+color = "0xffffff"
+duration = 0
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[debug]
+log_level = "OFF"
+persistent_logging = false
+print_events = false
+# ref_test = false
+render_timer = false
+
+[font]
+# size = 14.0
+size = 16.5
+
+[font.normal]
+family = "IosevkaCustom Nerd Font Mono"
+# family =  "JetBrains Mono"
+style = "Regular"
+
+[font.bold]
+family = "IosevkaCustom Nerd Font Mono"
+# family =  "JetBrains Mono"
+style = "Medium"
+
+[font.italic]
+family = "IosevkaCustom Nerd Font Mono"
+# family =  "JetBrains Mono"
+style = "Italic"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.offset]
+x = 0
+y = 0
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "K"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "J"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+action = "SearchConfirm"
+key = "Return"
+mode = "Search|Vi"
+
+[[keyboard.bindings]]
+action = "SearchCancel"
+key = "Escape"
+mode = "Search"
+
+[[keyboard.bindings]]
+action = "SearchCancel"
+key = "C"
+mode = "Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SearchClear"
+key = "U"
+mode = "Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SearchDeleteWord"
+key = "W"
+mode = "Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SearchHistoryPrevious"
+key = "P"
+mode = "Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SearchHistoryNext"
+key = "N"
+mode = "Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SearchHistoryPrevious"
+key = "Up"
+mode = "Search"
+
+[[keyboard.bindings]]
+action = "SearchHistoryNext"
+key = "Down"
+mode = "Search"
+
+[[keyboard.bindings]]
+action = "SearchFocusNext"
+key = "Return"
+mode = "Search|~Vi"
+
+[[keyboard.bindings]]
+action = "SearchFocusPrevious"
+key = "Return"
+mode = "Search|~Vi"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u0000"
+key = "Space"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[13;2u"
+key = "Return"
+mods = "Shift"
+
+[[keyboard.bindings]]
+chars = "\u001B[13;5u"
+key = "Return"
+mods = "Control"
+
+# tmux keybinds; C-s as prefix
+# --------------------------------------------------
+# pane left
+[[keyboard.bindings]]
+chars = "\u0013\u0068"
+key = "H"
+mods = "Alt"
+# pane down
+[[keyboard.bindings]]
+chars = "\u0013\u006a"
+key = "J"
+mods = "Alt"
+# pane up
+[[keyboard.bindings]]
+chars = "\u0013\u006b"
+key = "K"
+mods = "Alt"
+# pane right
+[[keyboard.bindings]]
+chars = "\u0013\u006c"
+key = "L"
+mods = "Alt"
+# kill active pane
+[[keyboard.bindings]]
+chars = "\u0013\u0078"
+key = "W"
+mods = "Alt"
+# zoom in on  active pane
+[[keyboard.bindings]]
+chars = "\u0013\u007a"
+key = "Z"
+mods = "Alt"
+
+# prev window
+[[keyboard.bindings]]
+chars = "\u0013\u0070"
+key = "p"
+mods = "Alt"
+# next window
+[[keyboard.bindings]]
+chars = "\u0013\u006e"
+key = "n"
+mods = "Alt"
+
+# jump to window by number
+[[keyboard.bindings]]
+chars = "\u0013\u0031"
+key = "1"
+mods = "Alt"
+[[keyboard.bindings]]
+chars = "\u0013\u0032"
+key = "2"
+mods = "Alt"
+[[keyboard.bindings]]
+chars = "\u0013\u0033"
+key = "3"
+mods = "Alt"
+[[keyboard.bindings]]
+chars = "\u0013\u0034"
+key = "4"
+mods = "Alt"
+[[keyboard.bindings]]
+chars = "\u0013\u0035"
+key = "5"
+mods = "Alt"
+[[keyboard.bindings]]
+chars = "\u0013\u0036"
+key = "6"
+mods = "Alt"
+[[keyboard.bindings]]
+chars = "\u0013\u0037"
+key = "7"
+mods = "Alt"
+[[keyboard.bindings]]
+chars = "\u0013\u0038"
+key = "8"
+mods = "Alt"
+[[keyboard.bindings]]
+chars = "\u0013\u0039"
+key = "9"
+mods = "Alt"
+[[keyboard.bindings]]
+chars = "\u0013\u0030"
+key = "0"
+mods = "Alt"
+
+# break pane (move to new window)
+[[keyboard.bindings]]
+chars = "\u0013\u0075"
+key = "U"
+mods = "Alt"
+# bring pane from named window
+[[keyboard.bindings]]
+chars = "\u0013\u0079"
+key = "Y"
+mods = "Alt"
+# send pane to named window
+[[keyboard.bindings]]
+chars = "\u0013\u0069"
+key = "I"
+mods = "Alt"
+
+# new window
+[[keyboard.bindings]]
+chars = "\u0013\u0063"
+key = "T"
+mods = "Alt"
+
+# horizontal split
+[[keyboard.bindings]]
+chars = "\u0013\u0073"
+key = "S"
+mods = "Alt"
+# vertical split
+[[keyboard.bindings]]
+chars = "\u0013\u0076"
+key = "V"
+mods = "Alt"
+
+# session switcher
+[[keyboard.bindings]]
+chars = "\u0013\u006f"
+key = "o"
+mods = "Alt"
+# attach to last session
+[[keyboard.bindings]]
+chars = "\u0013\u004c"
+key = "Backspace"
+mods = "Alt"
+# prev session
+[[keyboard.bindings]]
+chars = "\u0013\u0028"
+key = "["
+mods = "Alt"
+# next session
+[[keyboard.bindings]]
+chars = "\u0013\u0029"
+key = "]"
+mods = "Alt"
+# detach
+[[keyboard.bindings]]
+chars = "\u0013\u0064"
+key = "D"
+mods = "Alt"
+
+# tile main-horizontal
+[[keyboard.bindings]]
+chars = "\u0013\u006d"
+key = "M"
+mods = "Alt"
+# tile main-vertical
+[[keyboard.bindings]]
+chars = "\u0013\u004d"
+key = "M"
+mods = "Alt|Shift"
+
+# copy mode
+[[keyboard.bindings]]
+chars = "\u0013\u0071"
+key = "Q"
+mods = "Alt"
+
+# resize left
+[[keyboard.bindings]]
+chars = "\u0013\u001b\u005b\u0044"
+key = "Left"
+mods = "Alt"
+# resize down
+[[keyboard.bindings]]
+chars = "\u0013\u001b\u005b\u0042"
+key = "Down"
+mods = "Alt"
+# resize up
+[[keyboard.bindings]]
+chars = "\u0013\u001b\u005b\u0041"
+key = "Up"
+mods = "Alt"
+# resize right
+[[keyboard.bindings]]
+chars = "\u0013\u001b\u005b\u0043"
+key = "Right"
+mods = "Alt"
+# --------------------------------------------------
+
+[mouse]
+hide_when_typing = true
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+# [mouse.double_click]
+# threshold = 300
+
+# [mouse.triple_click]
+# threshold = 300
+
+[scrolling]
+history = 5000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`| = \"' ()[]{}<>"
+
+[window]
+decorations = "none"
+dynamic_padding = false
+opacity = 1.0
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 0
+lines = 0
+
+[window.padding]
+x = 15
+y = 15
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.primary]
+background = "{{ $p.background }}"
+foreground = "{{ $p.foreground }}"
+
+[colors.cursor]
+cursor = "{{ $p.cursor }}"
+text = "{{ $p.cursor_text }}"
+
+[colors.normal]
+black = "{{ $p.normal.black }}"
+blue = "{{ $p.normal.blue }}"
+cyan = "{{ $p.normal.cyan }}"
+green = "{{ $p.normal.green }}"
+magenta = "{{ $p.normal.magenta }}"
+red = "{{ $p.normal.red }}"
+white = "{{ $p.normal.white }}"
+yellow = "{{ $p.normal.yellow }}"
+
+[colors.bright]
+black = "{{ $p.bright.black }}"
+blue = "{{ $p.bright.blue }}"
+cyan = "{{ $p.bright.cyan }}"
+green = "{{ $p.bright.green }}"
+magenta = "{{ $p.bright.magenta }}"
+red = "{{ $p.bright.red }}"
+white = "{{ $p.bright.white }}"
+yellow = "{{ $p.bright.yellow }}"
+
+[colors.search.focused_match]
+background = "{{ $p.search.focused_bg }}"
+foreground = "{{ $p.search.focused_fg }}"
+
+[colors.search.matches]
+background = "{{ $p.search.match_bg }}"
+foreground = "{{ $p.search.match_fg }}"
+

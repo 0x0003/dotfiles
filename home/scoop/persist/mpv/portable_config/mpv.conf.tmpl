@@ -1,0 +1,107 @@
+{{- $p := index .theme.palettes .active_theme -}}
+# less verbose terminal output
+quiet
+
+# on-screen controls
+osc     = no
+osd-bar = no
+
+# on-screen display
+osd-scale-by-window = yes
+osd-font-size       = 16
+osd-font            = "IosevkaCustom Medium"
+osd-color           = "{{ $p.applications.mpv.osd_fg }}"
+osd-border-color    = "{{ $p.applications.mpv.osd_border }}"
+osd-border-size     = "2"
+osd-bar-align-y     = 0
+osd-duration        = 2000
+osd-playing-msg     = "${filename}\n${!playlist-count==1:${playlist-pos-1}/${playlist-count}}"
+
+# window
+background-color = "{{ $p.applications.mpv.background }}"
+title        = "${filename} - mpv"
+geometry     = 1920x1080+50%+50%
+force-window = yes
+no-border
+no-window-dragging
+no-taskbar-progress
+
+# screenshots
+screenshot-format          = png
+screenshot-png-compression = 5
+screenshot-template        = "%F_%#n"
+screenshot-directory       = "E:/Images/captures"
+
+# subtitles
+sub-fix-timing  = yes
+sub-auto        = exact
+# blend-subtitles = yes
+demuxer-mkv-subtitle-preroll
+sub-gray
+
+# audio
+volume-max  = 130
+volume      = 60
+
+# sub/audio priorities
+alang = jp,ja,jpn,en,eng
+slang = jp,ja,jpn,en,eng
+subs-fallback = no
+subs-with-matching-audio = yes
+
+# playback
+loop
+loop-playlist
+reset-on-next-file = pause
+idle               = yes
+
+# video
+# vo                = direct3d
+# gpu-api           = d3d11
+gpu-api           = vulkan
+hwdec             = vulkan
+vo                = gpu-next
+# gpu-api           = opengl
+# hwdec             = auto-safe
+hwdec-codecs      = all
+tone-mapping      = spline
+dither-depth      = auto
+deband            = yes
+deband-iterations = 2  # 4
+deband-threshold  = 35 # 64
+deband-range      = 20 # 8
+deband-grain      = 5  # 64
+
+# frame interpolation
+video-sync      = display-resample
+swapchain-depth = 2
+interpolation   = yes
+tscale          = sphinx
+tscale-blur     = 0.6991556596428412
+# tscale          = oversample
+
+# luma up
+scale                = catmull_rom
+sigmoid-upscaling    = yes
+gpu-shader-cache-dir = "~~/shaders/cache"
+glsl-shader          = "~~/shaders/ravu-lite-ar-r4.hook"
+no-scaler-resizes-only
+
+# luma down
+dscale              = catmull_rom
+correct-downscaling = yes
+linear-downscaling  = yes
+
+# chroma
+cscale = catmull_rom
+
+# network and cache
+ytdl-format            = bestvideo[height<=?1080]+bestaudio/best
+# ytdl-raw-options       = proxy=[socks5://localhost:2080]
+cache                  = auto
+demuxer-thread         = yes
+demuxer-readahead-secs = 300
+demuxer-max-bytes      = 150000000
+demuxer-max-back-bytes = 75000000
+force-seekable         = yes
+

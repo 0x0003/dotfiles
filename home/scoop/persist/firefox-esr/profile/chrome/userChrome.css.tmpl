@@ -1,0 +1,591 @@
+{{- $p := index .theme.palettes .active_theme -}}
+:root {
+  --sfwindow: {{ $p.background }};
+  --sfsecondary: {{ $p.applications.firefox.secondary }};
+  --sfactivetab: {{ $p.applications.firefox.activetab }};
+  --urlbar-height: 20px !important;
+  --urlbar-container-height: 20px !important;
+  --urlbar-min-height: 20px !important;
+}
+
+* {
+  font-family: "Roboto", "Meiryo UI" !important;
+  border-radius: 0px !important;
+}
+
+/* Urlbar View */
+
+/*─────────────────────────────*/
+/* Comment this section if you */
+/* want to show the URL Bar    */
+/*─────────────────────────────*/
+
+/* .urlbarView { */
+/*   display: none !important; */
+/* } */
+
+/*─────────────────────────────*/
+
+private-browsing-indicator,
+.tabbrowser-tab[label="Private Browsing"] .tab-icon-image,
+.search-one-offs,
+#alltabs-button {
+  display: none !important;
+}
+
+/** Windows(r)tm specific **/
+.titlebar-buttonbox-container {
+  display: none !important;
+}
+
+#main-window {
+  border: 0px !important;
+  -moz-appearance: none !important;
+  background-color: {{ $p.applications.firefox.secondary }} !important;
+  /* margin-top: -1px !important; */
+  /* margin-bottom: -1px !important; */
+  /* margin-left: -1px !important; */
+  /* margin-right: -1px !important; */
+}
+
+/* Tab colors */
+.tab-background:is([selected], [multiselected]) {
+  background-image: none !important;
+  background-color: var(--sfactivetab) !important;
+}
+
+/* Inactive tab colors */
+#navigator-toolbox {
+  background-color: var(--sfwindow) !important;
+}
+
+/* Window colors */
+:root {
+  --toolbar-bgcolor: var(--sfsecondary) !important;
+  --tabs-border-color: var(--sfsecondary) !important;
+  --lwt-sidebar-background-color: var(--sfwindow) !important;
+  --lwt-toolbar-field-focus: var(--sfsecondary) !important;
+}
+
+/* Sidebar color */
+#sidebar-box,
+.sidebar-placesTree {
+  background-color: var(--sfwindow) !important;
+}
+
+/* Tab elements */
+.tab-close-button {
+  background: transparent !important;
+  display: none !important;
+}
+
+.tab-content:not([pinned]):hover .tab-close-button {
+  display: inline-flex !important;
+  max-height: 16px !important;
+  min-height: 16px !important;
+  max-width: 13px !important;
+  min-width: 13px !important;
+  padding: 1px !important;
+}
+
+.tab-close-button:hover {
+  background-color: {{ $p.applications.firefox.close_hover }} !important;
+  color: {{ $p.background }} !important;
+}
+
+#nav-bar:not([tabs-hidden='true']) {
+  box-shadow: none;
+}
+
+#TabsToolbar,
+#TabsToolbar tab {
+  height: 18px !important;
+  max-height: 18px !important;
+  min-height: 18px !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* ESR 115 */
+#TabsToolbar tab {
+  margin-top: 11px !important;
+}
+
+.tab-text.tab-label {
+  font-weight: 400 !important;
+  text-shadow: none !important;
+  font-size: 12px !important;
+  /* margin-top: -1px !important; */
+}
+
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])>#tabbrowser-arrowscrollbox>.tabbrowser-tab[first-visible-unpinned-tab] {
+  margin-inline-start: 0 !important;
+}
+
+:root {
+  --toolbarbutton-border-radius: 0 !important;
+  --tab-border-radius: 0 !important;
+  --tab-block-margin: 0 !important;
+}
+
+.tab-background {
+  border-right: 0px solid rgba(0, 0, 0, 0) !important;
+  /* tabs aren't connected to the window edges without below margin offsets */
+  margin-left: -2px !important;
+  margin-right: -2px !important;
+}
+
+.tabbrowser-tab:is([visuallyselected='true'], [multiselected])>.tab-stack>.tab-background {
+  box-shadow: none !important;
+}
+
+.tabbrowser-tab[last-visible-tab='true'] {
+  padding-inline-end: 0 !important;
+}
+
+#tabs-newtab-button {
+  padding-left: 0 !important;
+}
+
+/** URL bar **/
+#urlbar-zoom-button {
+  border: none !important;
+}
+
+:root[uidensity="compact"] {
+  --urlbar-height: 20px;
+  --urlbar-min-height: 20px;
+}
+
+#urlbar {
+  border: none !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  --urlbar-height: 20px;
+  --urlbar-min-height: 20px;
+}
+
+#urlbar-background {
+  border: none !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+}
+
+/*#urlbar-container {*/
+/*   height: 24px !important;*/
+/*   max-height: 24px !important;*/
+/*   min-height: 24px !important;*/
+/*   border: none !important;*/
+/*   margin-bottom: 5px !important;*/
+/*}*/
+.urlbar-input-container {
+  background-color: var(--sfsecondary) !important;
+  /* height: 24px !important; */
+  /* max-height: 24px !important; */
+  /* min-height: 24px !important; */
+  /* margin-bottom: -5px !important; */
+  border: 1px solid rgba(0, 0, 0, 0) !important;
+}
+
+.urlbar-input-box:hover {
+  background-color: {{ $p.applications.firefox.hover }} !important;
+}
+
+#navigator-toolbox {
+  border-bottom-style: solid !important;
+  border: none !important;
+}
+
+#urlbar[focused='true']>#urlbar-background {
+  box-shadow: none !important;
+}
+
+.urlbar-go-button {
+  display: none !important;
+}
+
+/* dropdown selection */
+.urlbarView-row>.urlbarView-button.urlbarView-button-menu {
+  display: none !important;
+}
+
+.urlbarView-body-inner {
+  #urlbar[open]>.urlbarView>.urlbarView-body-outer>& {
+    border: none !important;
+  }
+}
+
+/*.urlbarView {*/
+/*  background-color: var(--sfwindow) !important;*/
+/*}*/
+/*.urlbarView-row:is([selected]),*/
+/*.urlbarView-row-inner:is([selected]) {*/
+/*  background-color: var(--sfactivetab) !important;*/
+/*}*/
+/*#urlbar:is([focused], [open]) > #urlbar-background {*/
+/*  background-color: var(--sfwindow) !important;*/
+/*}*/
+
+#nav-bar-customization-target {
+  height: 20px !important;
+  max-height: 20px !important;
+  min-height: 20px !important;
+}
+
+#nav-bar {
+  height: 20px !important;
+  max-height: 20px !important;
+  min-height: 20px !important;
+}
+
+.urlbarView-row[label="Firefox Suggest"]::before {
+  display: none !important;
+}
+
+.urlbarView-row[label="Firefox Suggest"] {
+  margin-top: 0 !important;
+}
+
+/* .urlbarView-button, */
+/* .urlbarView-button-menu { */
+/*   display: none !important; */
+/* } */
+
+/* ESR 128 */
+:root[uidensity="compact"] .tab-background {
+  min-height: 0 !important;
+}
+
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])>#tabbrowser-arrowscrollbox>.tabbrowser-tab:nth-child(1 of :not([pinned], [hidden])) {
+  margin-inline-start: 0px !important;
+}
+
+#PersonalToolbar {
+  margin-top: 0px;
+}
+
+#nav-bar .toolbarbutton-1[open='true'] {
+  visibility: visible;
+  opacity: 100;
+}
+
+/* Bookmarks bar  */
+.bookmark-item .toolbarbutton-icon {
+  display: none;
+}
+
+toolbarbutton.bookmark-item:not(.subviewbutton) {
+  min-width: 1.6em;
+}
+
+/* ESR 140 */
+#tabbrowser-tabs {
+  border-inline-start: 0 !important;
+  padding-inline-start: 0 !important;
+  margin-inline-start: 0 !important;
+}
+
+.unified-extensions-item-row-wrapper,
+#PanelUI-button {
+  height: var(--urlbar-height);
+}
+
+/* Toolbar  */
+#tracking-protection-icon-container,
+#urlbar-zoom-button,
+#star-button-box,
+#pageActionButton,
+#pageActionSeparator,
+#tabs-newtab-button,
+#back-button,
+/* #PanelUI-button, */
+#forward-button,
+.tab-secondary-label,
+reader-mode-button,
+#urlbar .urlbar-page-action#taskbar-tabs-button,
+#urlbar hbox#taskbar-tabs-button.urlbar-page-action,
+#firefox-view-button,
+#urlbar-searchmode-switcher,
+#unified-extensions-button /* <- ADDONS BUTTON */
+  {
+  display: none !important;
+}
+
+/* Remove context menu elements */
+#context-sep-navigation,
+#context-savepage,
+#context-sendpage,
+
+#context-openlink,
+#context-openlinkprivate,
+#context-openlinkintab,
+#context-openlinkinusercontext-menu,
+#context-sep-open,
+#context-bookmarklink,
+#context-savelink,
+#context-sendlink,
+#context-copyemail,
+#context-sep-copylink,
+
+#context-viewimage,
+#context-viewimageinfo,
+#context-copyimage-contents,
+#context-sep-copyimage,
+#context-sendimage,
+#context-sep-setbackground,
+#context-setDesktopBackground,
+#context-blockimage,
+#context-sep-viewbgimage,
+#context-viewbgimage,
+
+#context-sendvideo,
+#context-media-sep-commands,
+#context-video-fullscreen,
+#context-leave-dom-fullscreen,
+#context-video-send,
+
+#context-sep-undo,
+#context-sep-paste,
+#context-selectall,
+#context-sep-selectall,
+#context-sep-sendlinktodevice,
+#context-searchselect,
+#context-viewpartialsource-selection,
+
+#frame-sep,
+#context-sep-properties,
+#context-viewsource,
+#context-sep-viewsource,
+#context-viewinfo,
+#context-metadata,
+#context-inspect,
+#inspect-separator,
+#context-sep-bidi,
+#context-print-selection,
+#context-sendlinktodevice,
+#context-context-stripOnShareLink,
+#context-savelinktopocket,
+#context-pocket,
+#context-sendpagetodevice,
+#context-inspect-a11y,
+#context-translate-selection,
+#context-take-screenshot,
+#context-sep-screenshots {
+  display: none !important;
+}
+
+#context-navigation>.menuitem-iconic {
+  margin: 0px 2px 0px 2px !important;
+}
+
+#context-navigation,
+/*#contentAreaContextMenu,*/
+#context-sep-navigation {
+  padding: 0 !important;
+}
+
+#context_bookmarkTab,
+#context_moveTabOptions,
+#context_sendTabToDevice,
+#context_reopenInContainer,
+#context_selectAllTabs,
+#context_closeTabOptions {
+  display: none !important;
+}
+
+/* extensions */
+.toolbarbutton-1 {
+  filter: grayscale(85%) !important;
+}
+
+.toolbarbutton-1:hover {
+  filter: none !important;
+}
+
+/* fix white flash on new tab */
+#tabbrowser-tabpanels,
+#appcontent>#content {
+  background: {{ $p.background }} !important;
+}
+
+/* === AUTOHIDE URLBAR === */
+/* ESR 128 */
+/* #nav-bar:not([customizing]) { */
+/*   visibility: visible; */
+/*   margin-top: -20px; */
+/*   filter: alpha(opacity=0); */
+/*   opacity: 0; */
+/* } */
+/**/
+/* #nav-bar:hover, */
+/* #nav-bar:focus-within, */
+/* #urlbar[focused='true'], */
+/* #identity-box[open='true'], */
+/* #titlebar:hover + #nav-bar:not([customizing]), */
+/* #toolbar-menubar:not([inactive='true']) ~ #nav-bar:not([customizing]) { */
+/*   visibility: visible; */
+/*   margin-top: 0px; */
+/*   filter: alpha(opacity=100); */
+/*   opacity: 100; */
+/*   margin-bottom: -0.2px; */
+/* } */
+
+/* ESR 140 */
+/* https://github.com/MrOtherGuy/firefox-csshacks/blob/master/chrome/autohide_main_toolbar.css */
+/* https://github.com/Dook97/firefox-qutebrowser-userchrome/blob/master/userChrome.css#L273 */
+:root[uidensity="compact"] {
+  --uc-navbar-transform: -20px
+}
+
+#navigator-toolbox>div {
+  display: contents;
+}
+
+:root[sessionrestored]:not([inFullscreen]) :where(#nav-bar,
+  #PersonalToolbar,
+  #tab-notification-deck,
+  .global-notificationbox) {
+  transform: translateY(var(--uc-navbar-transform));
+}
+
+:root:is([customizing], [chromehidden*="toolbar"], [inFullscreen]) :where(#nav-bar,
+  #PersonalToolbar,
+  #tab-notification-deck,
+  .global-notificationbox) {
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+#nav-bar:not([customizing]):not([inFullscreen]) {
+  opacity: 0;
+  position: relative;
+  z-index: 2;
+}
+
+#titlebar {
+  position: relative;
+  z-index: 3;
+}
+
+#navigator-toolbox,
+#sidebar-box,
+#sidebar-main,
+#sidebar-splitter,
+#tabbrowser-tabbox {
+  z-index: auto !important;
+}
+
+/* Show when toolbox is focused, like when urlbar has received focus */
+#navigator-toolbox:focus-within>.browser-toolbar {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+}
+
+/* Show when toolbox is hovered */
+#titlebar:hover~.browser-toolbar,
+.browser-titlebar:hover~ :is(#nav-bar, #PersonalToolbar),
+#nav-bar:hover,
+#nav-bar:hover+#PersonalToolbar {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+}
+
+:root[sessionrestored]:not([inFullscreen]) #urlbar[popover] {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(var(--uc-navbar-transform));
+}
+
+#mainPopupSet:has(> [panelopen]:not(#ask-chat-shortcuts,
+    #selection-shortcut-action-panel,
+    #chat-shortcuts-options-panel,
+    #tab-preview-panel))~toolbox #urlbar[popover],
+.browser-titlebar:is(:hover, :focus-within)~#nav-bar #urlbar[popover],
+#nav-bar:is(:hover, :focus-within) #urlbar[popover],
+#urlbar-container>#urlbar[popover]:is([focused], [open]) {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+}
+
+/* This ruleset is separate, because not having :has support breaks other selectors as well */
+#mainPopupSet:has(> [panelopen]:not(#ask-chat-shortcuts,
+    #selection-shortcut-action-panel,
+    #chat-shortcuts-options-panel,
+    #tab-preview-panel))~#navigator-toolbox>.browser-toolbar {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+}
+
+/* Move up the content view */
+:root[sessionrestored]:not([chromehidden~="toolbar"]):not([inFullscreen])>body>#browser {
+  margin-top: var(--uc-navbar-transform);
+}
+
+/* === TAB LOADING INDICATOR FOR `ui.prefersReducedMotion = 1` === */
+.tab-throbber[progress] {
+  opacity: unset !important;
+}
+
+.tab-throbber[busy] {
+  background: none !important;
+  opacity: unset !important;
+}
+
+:root[sessionrestored] .tab-throbber[busy] {
+  position: relative;
+  overflow: hidden;
+}
+
+:root[sessionrestored] .tab-throbber[busy]::before {
+  content: "";
+  position: absolute;
+  background-image: url("chrome://browser/skin/tabbrowser/loading.svg");
+  background-position: left center;
+  background-repeat: no-repeat;
+  width: 480px;
+  height: 100%;
+  animation: tab-throbber-animation 1.05s steps(30) infinite;
+  -moz-context-properties: fill;
+  fill: currentColor;
+  opacity: 0.7;
+}
+
+:root[sessionrestored] .tab-throbber[busy]:-moz-locale-dir(rtl)::before {
+  animation-name: tab-throbber-animation-rtl;
+}
+
+@keyframes tab-throbber-animation {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes tab-throbber-animation-rtl {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+#TabsToolbar[brighttext] .tab-throbber[busy]:not([selected=true])::before {
+  fill: {{ $p.applications.firefox.throbber_busy }};
+  opacity: 1;
+}
+
+:root[sessionrestored] .tab-throbber[progress]::before {
+  fill: var(--tab-loading-fill);
+  opacity: 1;
+}
+
+#TabsToolbar[brighttext] .tab-throbber[progress]:not([selected=true])::before {
+  fill: {{ $p.normal.blue }};
+}
+

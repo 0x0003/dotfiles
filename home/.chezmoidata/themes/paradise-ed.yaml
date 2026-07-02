@@ -1,0 +1,73 @@
+theme:
+  palettes:
+    paradise-ed:
+      background: "#121212"
+      foreground: "#c5c8c6"
+      # cursor: "#c29448"
+      cursor: "#c5c8c6"
+      cursor_text: "#000000"
+
+      normal:
+        black: "#5a5b5c"
+        red: "#b66467"
+        green: "#8c997d"
+        yellow: "#d9bc8c"
+        blue: "#8da3b9"
+        magenta: "#a988b0"
+        cyan: "#8aa6a2"
+        white: "#e8e3e3"
+
+      bright:
+        black: "#3d3e3d"
+        red: "#8f4346"
+        green: "#69735c"
+        yellow: "#c29448"
+        blue: "#5d7a97"
+        magenta: "#845d8c"
+        cyan: "#62817d"
+        white: "#8e8e8e"
+
+      search:
+        match_bg: "#8c997d"
+        match_fg: "#3d3e3d"
+        focused_bg: "#8f4346"
+        focused_fg: "#3d3e3d"
+
+      ext:
+        surface: "#0c0c0c"
+        element: "#1f1f1f"
+        selection: "#282828"
+        comment: "#5a5b5c"
+        subtle: "#787373"
+        border: "#747272"
+        extra_white: "#b8b3b3"
+        extra_yellow: "#c29448"
+        extra_blue: "#5d7a97"
+
+      diff:
+        add_bg: "#4a5142"
+        add_fg: "#a8c090"
+        delete_bg: "#512c2d"
+        delete_fg: "#d47a7a"
+        change_bg: "#3e4851"
+        hunk_fg: "#a8bdd4"
+        highlight_add_fg: "#c8e0a0"
+        highlight_remove_fg: "#e8a0a0"
+
+      applications:
+        firefox:
+          secondary: "#1b1b1b"
+          activetab: "#343434"
+          hover: "#2a2a2a"
+          close_hover: "#888888"
+          throbber_busy: "#717171"
+          throbber_progress: "#8da3b9"
+
+        mpv:
+          osd_fg: "#eeeeee"
+          osd_border: "#151515"
+          background: "#070707"
+          # uosc uses BBGGRR
+          uosc_fg: "eeeeee"
+          uosc_bg: "151515"
+          uosc_cached: "345433"

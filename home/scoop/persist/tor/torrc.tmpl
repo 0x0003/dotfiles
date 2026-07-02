@@ -1,0 +1,59 @@
+CacheDirectory "C:/Users/{{ .user_name }}/scoop/apps/tor/current/cache"
+DataDirectory "C:/Users/{{ .user_name }}/scoop/persist/tor/data"
+GeoIPFile "C:/Users/{{ .user_name }}/scoop/persist/tor/data/geoip"
+GeoIPv6File "C:/Users/{{ .user_name }}/scoop/persist/tor/data/geoip6"
+
+DisableDebuggerAttachment 1
+SafeLogging 1
+ClientOnly 1
+AutomapHostsOnResolve 1
+AvoidDiskWrites 1
+HardwareAccel 1
+
+HiddenServiceStatistics 0
+UseEntryGuards 1
+NumEntryGuards 8
+NumDirectoryGuards 4
+DownloadExtraInfo 1
+
+RelayBandwidthRate 100 MB
+RelayBandwidthBurst 150 MB
+BandwidthRate 100 MB
+BandwidthBurst 150 MB
+
+ClientUseIPv6 1
+NumCPUs 4
+TokenBucketRefillInterval 75
+# SchedulerHighWaterMark 12000
+# SchedulerLowWaterMark 10000
+
+# https://metrics.torproject.org/rs.html#search
+
+LearnCircuitBuildTimeout 0
+CircuitBuildTimeout 40
+CircuitStreamTimeout 10
+NewCircuitPeriod 7200
+MaxCircuitDirtiness 7200
+StrictNodes 1
+
+MapAddress *.example.com *.example.com.6376F708BD865B477B2FBA68098EED046E34E64C.exit
+
+# ExcludeNodes {us},{cn},{ru},{by},{ir},{sy},{kp},{cu},{sa},{eg},{tr},{id},{ph},{vn},{th},{my},{sg},{iq},{pk},{bd},{qa},{om},{ae},{kw},{ye},{ps},{lb},{jo},{bh}
+ExcludeExitNodes {us},{cn},{ru},{by}
+
+# If connecting directly, disable bridges
+# Socks5Proxy localhost:8086
+# EntryNodes {de},{nl},{se},{ch},{fi},{no},{jp},{kr}
+
+{{ decrypt (include "secrets/tor-nodes.age") | trim }}
+
+OutboundBindAddress 127.0.0.1
+SocksPort 9050
+DNSPort 9053
+
+UseBridges 1
+ClientTransportPlugin conjure exec C:/Users/{{ .user_name }}/scoop/apps/tor/current/tor/pluggable_transports/conjure-client.exe -registerURL https://registration.refraction.network/api
+ClientTransportPlugin meek_lite,obfs2,obfs3,obfs4,scramblesuit,snowflake,webtunnel exec C:/Users/{{ .user_name }}/scoop/apps/tor/current/tor/pluggable_transports/lyrebird.exe
+
+{{ decrypt (include "secrets/tor-bridges.age") | trim }}
+

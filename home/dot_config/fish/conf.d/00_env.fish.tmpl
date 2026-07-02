@@ -1,0 +1,47 @@
+set -x PATH ~/scripts \
+  {{ if .is_wsl -}} ~/scripts/wsl \
+  {{ end -}} $PATH
+{{ if .use_home_manager }}
+if not contains $HOME/.nix-profile/share/fish/vendor_completions.d $fish_complete_path
+  set -ga fish_complete_path $HOME/.nix-profile/share/fish/vendor_completions.d
+end
+{{ end }}
+export EDITOR='nvim'
+
+# bc - math lib, quiet, bcrc file
+export BC_ENV_ARGS="-lq $HOME/.config/bc/calc"
+
+# IME
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export DefaultIMModule=fcitx
+export SDL_IM_MODULE=fcitx
+
+# explicitly indicate truecolor support
+export COLORTERM='truecolor'
+
+# rg config
+export RIPGREP_CONFIG_PATH="$HOME/.config/rg/rg.conf"
+
+# ncurses programs by default have 100ms delay when pressing escape
+export ESCDELAY=0
+
+{{ if .is_wsl -}}
+# proxy - WSL NAT: use Windows host IP
+export PROXYADDRESS=http://(awk '/nameserver/ {print $2}' /etc/resolv.conf):2080
+# export PROXYADDRESS=http://(ip route | awk '/default/ {print $3}'):2080
+{{- else -}}
+# proxy
+export PROXYADDRESS=http://127.0.0.1:2080
+{{- end }}
+
+if test -f $HOME/.cache/fish/prx_state
+  set -x http_proxy $PROXYADDRESS
+  set -x https_proxy $PROXYADDRESS
+  set -x HTTP_PROXY $PROXYADDRESS
+  set -x HTTPS_PROXY $PROXYADDRESS
+  set -x all_proxy $PROXYADDRESS
+  set -x SSH_PROXY (string replace 'http://' '' -- $PROXYADDRESS)
+end
+

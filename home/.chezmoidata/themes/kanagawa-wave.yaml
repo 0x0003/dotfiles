@@ -1,0 +1,72 @@
+theme:
+  palettes:
+    kanagawa-wave:
+      background: "#1f1f28"
+      foreground: "#dcd7ba"
+      cursor: "#c5c8c6"
+      cursor_text: "#000000"
+
+      normal:
+        black: "#525149"
+        red: "#c34043"
+        green: "#76946a"
+        yellow: "#c0a36e"
+        blue: "#7e9cd8"
+        magenta: "#957fb8"
+        cyan: "#6a9589"
+        white: "#c8c093"
+
+      bright:
+        black: "#727169"
+        red: "#e82424"
+        green: "#98bb6c"
+        yellow: "#e6c384"
+        blue: "#7fb4ca"
+        magenta: "#938aa9"
+        cyan: "#7aa89f"
+        white: "#dcd7ba"
+
+      search:
+        match_bg: "#76946a"
+        match_fg: "#1f1f28"
+        focused_bg: "#c34043"
+        focused_fg: "#1f1f28"
+
+      ext:
+        surface: "#181820"
+        element: "#2a2a37"
+        selection: "#2d4f67"
+        comment: "#525149"
+        subtle: "#727169"
+        border: "#363548"
+        extra_white: "#c8c093"
+        extra_yellow: "#e6c384"
+        extra_blue: "#7fb4ca"
+
+      diff:
+        add_bg: "#2d3a2a"
+        add_fg: "#98bb6c"
+        delete_bg: "#3a2020"
+        delete_fg: "#e82424"
+        change_bg: "#1f2d3a"
+        hunk_fg: "#7e9cd8"
+        highlight_add_fg: "#76946a"
+        highlight_remove_fg: "#c34043"
+
+      applications:
+        firefox:
+          secondary: "#2a2a37"
+          activetab: "#2d4f67"
+          hover: "#363548"
+          close_hover: "#e82424"
+          throbber_busy: "#525149"
+          throbber_progress: "#7e9cd8"
+
+        mpv:
+          osd_fg: "#eeeeee"
+          osd_border: "#151515"
+          background: "#1f1f28"
+          # uosc uses BBGGRR
+          uosc_fg: "eeeeee"
+          uosc_bg: "151515"
+          uosc_cached: "345433"

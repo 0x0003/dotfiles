@@ -1,0 +1,18 @@
+{{ if and (hasPrefix "linux" .os_id) .has_root .is_wsl -}}
+#!/usr/bin/env bash
+set -euo pipefail
+
+sudo tee /etc/wsl.conf > /dev/null <<'EOF'
+[boot]
+systemd=true
+
+[automount]
+enabled = true
+options = "metadata"
+mountFsTab = true
+
+[network]
+generateResolvConf = false
+EOF
+
+{{ end -}}

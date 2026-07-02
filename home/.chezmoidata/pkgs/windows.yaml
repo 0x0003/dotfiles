@@ -1,0 +1,65 @@
+pkgs:
+  windows:
+    scoop:
+      buckets:
+        - extras
+        - 0x0003-s-bucket https://github.com/0x0003/0x0003-s-bucket
+        - sniffer https://github.com/Locietta/sniffer
+      packages:
+        core:
+          - 7zip
+          - chezmoi
+          - git
+          - age
+          - grep
+          - less
+          - which
+          - curl
+        sys:
+          - alacritty
+          - fastfetch
+          - crystaldiskinfo
+          - crystaldiskmark
+          - lessmsi
+          - librehardwaremonitor
+          - smartmontools
+          - name: fancontrol
+            version: "237"
+            hold: true
+        net:
+          - megatools
+          - nmap
+          - ntop
+          - trippy
+          - connect
+          - dnscrypt-proxy
+          - proxychains
+          - tor
+          - throne
+          - 0x0003-s-bucket/sing-box-extended
+          - 0x0003-s-bucket/wireproxy-awg
+          - 0x0003-s-bucket/usque
+        browser:
+          - firefox-esr
+          - ungoogled-chromium
+        p2p:
+          - nicotine-plus
+          - qbittorrent
+        media:
+          - ffmpeg
+          - gallery-dl
+          - yt-dlp
+          - mpv
+          - sioyek
+          - 0x0003-s-bucket/imageglass
+          - name: calibre
+            version: "8.14.0"
+            hold: true
+        dev:
+          - adb
+        ai:
+          - koboldcpp
+        wsl:
+          - sniffer/xanmod-WSL2
+          - sniffer/xanmod-WSL2-addons
+          - win32yank
