@@ -28,14 +28,13 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/rg/rg.conf"
 export ESCDELAY=0
 
 {{ if .is_wsl -}}
-# proxy - WSL: dynamically resolve Windows host IP
-export PROXYADDRESS=http://(ip route | awk '/default/ {print $3}'):2080
-{{ else -}}
-# proxy - native Linux
+# proxy - WSL NAT: use Windows host IP
+export PROXYADDRESS=http://(awk '/nameserver/ {print $2}' /etc/resolv.conf):2080
+# export PROXYADDRESS=http://(ip route | awk '/default/ {print $3}'):2080
+{{- else -}}
+# proxy
 export PROXYADDRESS=http://127.0.0.1:2080
-{{ end -}}
-# export PROXYADDRESS=socks5://192.168.x.x:2080
-# export PROXYADDRESS=http://192.168.x.x:2080
+{{- end }}
 
 if test -f $HOME/.cache/fish/prx_state
   set -x http_proxy $PROXYADDRESS
