@@ -1,14 +1,14 @@
 {{- $hasRoot := false -}}
 {{- $useHomeManager := false -}}
 {{- $createSymlinks := false -}}
-{{- $use_scoop := false -}}
+{{- $useScoop := false -}}
 {{- $isWSL := false -}}
 {{- $userName := .chezmoi.username -}}
-{{- $os_id := .chezmoi.os -}}
+{{- $osId := .chezmoi.os -}}
 {{- /* linux-specific */ -}}
 {{- if eq .chezmoi.os "linux" -}}
   {{- if hasKey .chezmoi.osRelease "id" -}}
-    {{- $os_id = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+    {{- $osId = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
   {{- end -}}
   {{- $hasRoot = promptBoolOnce . "has_root" "Do you have root access via sudo?" true -}}
   {{- if $hasRoot -}}
@@ -19,7 +19,7 @@
 {{- /* windows-specific */ -}}
 {{- if eq .chezmoi.os "windows" -}}
     {{- $createSymlinks = promptBoolOnce . "create_symlinks" "Use Windows symlinks? (requires manual setup, see README.md)" true -}}
-    {{- $use_scoop = promptBoolOnce . "use_scoop" "Install Scoop and packages?" true -}}
+    {{- $useScoop = promptBoolOnce . "use_scoop" "Install Scoop and packages?" true -}}
 {{- end -}}
 {{- if eq .chezmoi.os "windows" -}}
   {{- if contains "\\" .chezmoi.username -}}
@@ -56,7 +56,7 @@ recipient = "age1y3gurxw9qm55agwwqzlqe5xtp0476q48mga5t53nrpp7ckqjh44qkfje6j"
 # dark: paradise-ed, gruvbox-material-dark, kanagawa-wave, kape
 # light: gruvbox-light, papercolor-light, flexoki-light
 active_theme = "{{ $activeTheme }}"
-os_id = "{{ $os_id }}"
+os_id = "{{ $osId }}"
 user_name = "{{ $userName }}"
 {{- if eq .chezmoi.os "linux" }}
 has_root = {{ $hasRoot }}
@@ -65,7 +65,7 @@ is_wsl = {{ $isWSL }}
 {{- end }}
 {{- if eq .chezmoi.os "windows" }}
 create_symlinks = {{ $createSymlinks }}
-use_scoop = {{ $use_scoop }}
+use_scoop = {{ $useScoop }}
 {{- end }}
 
 [diff]
