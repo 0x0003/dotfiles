@@ -3,7 +3,7 @@ pkgs:
     scoop:
       buckets:
         - extras
-        - 0x0003-s-bucket https://github.com/0x0003/0x0003-s-bucket
+        - 0x0003 https://github.com/0x0003/0x0003-s-bucket
         - sniffer https://github.com/Locietta/sniffer
       packages:
         core:
@@ -36,9 +36,9 @@ pkgs:
           - proxychains
           - tor
           - throne
-          - 0x0003-s-bucket/sing-box-extended
-          - 0x0003-s-bucket/wireproxy-awg
-          - 0x0003-s-bucket/usque
+          - 0x0003/sing-box-extended
+          - 0x0003/wireproxy-awg
+          - 0x0003/usque
         browser:
           - firefox-esr
           - ungoogled-chromium
@@ -51,7 +51,7 @@ pkgs:
           - yt-dlp
           - mpv
           - sioyek
-          - 0x0003-s-bucket/imageglass
+          - 0x0003/imageglass
           - name: calibre
             version: "8.14.0"
             hold: true
