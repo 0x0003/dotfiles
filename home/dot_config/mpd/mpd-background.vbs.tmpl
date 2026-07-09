@@ -1,0 +1,4 @@
+{{- if eq .os_id "windows" }}
+Set WshShell = CreateObject("WScript.Shell")
+WshShell.Run "mpd.exe """ & WshShell.ExpandEnvironmentStrings("%USERPROFILE%") & "\.config\mpd\mpd.conf""", 0, False
+{{ end -}}

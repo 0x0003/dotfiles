@@ -69,7 +69,7 @@ Set-ItemProperty -Path $base -Name "lyricProviders" -Value @() -Type MultiString
 # Connection
 $conn = "$base\Connection-Default"
 if (-not (Test-Path $conn)) { New-Item -Path $conn -Force | Out-Null }
-Set-ItemProperty -Path $conn -Name "host" -Value "localhost" -Type String
+Set-ItemProperty -Path $conn -Name "host" -Value "127.0.0.1" -Type String
 Set-ItemProperty -Path $conn -Name "port" -Value 6600 -Type DWord
 Set-ItemProperty -Path $conn -Name "dir" -Value "F:/Music/" -Type String
 Set-ItemProperty -Path $conn -Name "passwd" -Value "" -Type String
