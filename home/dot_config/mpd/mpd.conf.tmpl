@@ -19,28 +19,25 @@ sticker_file       "~/.local/share/mpd/sticker.sqlite"
 
 restore_paused "yes"
 
-{{- if eq .os_id "windows" }}
-audio_output {
-  name       "Default Output"
-  type       "winmm" # "wasapi" can't handle bluetooth hotswap
-  mixer_type "software"
-}
-{{- else }}
 audio_output {
   name "Default Output"
+{{- if eq .os_id "windows" }}
+  type "winmm" # "wasapi" can't handle bluetooth hotswap
+  mixer_type "software"
+{{- else }}
   type "pipewire"
-}
 {{- end }}
+}
 
 audio_output {
-  type    "httpd"
   name    "HTTP Stream"
-  encoder "lame"
+  type    "httpd"
   port    "6680"
+  encoder "lame"
   bitrate "320"
 }
 
-{{- if eq .os_id "windows" }}
+{{ if eq .os_id "windows" -}}
 decoder {
   plugin  "wildmidi"
   enabled "no"
