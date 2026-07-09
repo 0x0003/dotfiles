@@ -46,6 +46,13 @@ pkgs:
           - nicotine-plus
           - qbittorrent
         media:
+          - name: mpd
+            version: "0.23.17" # 0.24.x doesn't ship FLAC support
+            hold: true
+          - name: 0x0003/cantata
+            version: "3.4.0" # 3.5.0 has buggy album covers in info
+            hold: true
+          - kid3
           - ffmpeg
           - gallery-dl
           - yt-dlp
