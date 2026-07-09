@@ -30,11 +30,13 @@ audio_output {
 }
 
 audio_output {
-  name    "HTTP Stream"
-  type    "httpd"
-  port    "6680"
-  encoder "lame"
-  bitrate "320"
+  name      "HTTP Stream"
+  type      "httpd"
+  port      "6680"
+  encoder   "lame"
+  bitrate   "320"
+  format    "44100:16:2"
+  always_on "yes"
 }
 
 {{ if eq .os_id "windows" -}}
