@@ -37,7 +37,7 @@ Set-ItemProperty -Path $base -Name "showPopups" -Value "false" -Type String
 Set-ItemProperty -Path $base -Name "minimiseOnClose" -Value "true" -Type String
 Set-ItemProperty -Path $base -Name "startupState" -Value "prev" -Type String
 Set-ItemProperty -Path $base -Name "coverFilename" -Value "" -Type String
-Set-ItemProperty -Path $base -Name "hiddenPages" -Value @("PlayQueuePage", "PlaylistsPage", "OnlineServicesPage", "ContextPage") -Type MultiString
+Set-ItemProperty -Path $base -Name "hiddenPages" -Value @("PlayQueuePage", "OnlineServicesPage", "ContextPage") -Type MultiString
 Set-ItemProperty -Path $base -Name "sidebar" -Value 34 -Type DWord
 Set-ItemProperty -Path $base -Name "splitterAutoHide" -Value "false" -Type String
 Set-ItemProperty -Path $base -Name "responsiveSidebar" -Value "true" -Type String
@@ -106,6 +106,10 @@ Set-ItemProperty -Path $shortcuts -Name "quit" -Value "Ctrl+Q" -Type String
 Set-ItemProperty -Path $shortcuts -Name "seekfwd5" -Value "Right" -Type String
 Set-ItemProperty -Path $shortcuts -Name "seekrev5" -Value "Left" -Type String
 Set-ItemProperty -Path $shortcuts -Name "showsonginfo" -Value "F1" -Type String
+Set-ItemProperty -Path $shortcuts -Name "showfolderstab" -Value "Ctrl+2" -Type String
+Set-ItemProperty -Path $shortcuts -Name "showlibrarytab" -Value "Ctrl+1" -Type String
+Set-ItemProperty -Path $shortcuts -Name "showplayliststab" -Value "Ctrl+3" -Type String
+Set-ItemProperty -Path $shortcuts -Name "showsearchtab" -Value "Ctrl+4" -Type String
 
 # Volume
 $vol = "$base\VolumeControl"
