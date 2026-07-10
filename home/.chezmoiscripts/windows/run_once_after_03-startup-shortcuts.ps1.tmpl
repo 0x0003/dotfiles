@@ -1,0 +1,28 @@
+{{- if and (eq .os_id "windows") .use_scoop -}}
+$startup = Join-Path $env:APPDATA "Microsoft\Windows\Start Menu\Programs\Startup"
+
+$shell = New-Object -ComObject WScript.Shell
+
+$sh = $shell.CreateShortcut("$startup\cantata.lnk")
+$sh.TargetPath = "$env:USERPROFILE\scoop\apps\cantata\current\cantata.exe"
+$sh.Arguments = "-stylesheet $env:USERPROFILE\.config\cantata\cantata.qss -style Fusion"
+$sh.WorkingDirectory = "$env:USERPROFILE\scoop\apps\cantata\current"
+$sh.Save()
+
+{{- if .create_symlinks }}
+$sh = $shell.CreateShortcut("$startup\main.ahk.lnk")
+$sh.TargetPath = "$env:USERPROFILE\ahk\main.ahk"
+$sh.WorkingDirectory = "$env:USERPROFILE\ahk"
+$sh.Save()
+{{- end }}
+
+$sh = $shell.CreateShortcut("$startup\mpd-background.lnk")
+$sh.TargetPath = "$env:USERPROFILE\.config\mpd\mpd-background.vbs"
+$sh.WorkingDirectory = "$env:USERPROFILE\.config\mpd"
+$sh.Save()
+
+$sh = $shell.CreateShortcut("$startup\Throne.lnk")
+$sh.TargetPath = "$env:USERPROFILE\scoop\apps\throne\current\Throne.exe"
+$sh.WorkingDirectory = "$env:USERPROFILE\scoop\apps\throne\current"
+$sh.Save()
+{{- end -}}
