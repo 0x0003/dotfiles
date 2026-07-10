@@ -1,0 +1,66 @@
+ncmpcpp_directory = ~/.config/ncmpcpp
+lyrics_directory = ~/.local/share/ncmpcpp
+mpd_host = {{ if .is_wsl }}"{{ output "sh" "-c" "awk '/nameserver/ {print $2}' /etc/resolv.conf" | trim }}"{{ else }}"127.0.0.1"{{ end }}
+mpd_port = 6600
+mpd_music_dir = {{ if .is_wsl }}"/mnt/f/Music"{{ else }}"/mnt/media/music"{{ end }}
+mpd_connection_timeout = 5
+mpd_crossfade_time = 5
+seek_time = 5
+volume_change_step = 3
+message_delay_time = 1
+external_editor = "nano"
+startup_screen = "playlist"
+playlist_shorten_total_times = yes
+mouse_support = yes
+mouse_list_scroll_whole_page = yes
+connected_message_on_startup = yes
+{{- if .use_home_manager }}
+
+column_truncation_symbol = "…"{{ end }}
+
+user_interface = alternative
+
+main_window_color = default
+color1 = white
+color2 = blue
+statusbar_color = white
+progressbar_elapsed_color = 5
+progressbar_color = black
+
+playlist_display_mode = columns
+browser_display_mode = columns
+search_engine_display_mode = columns
+playlist_editor_display_mode = columns
+
+song_columns_list_format = (4f)[default]{NE:##} (20)[default]{a} (40)[default]{t|f:Title} (20)[default]{b}{{ if .use_home_manager }} (7f)[white]{r:Rate}{{ end }} (7f)[white]{lr:Length}
+song_status_format = {%a} $8- $9{%t}
+song_library_format = {%a - %b - %t}|{%f}
+song_window_title_format = "Now Playing .."
+
+alternative_header_first_line_format = {$9$3%a$9} • {$b{%t}|{%f}$/b}
+alternative_header_second_line_format = ""
+
+now_playing_prefix = "$5"
+now_playing_suffix = "$9"
+selected_item_prefix = "* "
+current_item_prefix = "$4"
+current_item_suffix = "$9"
+
+playlist_separate_albums = yes
+
+autocenter_mode = yes
+centered_cursor = yes
+progressbar_look = "━━━"
+header_visibility = no
+statusbar_visibility = no
+titles_visibility = yes
+header_text_scrolling = no
+cyclic_scrolling = no
+lines_scrolled = 1
+
+data_fetching_delay = no
+search_engine_default_search_mode = 1
+ignore_leading_the = yes
+media_library_primary_tag = album_artist
+media_library_albums_split_by_date = yes
+

@@ -120,3 +120,6 @@ abbr -a -- pch "proxychains4 -q"
 # dnscrypt-proxy
 abbr -a -- dnsr "dnscrypt-proxy.exe -resolve"
 
+# ncmpcpp
+abbr -a -- mp "ncmpcpp"
+
