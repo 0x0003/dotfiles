@@ -79,7 +79,8 @@ Source tree showing only things of interest.
     │       ├── run_onchange_after_02-install-packages.ps1.tmpl # scoop install packages from YAML
     │       ├── run_once_after_01-configure-scoop.ps1.tmpl      # scoop config
     │       ├── run_once_after_02-cantata-settings.ps1.tmpl     # populate cantata registry keys
-    │       └── run_once_after_03-startup-shortcuts.ps1.tmpl    # create appdata startup entries
+    │       ├── run_once_after_03-startup-shortcuts.ps1.tmpl    # create appdata startup entries
+    │       └── run_once_after_04-ahk-assoc.ps1.tmpl            # associate .ahk extensions
     ├── .chezmoidata/
     │   ├── pkgs/windows.yaml # scoop packages
     │   └── themes            # colorschemes, applied through templates

@@ -3,12 +3,14 @@ pkgs:
     scoop:
       buckets:
         - extras
+        - versions
         - 0x0003 https://github.com/0x0003/0x0003-s-bucket
         - sniffer https://github.com/Locietta/sniffer
       packages:
         core:
           - 7zip
           - chezmoi
+          - autohotkey1.1
           - git
           - age
           - grep
