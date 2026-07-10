@@ -14,6 +14,8 @@ $sh = $shell.CreateShortcut("$startup\main.ahk.lnk")
 $sh.TargetPath = "$env:USERPROFILE\ahk\main.ahk"
 $sh.WorkingDirectory = "$env:USERPROFILE\ahk"
 $sh.Save()
+
+Start-Process -WindowStyle Hidden -WorkingDirectory "$env:USERPROFILE\ahk" "$env:USERPROFILE\ahk\main.ahk"
 {{- end }}
 
 $sh = $shell.CreateShortcut("$startup\mpd-background.lnk")
