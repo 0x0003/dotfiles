@@ -49,7 +49,7 @@ pkgs:
           - qbittorrent
         media:
           - name: mpd
-            version: "0.23.17" # 0.24.x doesn't ship FLAC support
+            version: "0.24.6" # 0.24.8+ lost FLAC support
             hold: true
           - name: 0x0003/cantata
             version: "3.4.0" # 3.5.0 has buggy album covers in info
