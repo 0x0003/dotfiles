@@ -24,7 +24,7 @@ state_file_interval "600"
 audio_output {
   name "Default Output"
 {{- if eq .os_id "windows" }}
-  type "winmm" # "wasapi" can't handle bluetooth hotswap
+  type "wasapi" # "winmm"
   mixer_type "software"
 {{- else }}
   type "pipewire"
