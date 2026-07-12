@@ -19,6 +19,8 @@ sticker_file       "~/.local/share/mpd/sticker.sqlite"
 
 restore_paused "yes"
 
+state_file_interval "600"
+
 audio_output {
   name "Default Output"
 {{- if eq .os_id "windows" }}
