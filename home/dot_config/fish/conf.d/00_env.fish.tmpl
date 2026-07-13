@@ -27,6 +27,14 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/rg/rg.conf"
 # ncurses programs by default have 100ms delay when pressing escape
 export ESCDELAY=0
 
+# mpd
+{{ if .is_wsl -}}
+export MPD_HOST=(awk '/nameserver/ {print $2}' /etc/resolv.conf)
+{{- else -}}
+export MPD_HOST=127.0.0.1
+{{- end }}
+export MPD_PORT=6600
+
 # proxy
 {{ if .is_wsl -}}
 # wsl NAT networking mode - use Windows host IP

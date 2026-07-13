@@ -1,7 +1,5 @@
 ncmpcpp_directory = ~/.config/ncmpcpp
 lyrics_directory = ~/.local/share/ncmpcpp
-mpd_host = {{ if .is_wsl }}"{{ output "sh" "-c" "awk '/nameserver/ {print $2}' /etc/resolv.conf" | trim }}"{{ else }}"127.0.0.1"{{ end }}
-mpd_port = 6600
 mpd_music_dir = {{ if .is_wsl }}"/mnt/f/Music"{{ else }}"/mnt/media/music"{{ end }}
 mpd_connection_timeout = 5
 mpd_crossfade_time = 5
