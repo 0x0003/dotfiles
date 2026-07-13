@@ -62,6 +62,9 @@ user_name = "{{ $userName }}"
 has_root = {{ $hasRoot }}
 use_home_manager = {{ $useHomeManager }}
 is_wsl = {{ $isWSL }}
+{{- if .is_wsl }}
+windows_gateway = "{{ output "sh" "-c" "ip route | awk '/default/ {print $3}'" | trim }}"
+{{- end }}
 {{- end }}
 {{- if eq .chezmoi.os "windows" }}
 create_symlinks = {{ $createSymlinks }}
