@@ -1,5 +1,6 @@
 bind_to_address "0.0.0.0"
 port            "6600"
+log_level       "error"
 
 {{- if eq .os_id "windows" }}
 music_directory    "F:/Music"
@@ -41,9 +42,7 @@ audio_output {
   always_on "yes"
 }
 
-{{ if eq .os_id "windows" -}}
 decoder {
   plugin  "wildmidi"
   enabled "no"
 }
-{{- end }}
