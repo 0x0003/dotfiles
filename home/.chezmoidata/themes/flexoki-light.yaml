@@ -55,8 +55,9 @@ theme:
 
       applications:
         firefox:
+          dark: false
           secondary: "#e6e4d9"
-          activetab: "#fffcf0"
+          activetab: "#f2f0e5"
           hover: "#dad8ce"
           close_hover: "#af3029"
           throbber_busy: "#b7b5ac"

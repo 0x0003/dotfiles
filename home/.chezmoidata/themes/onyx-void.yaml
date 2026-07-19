@@ -55,6 +55,7 @@ theme:
 
       applications:
         firefox:
+          dark: true
           secondary: "#1A1A1C"
           activetab: "#28282A"
           hover: "#222224"

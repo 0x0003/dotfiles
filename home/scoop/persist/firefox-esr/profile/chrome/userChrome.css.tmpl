@@ -54,17 +54,21 @@ private-browsing-indicator,
   background-color: var(--sfactivetab) !important;
 }
 
-/* Inactive tab colors */
-#navigator-toolbox {
-  background-color: var(--sfwindow) !important;
-}
-
-/* Window colors */
+/* Override theme colors */
 :root {
+  --lwt-text-color: {{ $p.foreground }} !important;
+  --tab-selected-textcolor: {{ $p.foreground }} !important;
+  --toolbar-field-color: {{ $p.foreground }} !important;
+  --toolbar-field-focus-color: {{ $p.foreground }} !important;
   --toolbar-bgcolor: var(--sfsecondary) !important;
   --tabs-border-color: var(--sfsecondary) !important;
   --lwt-sidebar-background-color: var(--sfwindow) !important;
   --lwt-toolbar-field-focus: var(--sfsecondary) !important;
+}
+
+/* Inactive tab colors */
+#navigator-toolbox {
+  background-color: var(--sfwindow) !important;
 }
 
 /* Sidebar color */
