@@ -27,7 +27,7 @@
   {{- end -}}
 {{- end -}}
 {{- /* system theme detection */ -}}
-{{- $activeTheme := "paradise-ed" -}}
+{{- $activeTheme := "onyx-void" -}}
 {{- $scheme := "" -}}
 {{- if eq .chezmoi.os "linux" -}}
   {{- $out := output "sh" "-c" "busctl call --user org.freedesktop.portal.Desktop /org/freedesktop/portal/desktop org.freedesktop.portal.Settings Read ss org.freedesktop.appearance color-scheme 2>/dev/null || true" -}}
@@ -41,9 +41,9 @@
   {{- if contains "0x1" $out -}}{{- $scheme = "light" -}}{{- end -}}
 {{- end -}}
 {{- if eq $scheme "dark" -}}
-  {{- $activeTheme = "paradise-ed" -}}
+  {{- $activeTheme = "onyx-void" -}}
 {{- else if eq $scheme "light" -}}
-  {{- $activeTheme = "gruvbox-light" -}}
+  {{- $activeTheme = "flexoki-light" -}}
 {{- end -}}
 encryption = "age"
 mode = "file"
