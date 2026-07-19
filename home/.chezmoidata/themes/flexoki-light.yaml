@@ -75,3 +75,11 @@ theme:
 
         kid3:
           fusion: false
+
+        sioyek:
+          # float RGB = int(hex_pair) / 255, e.g. #c5c8c6 -> 0xc5=197 -> 197/255=0.773
+          dark: false
+          background_color: [1.0, 0.988, 0.941]
+          dark_mode_background_color: [0.0, 0.0, 0.0]
+          status_bar_color: [1.0, 0.988, 0.941]
+          status_bar_text_color: [0.063, 0.059, 0.059]
