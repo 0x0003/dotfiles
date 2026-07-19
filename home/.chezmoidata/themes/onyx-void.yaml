@@ -1,6 +1,7 @@
 theme:
   palettes:
     onyx-void:
+      dark: true
       background: "#000000"
       foreground: "#E0E0E0"
       cursor: "#E0E0E0"
@@ -55,7 +56,6 @@ theme:
 
       applications:
         firefox:
-          dark: true
           secondary: "#1A1A1C"
           activetab: "#28282A"
           hover: "#222224"
@@ -72,15 +72,8 @@ theme:
           uosc_bg: "000000"
           uosc_cached: "26A269"
 
-        cantata:
-          fusion: true
-
-        kid3:
-          fusion: true
-
         sioyek:
           # float RGB = int(hex_pair) / 255, e.g. #c5c8c6 -> 0xc5=197 -> 197/255=0.773
-          dark: true
           background_color: [1.0, 1.0, 1.0]
           dark_mode_background_color: [0.0, 0.0, 0.0]
           status_bar_color: [0.0, 0.0, 0.0]

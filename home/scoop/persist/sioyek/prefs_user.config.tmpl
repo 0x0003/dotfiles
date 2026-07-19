@@ -1,4 +1,5 @@
-{{- $s := index .theme.palettes .active_theme "applications" "sioyek" -}}
+{{- $p := index .theme.palettes .active_theme -}}
+{{- $s := index $p "applications" "sioyek" -}}
 {{- $bg := index $s "background_color" -}}
 {{- $dmbg := index $s "dark_mode_background_color" -}}
 {{- $sbc := index $s "status_bar_color" -}}
@@ -17,7 +18,7 @@ status_bar_font_size 14
 
 status_bar_color {{ index $sbc 0 }} {{ index $sbc 1 }} {{ index $sbc 2 }}
 status_bar_text_color {{ index $sbt 0 }} {{ index $sbt 1 }} {{ index $sbt 2 }}
-{{ if $s.dark }}
+{{ if $p.dark }}
 startup_commands toggle_dark_mode
 {{ end -}}
 

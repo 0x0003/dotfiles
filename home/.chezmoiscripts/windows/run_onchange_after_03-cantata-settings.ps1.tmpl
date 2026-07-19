@@ -51,7 +51,7 @@ Set-ItemProperty -Path $base -Name "contextBackdropBlur" -Value 0 -Type DWord
 Set-ItemProperty -Path $base -Name "contextBackdropFile" -Value "" -Type String
 Set-ItemProperty -Path $base -Name "contextSwitchTime" -Value 0 -Type DWord
 Set-ItemProperty -Path $base -Name "lang" -Value "" -Type String
-{{ $cantataFusion := "" }}{{ if index .theme.palettes .active_theme "applications" "cantata" "fusion" }}{{ $cantataFusion = "Fusion" }}{{ end }}
+{{ $cantataFusion := "" }}{{ if index .theme.palettes .active_theme "dark" }}{{ $cantataFusion = "Fusion" }}{{ end }}
 Set-ItemProperty -Path $base -Name "style" -Value "{{ $cantataFusion }}" -Type String
 Remove-ItemProperty -Path $base -Name "style" -ErrorAction SilentlyContinue
 Set-ItemProperty -Path $base -Name "showFullScreen" -Value "false" -Type String
@@ -91,7 +91,7 @@ Set-ItemProperty -Path $conn -Name "replayGain" -Value "off" -Type String
 $actions = "$base\CustomActions"
 if (-not (Test-Path $actions)) { New-Item -Path $actions -Force | Out-Null }
 Set-ItemProperty -Path $actions -Name "count" -Value 2 -Type DWord
-{{ $kid3Fusion := "" }}{{ if index .theme.palettes .active_theme "applications" "kid3" "fusion" }}{{ $kid3Fusion = " -style Fusion" }}{{ end }}
+{{ $kid3Fusion := "" }}{{ if index .theme.palettes .active_theme "dark" }}{{ $kid3Fusion = " -style Fusion" }}{{ end }}
 $scoopUserPath = "C:\Users\$env:USERNAME\scoop"
 Set-ItemProperty -Path $actions -Name "0_name" -Value "kid3" -Type String
 Set-ItemProperty -Path $actions -Name "0_cmd" -Value "$scoopUserPath\apps\kid3\current\kid3.exe -stylesheet C:\users\$env:USERNAME\.config\kid3\kid3.qss{{$kid3Fusion}} %f" -Type String

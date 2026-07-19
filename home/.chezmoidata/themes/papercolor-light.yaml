@@ -1,6 +1,7 @@
 theme:
   palettes:
     papercolor-light:
+      dark: false
       background: "#eeeeee"
       foreground: "#444444"
       cursor: "#444444"
@@ -55,7 +56,6 @@ theme:
 
       applications:
         firefox:
-          dark: false
           secondary: "#d7d7d7"
           activetab: "#ffffff"
           hover: "#e0e0e0"
@@ -71,15 +71,8 @@ theme:
           uosc_bg: "eeeeee"
           uosc_cached: "d70087"
 
-        cantata:
-          fusion: false
-
-        kid3:
-          fusion: false
-
         sioyek:
           # float RGB = int(hex_pair) / 255, e.g. #c5c8c6 -> 0xc5=197 -> 197/255=0.773
-          dark: false
           background_color: [0.933, 0.933, 0.933]
           dark_mode_background_color: [0.0, 0.0, 0.0]
           status_bar_color: [0.933, 0.933, 0.933]

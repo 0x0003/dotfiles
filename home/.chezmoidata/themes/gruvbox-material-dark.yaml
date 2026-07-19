@@ -1,6 +1,7 @@
 theme:
   palettes:
     gruvbox-material-dark:
+      dark: true
 
       background: "#1d2021" # hard contrast
       # background: "#282828" # medium contrast
@@ -58,7 +59,6 @@ theme:
 
       applications:
         firefox:
-          dark: true
           secondary: "#3c3836"
           activetab: "#5a524c"
           hover: "#3c3836"
@@ -75,15 +75,8 @@ theme:
           uosc_bg: "151515"
           uosc_cached: "345433"
 
-        cantata:
-          fusion: true
-
-        kid3:
-          fusion: true
-
         sioyek:
           # float RGB = int(hex_pair) / 255, e.g. #c5c8c6 -> 0xc5=197 -> 197/255=0.773
-          dark: true
           background_color: [1.0, 1.0, 1.0]
           dark_mode_background_color: [0.114, 0.125, 0.129]
           status_bar_color: [0.114, 0.125, 0.129]
