@@ -23,11 +23,13 @@ restore_paused "yes"
 
 state_file_interval "600"
 
+audio_output_format "48000:16:2"
+
 audio_output {
   name "Default Output"
 {{- if eq .os_id "windows" }}
   type "wasapi" # "winmm"
-  mixer_type "software"
+  mixer_type "hardware" # "software"
 {{- else }}
   type "pipewire"
 {{- end }}
