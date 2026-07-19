@@ -3,9 +3,10 @@ $startup = Join-Path $env:APPDATA "Microsoft\Windows\Start Menu\Programs\Startup
 
 $shell = New-Object -ComObject WScript.Shell
 
+{{ $cantataFusion := "" }}{{ if index .theme.palettes .active_theme "applications" "cantata" "fusion" }}{{ $cantataFusion = " -style Fusion" }}{{ end }}
 $sh = $shell.CreateShortcut("$startup\cantata.lnk")
 $sh.TargetPath = "$env:USERPROFILE\scoop\apps\cantata\current\cantata.exe"
-$sh.Arguments = "-stylesheet $env:USERPROFILE\.config\cantata\cantata.qss -style Fusion"
+$sh.Arguments = "-stylesheet $env:USERPROFILE\.config\cantata\cantata.qss{{$cantataFusion}}"
 $sh.WorkingDirectory = "$env:USERPROFILE\scoop\apps\cantata\current"
 $sh.Save()
 

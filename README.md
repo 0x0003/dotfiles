@@ -17,7 +17,8 @@
 
 | Alacritty running neovim inside tmux                                                      | Firefox and mpv                                                                           |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| ![term](https://github.com/user-attachments/assets/6b27cbe1-0126-480a-8efa-b6a44073c87e)  | ![ffmpv](https://github.com/user-attachments/assets/99156e5b-7ce3-49a2-b9e7-57086d1c9202) |
+| ![term](https://github.com/user-attachments/assets/d13f4d3a-aae7-4fc4-a007-50d863260502)  | ![ffmpv](https://github.com/user-attachments/assets/99156e5b-7ce3-49a2-b9e7-57086d1c9202) |
+| ![term](https://github.com/user-attachments/assets/1fe46657-8439-43ea-a5a9-db0a9cd0a805)  | ![ffmpv](https://github.com/user-attachments/assets/99156e5b-7ce3-49a2-b9e7-57086d1c9202) |
 
 ![repo size](https://img.shields.io/endpoint?style=for-the-badge&color=8c997d&labelColor=121212&url=https%3A%2F%2Fraw.githubusercontent.com%2F0x0003%2Fdotfiles%2Fbadge-data%2Fsize.json)
 
@@ -75,12 +76,12 @@ Source tree showing only things of interest.
     │   │   ├── run_once_after_02-wsl-config.sh.tmpl        # populate /etc/wsl.conf
     │   │   └── run_once_after_03-wsl-dns.sh.tmpl           # create a service for wsl NAT networking
     │   └── windows
-    │       ├── run_once_before_01-install-scoop.ps1.tmpl       # bootstrap scoop and add buckets
-    │       ├── run_onchange_after_02-install-packages.ps1.tmpl # scoop install packages from YAML
-    │       ├── run_once_after_01-configure-scoop.ps1.tmpl      # scoop config
-    │       ├── run_once_after_02-cantata-settings.ps1.tmpl     # populate cantata registry keys
-    │       ├── run_once_after_03-ahk-assoc.ps1.tmpl            # associate .ahk extensions
-    │       └── run_once_after_04-startup-shortcuts.ps1.tmpl    # create appdata startup entries
+    │       ├── run_once_before_01-install-scoop.ps1.tmpl        # bootstrap scoop and add buckets
+    │       ├── run_once_after_01-configure-scoop.ps1.tmpl       # scoop config
+    │       ├── run_once_after_02-ahk-assoc.ps1.tmpl             # associate .ahk extensions
+    │       ├── run_onchange_after_01-install-packages.ps1.tmpl  # scoop install packages from YAML
+    │       ├── run_onchange_after_02-startup-shortcuts.ps1.tmpl # create appdata startup entries
+    │       └── run_onchange_after_03-cantata-settings.ps1.tmpl  # populate cantata registry keys
     ├── .chezmoidata/
     │   ├── pkgs/windows.yaml # scoop packages
     │   └── themes            # colorschemes, applied through templates

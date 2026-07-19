@@ -69,3 +69,9 @@ theme:
           uosc_fg: "444444"
           uosc_bg: "eeeeee"
           uosc_cached: "d70087"
+
+        cantata:
+          fusion: false
+
+        kid3:
+          fusion: false
