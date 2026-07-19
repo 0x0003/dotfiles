@@ -9,7 +9,7 @@ Set-ItemProperty -Path $base -Name "fetchCovers" -Value "false" -Type String
 Set-ItemProperty -Path $base -Name "storeCoversInMpdDir" -Value "false" -Type String
 Set-ItemProperty -Path $base -Name "stopOnExit" -Value "false" -Type String
 Set-ItemProperty -Path $base -Name "stopFadeDuration" -Value 500 -Type DWord
-Set-ItemProperty -Path $base -Name "volumeStep" -Value 3 -Type DWord
+Set-ItemProperty -Path $base -Name "volumeStep" -Value 1 -Type DWord
 Set-ItemProperty -Path $base -Name "ignorePrefixes" -Value @("The") -Type MultiString
 Set-ItemProperty -Path $base -Name "composerGenres" -Value @() -Type MultiString
 Set-ItemProperty -Path $base -Name "singleTracksFolders" -Value @() -Type MultiString
