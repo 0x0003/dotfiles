@@ -17,7 +17,7 @@
 
 | Dark theme (onyx-void)                                                                    | Light theme (flexoki-light)                                                             |
 | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| ![term](https://github.com/user-attachments/assets/9b3d22e3-8d99-450f-abba-d8e324c156ba)  | ![gui](https://github.com/user-attachments/assets/2f2b799b-9bf6-4e0f-b5c9-fbcd62c428f1) |
+| ![term](https://github.com/user-attachments/assets/f7702569-2b23-44dc-96b0-88a24369d4d9)  | ![gui](https://github.com/user-attachments/assets/2790963e-8652-492c-a297-217af9afeeec) |
 | ![term](https://github.com/user-attachments/assets/47f952c7-a0aa-4c03-aff6-e35a308443e4)  | ![gui](https://github.com/user-attachments/assets/4fc40a17-535b-4940-8aab-239dc51d00fd) |
 
 ![repo size](https://img.shields.io/endpoint?style=for-the-badge&color=8c997d&labelColor=121212&url=https%3A%2F%2Fraw.githubusercontent.com%2F0x0003%2Fdotfiles%2Fbadge-data%2Fsize.json)
