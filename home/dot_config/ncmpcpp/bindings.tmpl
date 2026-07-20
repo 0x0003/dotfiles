@@ -43,9 +43,20 @@ def_key "d"
 def_key "s"
   select_item
 
+def_key "S"
+  remove_selection
+
 def_key "n"
   next_found_item
 
 def_key "N"
   previous_found_item
+{{- if .use_home_manager }}
+
+def_key "alt-e"
+    rate_remove
+
+def_key "alt-r"
+    rate_ten
+{{- end }}
 
