@@ -10,6 +10,7 @@ secrets/**
 
 {{- if not (hasPrefix "linux" .os_id) }}
 # Ignore linux files on non-linux
+.config/systemd/**
 .config/bc/**
 .config/fish/**
 .config/htop/**

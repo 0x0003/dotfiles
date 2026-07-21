@@ -73,8 +73,9 @@ Source tree showing only things of interest.
     │   ├── linux
     │   │   ├── run_once_before_01-home-manager.sh.tmpl     # bootstrap Nix and home-manager
     │   │   ├── run_once_after_01-post-home-manager.sh.tmpl # extra root-owned system configuration
-    │   │   ├── run_once_after_02-wsl-config.sh.tmpl        # populate /etc/wsl.conf
-    │   │   └── run_once_after_03-wsl-dns.sh.tmpl           # create a service for wsl NAT networking
+    │   │   ├── run_once_after_02-services.sh.tmpl          # start user systemd services
+    │   │   ├── run_once_after_03-wsl-config.sh.tmpl        # populate /etc/wsl.conf
+    │   │   └── run_once_after_04-wsl-dns.sh.tmpl           # create a service for wsl NAT networking
     │   └── windows
     │       ├── run_once_before_01-install-scoop.ps1.tmpl        # bootstrap scoop and add buckets
     │       ├── run_once_after_01-configure-scoop.ps1.tmpl       # scoop config

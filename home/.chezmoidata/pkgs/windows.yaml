@@ -49,6 +49,7 @@ pkgs:
           - qbittorrent
         media:
           - 0x0003/mpd
+          - 0x0003/listenbrainz-mpd
           - name: 0x0003/cantata
             version: "3.4.0" # 3.5.0 has buggy album covers in info
             hold: true

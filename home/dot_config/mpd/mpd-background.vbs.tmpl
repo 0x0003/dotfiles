@@ -1,4 +1,12 @@
 {{- if eq .os_id "windows" }}
 Set WshShell = CreateObject("WScript.Shell")
-WshShell.Run WshShell.ExpandEnvironmentStrings("%USERPROFILE%") & "\scoop\apps\mpd\current\mpd.exe """ & WshShell.ExpandEnvironmentStrings("%USERPROFILE%") & "\.config\mpd\mpd.conf""", 0, False
+Set fso = CreateObject("Scripting.FileSystemObject")
+Dim userProfile, listenbrainzExe
+userProfile = WshShell.ExpandEnvironmentStrings("%USERPROFILE%")
+WshShell.Run userProfile & "\scoop\apps\mpd\current\mpd.exe """ & userProfile & "\.config\mpd\mpd.conf""", 0, False
+WScript.Sleep 1000
+listenbrainzExe = userProfile & "\scoop\apps\listenbrainz-mpd\current\listenbrainz-mpd.exe"
+If fso.FileExists(listenbrainzExe) Then
+    WshShell.Run listenbrainzExe & " -c """ & userProfile & "\.config\listenbrainz-mpd\config.toml""", 0, False
+End If
 {{ end -}}
