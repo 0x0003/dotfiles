@@ -77,12 +77,12 @@ Source tree showing only things of interest.
     │   │   ├── run_once_after_03-wsl-config.sh.tmpl        # populate /etc/wsl.conf
     │   │   └── run_once_after_04-wsl-dns.sh.tmpl           # create a service for wsl NAT networking
     │   └── windows
-    │       ├── run_once_before_01-install-scoop.ps1.tmpl        # bootstrap scoop and add buckets
-    │       ├── run_once_after_01-configure-scoop.ps1.tmpl       # scoop config
-    │       ├── run_once_after_02-ahk-assoc.ps1.tmpl             # associate .ahk extensions
-    │       ├── run_onchange_after_01-install-packages.ps1.tmpl  # scoop install packages from YAML
-    │       ├── run_onchange_after_02-startup-shortcuts.ps1.tmpl # create appdata startup entries
-    │       └── run_onchange_after_03-cantata-settings.ps1.tmpl  # populate cantata registry keys
+    │       ├── run_once_before_01-install-scoop.ps1.tmpl       # bootstrap scoop and add buckets
+    │       ├── run_once_after_01-configure-scoop.ps1.tmpl      # scoop config
+    │       ├── run_once_after_02-ahk-assoc.ps1.tmpl            # associate .ahk extensions
+    │       ├── run_onchange_after_01-install-packages.ps1.tmpl # scoop install packages from YAML
+    │       ├── run_onchange_after_02-start-shortcuts.ps1.tmpl  # create programs & startup shortcuts
+    │       └── run_onchange_after_03-cantata-settings.ps1.tmpl # populate cantata registry keys
     ├── .chezmoidata/
     │   ├── pkgs/windows.yaml # scoop packages
     │   └── themes            # colorschemes, applied through templates
