@@ -85,6 +85,23 @@ function wav2mp3() {
     dir *.wav | foreach {ffmpeg -i $_.FullName -ab 320k -map_metadata 0 -id3v2_version 3 $_.FullName.Replace('wav', 'mp3')}
 }
 
+# write mp3 headers to non-containerized files (e.g. to fix duration)
+function mp3fixheaders() {
+    dir *.mp3 | foreach {
+        $tmp = $_.FullName + ".tmp.mp3"
+        ffmpeg -y -i $_.FullName -acodec copy -id3v2_version 4 $tmp
+        if ($LASTEXITCODE -eq 0) {
+            Move-Item -Force $tmp $_.FullName
+        } else {
+            Remove-Item $tmp -ErrorAction SilentlyContinue
+        }
+    }
+    echo "-------------------------------------------------------------------------------"
+    echo "NOTE:"
+    echo "ffmpeg can't handle id3v2.4 multi-tags, edit them back in if the files had any!"
+    echo "-------------------------------------------------------------------------------"
+}
+
 # batch convert mov to mp4
 function mov2mp4() {
     dir *.mov | foreach {ffmpeg -i $_.FullName -q:v 0 $_.FullName.Replace('mov', 'mp4')}
