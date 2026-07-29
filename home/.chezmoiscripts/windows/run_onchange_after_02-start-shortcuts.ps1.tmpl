@@ -10,9 +10,10 @@ function New-Shortcut {
         [string]$Target,
         [string]$WorkingDir,
         [string]$Arguments,
-        [switch]$StartupOnly
+        [switch]$StartupOnly,
+        [switch]$ProgramsOnly
     )
-    $dirs = if ($StartupOnly) { @($startup) } else { @($startup, $programs) }
+    $dirs = if ($StartupOnly) { @($startup) } elseif ($ProgramsOnly) { @($programs) } else { @($startup, $programs) }
     foreach ($dir in $dirs) {
         $sh = $shell.CreateShortcut("$dir\$Name.lnk")
         $sh.TargetPath = $Target
@@ -33,7 +34,7 @@ Start-Process -WindowStyle Hidden -WorkingDirectory "$env:USERPROFILE\ahk" "$env
 
 New-Shortcut -Name "mpd-background" -Target "$env:USERPROFILE\.config\mpd\mpd-background.vbs" -WorkingDir "$env:USERPROFILE\.config\mpd"
 
-New-Shortcut -Name "slskd-background" -Target "$env:USERPROFILE\.config\slskd\slskd-background.vbs" -WorkingDir "$env:USERPROFILE\.config\slskd"
+New-Shortcut -ProgramsOnly -Name "slskd-background" -Target "$env:USERPROFILE\.config\slskd\slskd-background.vbs" -WorkingDir "$env:USERPROFILE\.config\slskd"
 
 New-Shortcut -StartupOnly -Name "Throne" -Target "$env:USERPROFILE\scoop\apps\throne\current\Throne.exe" -WorkingDir "$env:USERPROFILE\scoop\apps\throne\current"
 
