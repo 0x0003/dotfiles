@@ -6,7 +6,7 @@ Set fso = CreateObject("Scripting.FileSystemObject")
 Dim userProfile
 userProfile = WshShell.ExpandEnvironmentStrings("%USERPROFILE%")
 
-slskdDir = "F:\slskd"
+slskdDir = "F:\Music\_slskd"
 If Not fso.FolderExists(slskdDir) Then
     fso.CreateFolder(slskdDir)
 End If

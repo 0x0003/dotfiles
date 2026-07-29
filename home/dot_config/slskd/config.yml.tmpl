@@ -21,16 +21,16 @@ flags:
   optimistic_relay_file_info: false
 {{- if eq .os_id "windows" }}
 directories:
-  incomplete: F:\slskd\incomplete
-  downloads: F:\slskd\downloads
+  incomplete: F:\Music\_slskd\incomplete
+  downloads: F:\Music\_slskd\downloads
 shares:
   directories:
     - '[Music]F:\Music'
     - '[Books]F:\Books'
 {{- else }}
 directories:
-  incomplete: ~
-  downloads: ~
+  incomplete: /mnt/media/Music/_slskd/incomplete
+  downloads: /mnt/media/Music/_slskd/downloads
 shares:
   directories:
     - '[Music]/mnt/media/Music'
