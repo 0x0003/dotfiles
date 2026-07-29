@@ -33,6 +33,8 @@ Start-Process -WindowStyle Hidden -WorkingDirectory "$env:USERPROFILE\ahk" "$env
 
 New-Shortcut -Name "mpd-background" -Target "$env:USERPROFILE\.config\mpd\mpd-background.vbs" -WorkingDir "$env:USERPROFILE\.config\mpd"
 
+New-Shortcut -Name "slskd-background" -Target "$env:USERPROFILE\.config\slskd\slskd-background.vbs" -WorkingDir "$env:USERPROFILE\.config\slskd"
+
 New-Shortcut -StartupOnly -Name "Throne" -Target "$env:USERPROFILE\scoop\apps\throne\current\Throne.exe" -WorkingDir "$env:USERPROFILE\scoop\apps\throne\current"
 
 {{- end -}}

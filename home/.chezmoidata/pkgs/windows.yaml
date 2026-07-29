@@ -45,7 +45,7 @@ pkgs:
           - firefox-esr
           - ungoogled-chromium
         p2p:
-          - nicotine-plus
+          - slskd
           - qbittorrent
         media:
           - 0x0003/mpd
