@@ -3,6 +3,7 @@ function prx
   set -l prx_state $HOME/.cache/fish/prx_state
   if set -q http_proxy
     rm -f $prx_state
+    set -e -g NO_PROXY
     set -e -g http_proxy
     set -e -g https_proxy
     set -e -g HTTP_PROXY
@@ -13,6 +14,7 @@ function prx
   else
     mkdir -p (dirname $prx_state)
     touch $prx_state
+    set -gx NO_PROXY $PROXYBYPASS
     set -gx http_proxy $PROXYADDRESS
     set -gx https_proxy $PROXYADDRESS
     set -gx HTTP_PROXY $PROXYADDRESS

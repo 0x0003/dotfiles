@@ -33,9 +33,10 @@ export MPD_PORT=6600
 
 # proxy
 export PROXYADDRESS=http://{{ if .is_wsl }}{{ .windows_gateway }}{{ else }}127.0.0.1{{ end }}:2080
-set -x NO_PROXY 172.19.80.1,localhost,127.0.0.1
+export PROXYBYPASS=localhost,127.0.0.1{{ if .is_wsl }},{{ .windows_gateway }}{{end}}
 
 if test -f $HOME/.cache/fish/prx_state
+  set -x NO_PROXY $PROXYBYPASS
   set -x http_proxy $PROXYADDRESS
   set -x https_proxy $PROXYADDRESS
   set -x HTTP_PROXY $PROXYADDRESS
