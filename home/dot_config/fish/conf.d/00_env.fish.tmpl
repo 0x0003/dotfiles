@@ -31,6 +31,9 @@ export ESCDELAY=0
 export MPD_HOST={{ if .is_wsl }}{{ .windows_gateway }}{{ else }}127.0.0.1{{ end }}
 export MPD_PORT=6600
 
+# musicbrainz
+export MUSICBRAINZ_USER={{ decrypt (include "secrets/musicbrainz-usr.age") | trim }}
+
 # proxy
 export PROXYADDRESS=http://{{ if .is_wsl }}{{ .windows_gateway }}{{ else }}127.0.0.1{{ end }}:2080
 export PROXYBYPASS=localhost,127.0.0.1{{ if .is_wsl }},{{ .windows_gateway }}{{end}}
