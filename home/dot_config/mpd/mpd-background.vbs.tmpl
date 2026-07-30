@@ -11,4 +11,9 @@ listenbrainzExe = userProfile & "\scoop\apps\listenbrainz-mpd\current\listenbrai
 If fso.FileExists(listenbrainzExe) Then
     WshShell.Run listenbrainzExe & " -c """ & userProfile & "\.config\listenbrainz-mpd\config.toml""", 0, False
 End If
+Dim playcountdExe
+playcountdExe = userProfile & "\scoop\apps\mpd-playcountd\current\mpd-playcountd.exe"
+If fso.FileExists(playcountdExe) Then
+    WshShell.Run playcountdExe & " -quiet", 0, False
+End If
 {{ end -}}
