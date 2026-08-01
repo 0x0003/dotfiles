@@ -9,7 +9,7 @@
 . "$PSScriptRoot\functions\cd.ps1"
 . "$PSScriptRoot\alias.ps1"
 . "$PSScriptRoot\functions\prx.ps1"
-. "$PSScriptRoot\functions\mpdkill.ps1"
+. "$PSScriptRoot\functions\mpd-kill.ps1"
 . "$PSScriptRoot\functions\split-cuesheet.ps1"
 
 # readline options

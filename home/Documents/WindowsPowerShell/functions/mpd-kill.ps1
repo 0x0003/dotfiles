@@ -1,5 +1,5 @@
 # graceful shutdown via mpd protocol
-function mpdkill() {
+function mpd-kill() {
     param(
         [string] $mpdHost = "127.0.0.1",
         [int] $mpdPort = 6600
