@@ -60,7 +60,6 @@ pkgs:
           - yt-dlp
           - mpv
           - sioyek
-          - 0x0003/imageglass
           - name: calibre
             version: "8.14.0"
             hold: true
