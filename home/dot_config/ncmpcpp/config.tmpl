@@ -14,6 +14,7 @@ mouse_list_scroll_whole_page = yes
 connected_message_on_startup = yes
 {{- if .use_home_manager }}
 
+sticker_timestamp_format = "%Y-%m-%d"
 column_truncation_symbol = "…"{{ end }}
 
 user_interface = alternative
@@ -30,10 +31,19 @@ browser_display_mode = columns
 search_engine_display_mode = columns
 playlist_editor_display_mode = columns
 
-song_columns_list_format = (4f)[default]{NE:##} (20)[default]{a} (40)[default]{t|f:Title} (20)[default]{b}{{ if .use_home_manager }} (7f)[white]{r:Rate}{{ end }} (7f)[white]{lr:Length}
+{{- if .use_home_manager }}
+# custom columns (MPD stickers):
+# {r} - rating
+# {s} - playCount
+# {L} - lastPlayed
+# {S} - firstPlayed
+{{- end }}
+song_columns_list_format = (4f)[default]{NE:##} (15)[default]{a} (30)[default]{t|f:Title} (20)[default]{b}{{ if .use_home_manager }} (7f)[default]{r:Rate} (5f)[default]{s:P/C} (12f)[default]{L:Last Play} (12f)[default]{S:First Play}{{ end }} (7f)[default]{lr:Length}
 song_status_format = {%a} $8- $9{%t}
 song_library_format = {%a - %b - %t}|{%f}
 song_window_title_format = "Now Playing .."
+
+song_list_format = {%N }%a • %t
 
 alternative_header_first_line_format = {$9$3%a$9} • {$b{%t}|{%f}$/b}
 alternative_header_second_line_format = ""
