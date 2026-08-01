@@ -90,13 +90,15 @@ Set-ItemProperty -Path $conn -Name "replayGain" -Value "off" -Type String
 # Custom actions
 $actions = "$base\CustomActions"
 if (-not (Test-Path $actions)) { New-Item -Path $actions -Force | Out-Null }
-Set-ItemProperty -Path $actions -Name "count" -Value 2 -Type DWord
+Set-ItemProperty -Path $actions -Name "count" -Value 3 -Type DWord
 {{ $kid3Fusion := "" }}{{ if index .theme.palettes .active_theme "dark" }}{{ $kid3Fusion = " -style Fusion" }}{{ end }}
 $scoopUserPath = "C:\Users\$env:USERNAME\scoop"
-Set-ItemProperty -Path $actions -Name "0_name" -Value "kid3" -Type String
-Set-ItemProperty -Path $actions -Name "0_cmd" -Value "$scoopUserPath\apps\kid3\current\kid3.exe -stylesheet C:\users\$env:USERNAME\.config\kid3\kid3.qss{{$kid3Fusion}} %f" -Type String
-Set-ItemProperty -Path $actions -Name "1_name" -Value "picard" -Type String
-Set-ItemProperty -Path $actions -Name "1_cmd" -Value "$scoopUserPath\apps\picard\current\picard.exe %f" -Type String
+Set-ItemProperty -Path $actions -Name "0_name" -Value "explorer" -Type String
+Set-ItemProperty -Path $actions -Name "0_cmd" -Value "powershell.exe -NoProfile -File C:\Users\$env:USERNAME\.config\cantata\open_explorer.ps1 %d" -Type String
+Set-ItemProperty -Path $actions -Name "1_name" -Value "kid3" -Type String
+Set-ItemProperty -Path $actions -Name "1_cmd" -Value "$scoopUserPath\apps\kid3\current\kid3.exe -stylesheet C:\Users\$env:USERNAME\.config\kid3\kid3.qss{{$kid3Fusion}} %f" -Type String
+Set-ItemProperty -Path $actions -Name "2_name" -Value "picard" -Type String
+Set-ItemProperty -Path $actions -Name "2_cmd" -Value "$scoopUserPath\apps\picard\current\picard.exe %d" -Type String
 
 # Shortcuts
 $shortcuts = "$base\Shortcuts-Cantata"
