@@ -3,12 +3,18 @@ theme:
     gruvbox-material-dark:
       dark: true
 
-      background: "#1d2021" # hard contrast
+      # custom
+      background: "#151515"
+      foreground: "#a89984"
+      cursor: "#d7c5a7"
+      cursor_text: "#151515"
+      # original
+      # background: "#1d2021" # hard contrast
       # background: "#282828" # medium contrast
       # background: "#32302f" # soft contrast
-      foreground: "#d4be98"
-      cursor: "#c5c8c6"
-      cursor_text: "#000000"
+      # foreground: "#d4be98"
+      # cursor: "#c5c8c6"
+      # cursor_text: "#1d2021"
 
       normal:
         black: "#5a524c"
@@ -18,10 +24,12 @@ theme:
         blue: "#7daea3"
         magenta: "#d3869b"
         cyan: "#89b482"
-        white: "#d4be98"
+        white: "#a89984"
+        # white: "#d4be98"
 
       bright:
-        black: "#928374"
+        black: "#726354"
+        # black: "#928374"
         red: "#ef938e"
         green: "#bbc585"
         yellow: "#e1bb7e"
@@ -32,9 +40,9 @@ theme:
 
       search:
         match_bg: "#a9b665"
-        match_fg: "#1d2021"
+        match_fg: "#151515"
         focused_bg: "#ea6962"
-        focused_fg: "#1d2021"
+        focused_fg: "#151515"
 
       ext:
         surface: "#161819"
@@ -69,7 +77,7 @@ theme:
         mpv:
           osd_fg: "#eeeeee"
           osd_border: "#151515"
-          background: "#1d2021"
+          background: "#151515"
           # uosc uses BBGGRR
           uosc_fg: "eeeeee"
           uosc_bg: "151515"
@@ -78,6 +86,6 @@ theme:
         sioyek:
           # float RGB = int(hex_pair) / 255, e.g. #c5c8c6 -> 0xc5=197 -> 197/255=0.773
           background_color: [1.0, 1.0, 1.0]
-          dark_mode_background_color: [0.114, 0.125, 0.129]
-          status_bar_color: [0.114, 0.125, 0.129]
-          status_bar_text_color: [0.831, 0.745, 0.596]
+          dark_mode_background_color: [0.082, 0.082, 0.082]
+          status_bar_color: [0.082, 0.082, 0.082]
+          status_bar_text_color: [0.658, 0.6, 0.517]
