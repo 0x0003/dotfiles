@@ -187,3 +187,6 @@ R {image} no-osd add video-rotate -90
 ## open containing directory
 q {image} script-binding uosc/show-in-directory
 
+## set wallpaper
+w {image} run powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File "C:/Users/{{ .user_name }}/Documents/WindowsPowerShell/functions/set-wallpaper.ps1" "${path}"
+

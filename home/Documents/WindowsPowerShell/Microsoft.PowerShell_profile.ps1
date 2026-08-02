@@ -11,6 +11,7 @@
 . "$PSScriptRoot\functions\prx.ps1"
 . "$PSScriptRoot\functions\mpd-kill.ps1"
 . "$PSScriptRoot\functions\split-cuesheet.ps1"
+. "$PSScriptRoot\functions\set-wallpaper.ps1"
 
 # readline options
 Set-PSReadlineKeyHandler -Key Ctrl+d -Function DeleteCharOrExit
