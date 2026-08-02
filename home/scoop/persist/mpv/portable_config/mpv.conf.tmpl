@@ -49,6 +49,13 @@ vo           = gpu-next
 hwdec-codecs = all
 gpu-shader-cache-dir = "~~/shaders/cache"
 
+# tuned to match "regular" rendering on windows (10),
+# e.g. DWM wallpaper, firefox, photo viewer, etc.
+icc-profile-auto      = yes # use embedded ICC profiles
+treat-srgb-as-power22 = no  # standard piecewise sRGB both directions instead of pure-2.2
+sdr-adjust-gamma      = no  # no SDR transfer reinterpretation
+gamma-factor          = 0.987 # slight gamma nudge
+
 # network and cache
 ytdl-format            = bestvideo[height<=?1080]+bestaudio/best
 # ytdl-raw-options       = proxy=[socks5://localhost:2080]
