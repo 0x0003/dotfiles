@@ -142,16 +142,9 @@ Shift+d     {image} repeatable add playlist-pos +10
 Shift+h     {image} repeatable add playlist-pos -10
 Shift+l     {image} repeatable add playlist-pos +10
 
-## slideshow
-x {image} script-binding slideshow-toggle
-z {image} script-binding slideshow-duration-inc # +1s
-Z {image} script-binding slideshow-duration-dec # -1s
-
 ## zoom
 WHEEL_UP   {image} add video-zoom 0.1
 WHEEL_DOWN {image} add video-zoom -0.1
-w          {image} repeatable add video-zoom 0.1
-s          {image} repeatable add video-zoom -0.1
 k          {image} repeatable add video-zoom 0.1
 j          {image} repeatable add video-zoom -0.1
 UP         {image} repeatable add video-zoom 0.1
@@ -159,8 +152,6 @@ DOWN       {image} repeatable add video-zoom -0.1
 
 Shift+WHEEL_UP   {image} add video-zoom 0.3
 Shift+WHEEL_DOWN {image} add video-zoom -0.3
-Shift+w          {image} repeatable add video-zoom 0.3
-Shift+s          {image} repeatable add video-zoom -0.3
 Shift+k          {image} repeatable add video-zoom 0.3
 Shift+j          {image} repeatable add video-zoom -0.3
 Shift+UP         {image} repeatable add video-zoom 0.3
@@ -177,16 +168,22 @@ Ctrl+DOWN  {image} repeatable add video-pan-y -0.1
 Ctrl+UP    {image} repeatable add video-pan-y 0.1
 Ctrl+RIGHT {image} repeatable add video-pan-x -0.1
 
+## reset zoom/pan
+0 {image} no-osd set video-zoom 0; no-osd set video-pan-x 0; no-osd set video-pan-y 0
+w {image} no-osd set video-zoom 0; no-osd set video-pan-x 0; no-osd set video-pan-y 0
+
 ## rotate
 r {image} no-osd add video-rotate 90
 R {image} no-osd add video-rotate -90
 
-## reset zoom/pan
-0 {image} no-osd set video-zoom 0; no-osd set video-pan-x 0; no-osd set video-pan-y 0
+## slideshow
+s {image} script-binding slideshow-toggle
+z {image} script-binding slideshow-duration-inc # +1s
+Z {image} script-binding slideshow-duration-dec # -1s
 
 ## open containing directory
 q {image} script-binding uosc/show-in-directory
 
 ## set wallpaper
-w {image} run powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File "C:/Users/{{ .user_name }}/Documents/WindowsPowerShell/functions/set-wallpaper.ps1" "${path}"
+Shift+w {image} run powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File "C:/Users/{{ .user_name }}/Documents/WindowsPowerShell/functions/set-wallpaper.ps1" "${path}"
 
