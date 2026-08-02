@@ -7,11 +7,15 @@ echo "If desired, download skipped items manually" && \
 echo "-------------------------------------------"
 {{- if .is_wsl }}
 
-pl_dir=$(grep -oP '^pl_dir=\K.+' config.env | tail -1)
+pl_dir=$(grep -oP '^PLAYLIST_DIR=\K.+' config.env | tail -1)
 pl_name=$(grep -oP 'playlistName=\K\S+' explo.log | tail -5)
-if [ -n "$pl_name" ] && [ -n "$pl_dir" ]; then
+slskd_dir=$(grep -oP '^SLSKD_DIR=\K.+' config.env | tail -1)
+music_root="${slskd_dir%/*/*}"
+if [ -n "$pl_name" ] && [ -n "$pl_dir" ] && [ -n "$music_root" ]; then
   pl_m3u="${pl_dir%/}/$pl_name.m3u"
-  [ -f "$pl_m3u" ] && sed -i 's|/mnt/f/Music/||g' "$pl_m3u"
+  [ -f "$pl_m3u" ] && sed -i "s|$music_root/||g" "$pl_m3u"
 fi
+
 {{- end }}
+mpc update
 
