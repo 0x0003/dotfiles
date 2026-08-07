@@ -1,0 +1,19 @@
+{{- if eq .os_id "windows" }}
+Set colProcesses = GetObject("winmgmts:\\.\root\cimv2").ExecQuery("SELECT Name FROM Win32_Process WHERE Name = 'mpd.exe'")
+If colProcesses.Count > 0 Then WScript.Quit
+Set WshShell = CreateObject("WScript.Shell")
+Set fso = CreateObject("Scripting.FileSystemObject")
+Dim userProfile, listenbrainzExe
+userProfile = WshShell.ExpandEnvironmentStrings("%USERPROFILE%")
+WshShell.Run userProfile & "\scoop\apps\mpd\current\mpd.exe """ & userProfile & "\.config\mpd\mpd.conf""", 0, False
+WScript.Sleep 1000
+listenbrainzExe = userProfile & "\scoop\apps\listenbrainz-mpd\current\listenbrainz-mpd.exe"
+If fso.FileExists(listenbrainzExe) Then
+    WshShell.Run listenbrainzExe & " -c """ & userProfile & "\.config\listenbrainz-mpd\config.toml""", 0, False
+End If
+Dim playcountdExe
+playcountdExe = userProfile & "\scoop\apps\mpd-playcountd\current\mpd-playcountd.exe"
+If fso.FileExists(playcountdExe) Then
+    WshShell.Run playcountdExe & " -quiet", 0, False
+End If
+{{ end -}}

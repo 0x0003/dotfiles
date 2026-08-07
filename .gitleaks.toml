@@ -1,0 +1,4 @@
+[allowlist]
+paths = [
+  'home/scoop/persist/dnscrypt-proxy/dnscrypt-proxy\.toml',
+]

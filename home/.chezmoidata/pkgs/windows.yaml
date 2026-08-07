@@ -1,0 +1,73 @@
+pkgs:
+  windows:
+    scoop:
+      buckets:
+        - extras
+        - versions
+        - 0x0003 https://github.com/0x0003/0x0003-s-bucket
+        - sniffer https://github.com/Locietta/sniffer
+      packages:
+        core:
+          - 7zip
+          - chezmoi
+          - autohotkey1.1
+          - git
+          - age
+          - grep
+          - less
+          - which
+          - curl
+        sys:
+          - alacritty
+          - fastfetch
+          - crystaldiskinfo
+          - crystaldiskmark
+          - lessmsi
+          - librehardwaremonitor
+          - smartmontools
+          - name: fancontrol
+            version: "237"
+            hold: true
+        net:
+          - megatools
+          - nmap
+          - ntop
+          - trippy
+          - connect
+          - dnscrypt-proxy
+          - proxychains
+          - tor
+          - throne
+          - 0x0003/sing-box-extended
+          - 0x0003/wireproxy-awg
+          - 0x0003/usque
+        browser:
+          - firefox-esr
+          - ungoogled-chromium
+        p2p:
+          - slskd
+          - qbittorrent
+        media:
+          - 0x0003/mpd
+          - 0x0003/listenbrainz-mpd
+          - 0x0003/mpd-playcountd
+          - name: 0x0003/cantata
+            version: "3.4.0" # 3.5.0 has buggy album covers in info
+            hold: true
+          - kid3
+          - ffmpeg
+          - gallery-dl
+          - yt-dlp
+          - mpv
+          - sioyek
+          - name: calibre
+            version: "8.14.0"
+            hold: true
+        dev:
+          - adb
+        ai:
+          - koboldcpp
+        wsl:
+          - sniffer/xanmod-WSL2
+          - sniffer/xanmod-WSL2-addons
+          - win32yank

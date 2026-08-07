@@ -1,0 +1,15 @@
+[submodule "home/dot_config/submodule_home-manager"]
+	path = home/dot_config/submodule_home-manager
+	url = https://github.com/0x0003/home.nix
+[submodule "home/dot_config/submodule_nvim"]
+	path = home/dot_config/submodule_nvim
+	url = https://github.com/0x0003/nvimrc
+[submodule "home/dot_config/submodule_vim"]
+	path = home/dot_config/submodule_vim
+	url = https://github.com/0x0003/vimrc
+[submodule "home/submodule_scripts"]
+	path = home/submodule_scripts
+	url = https://github.com/0x0003/scripts
+[submodule "home/submodule_ahk"]
+	path = home/submodule_ahk
+	url = https://github.com/0x0003/ahk
