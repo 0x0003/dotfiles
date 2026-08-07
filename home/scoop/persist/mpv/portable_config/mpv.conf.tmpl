@@ -38,6 +38,10 @@ loop
 loop-playlist
 reset-on-next-file = pause,video-zoom,video-rotate,video-pan-x,video-pan-y
 
+# audio
+volume-max  = 130
+volume      = 60
+
 # video
 # vo           = direct3d
 # gpu-api      = d3d11
@@ -92,10 +96,6 @@ input-commands = no-osd del user-data/mpv/image; disable-section image
 [video]
 profile-cond = not ((get('current-tracks/video/image') and not get('current-tracks/video/albumart')) or (get('file-format') == 'gif') or (get('file-format') == 'webp') or (get('file-format') == 'apng') or (get('file-format') == 'mng') or (get('file-format') == 'avif') or (get('file-format') == 'jxl') or (not get('current-tracks/video') and get('user-data/mpv/image'))) and (get('current-tracks/video') or get('current-tracks/audio'))
 profile-restore = copy
-
-## audio
-volume-max  = 130
-volume      = 60
 
 ## subtitles
 sub-fix-timing  = yes
