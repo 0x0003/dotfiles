@@ -1,0 +1,12 @@
+{{ if and (hasPrefix "linux" .os_id) .has_root (.use_home_manager | default false) -}}
+#!/usr/bin/env bash
+set -euo pipefail
+
+if ! command -v nix &>/dev/null; then
+    curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh -s -- --daemon
+    export PATH="$PATH:/nix/var/nix/profiles/default/bin"
+fi
+
+nix --extra-experimental-features "nix-command flakes" run "home-manager/master#home-manager" -- switch --flake "{{ .chezmoi.sourceDir }}/dot_config/submodule_home-manager"
+
+{{ end -}}

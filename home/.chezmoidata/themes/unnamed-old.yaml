@@ -1,0 +1,81 @@
+theme:
+  palettes:
+    unnamed-old:
+      dark: true
+      background: "#1b1b1b"
+      foreground: "#c5c8c6"
+      # cursor: "#c29448"
+      cursor: "#c5c8c6"
+      cursor_text: "#1b1b1b"
+
+      normal:
+        black: "#5a5b5c"
+        red: "#a37679"
+        green: "#87a376"
+        yellow: "#a39b76"
+        blue: "#758ba3"
+        magenta: "#9f76a3"
+        cyan: "#899ca1"
+        white: "#c5c8c6"
+
+      bright:
+        black: "#3d3e3d"
+        red: "#755a5b"
+        green: "#68755a"
+        yellow: "#756e5a"
+        blue: "#5b6976"
+        magenta: "#755b76"
+        cyan: "#465457"
+        white: "#707880"
+
+      search:
+        match_bg: "#87a376"
+        match_fg: "#3d3e3d"
+        focused_bg: "#755a5b"
+        focused_fg: "#3d3e3d"
+
+      ext:
+        surface: "#111111"
+        element: "#242424"
+        selection: "#2e2e2e"
+        comment: "#5a5b5c"
+        subtle: "#707880"
+        border: "#6a7280"
+        extra_white: "#b8b3b3"
+        extra_yellow: "#756e5a"
+        extra_blue: "#5b6976"
+
+      diff:
+        add_bg: "#3a4234"
+        add_fg: "#9eb88c"
+        delete_bg: "#452c2e"
+        delete_fg: "#c48888"
+        change_bg: "#353f4a"
+        hunk_fg: "#98b0c0"
+        highlight_add_fg: "#b8d0a4"
+        highlight_remove_fg: "#d8a8a8"
+
+      applications:
+        firefox:
+          secondary: "#242424"
+          activetab: "#2e2e2e"
+          hover: "#282828"
+          close_hover: "#a37679"
+          throbber_busy: "#5a5b5c"
+          throbber_progress: "#758ba3"
+
+        mpv:
+          osd_fg: "#eeeeee"
+          osd_border: "#0C0C0C"
+          background: "#070707"
+          # uosc uses BBGGRR
+          uosc_fg: "eeeeee"
+          uosc_bg: "111111"
+          uosc_cached: "345433"
+
+        sioyek:
+          # float RGB = int(hex_pair) / 255, e.g. #c5c8c6 -> 0xc5=197 -> 197/255=0.773
+          background_color: [1.0, 1.0, 1.0]
+          dark_mode_background_color: [0.106, 0.106, 0.106]
+          status_bar_color: [0.106, 0.106, 0.106]
+          status_bar_text_color: [0.773, 0.784, 0.776]

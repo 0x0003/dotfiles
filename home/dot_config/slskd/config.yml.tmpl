@@ -1,0 +1,266 @@
+debug: false
+headless: false
+remote_configuration: false
+remote_file_management: false
+instance_name: default
+flags:
+  no_logo: true
+  no_start: false
+  no_config_watch: true
+  no_connect: false
+  no_share_scan: false
+  force_share_scan: false
+  force_migrations: false
+  no_version_check: true
+  log_sql: false
+  log_unobserved_exceptions: false
+  experimental: false
+  volatile: false
+  case_sensitive_reg_ex: false
+  legacy_windows_tcp_keepalive: false
+  optimistic_relay_file_info: false
+{{- if eq .os_id "windows" }}
+directories:
+  incomplete: F:\Music\_slskd\incomplete
+  downloads: F:\Music\_slskd\downloads
+shares:
+  directories:
+    - '[Music]F:\Music'
+    - '[Books]F:\Books'
+{{- else }}
+directories:
+  incomplete: /mnt/media/Music/_slskd/incomplete
+  downloads: /mnt/media/Music/_slskd/downloads
+shares:
+  directories:
+    - '[Music]/mnt/media/Music'
+    - '[Books]/mnt/media/Books'
+{{- end }}
+  filters:
+    - \.ini$
+    - Thumbs.db$
+    - \.DS_Store$
+  cache:
+    storage_mode: memory
+    workers: 4
+    retention: ~ # retain indefinitely (do not automatically re-scan)
+transfers:
+  upload:
+    slots: 20
+    speed_limit: 2000 # in kibibytes
+    limits:
+      queued:
+        files: 500
+        megabytes: 5000
+      daily:
+        files: ~
+        megabytes: ~
+        failures: 200
+      weekly:
+        files: ~
+        megabytes: ~
+        failures: 1000
+  download:
+    slots: 500
+    speed_limit: 2000
+    retry:
+      partial: resume # 'overwrite' or 'resume'
+      attempts: 3
+      delay: 5000 # initial time between retries, in milliseconds
+      max_delay: 60000 # maximum time between retries, in milliseconds
+    destination:
+      subdirectory: ${SOURCE_DIRECTORY} # options: SOURCE_USERNAME, SOURCE_PATH, SOURCE_DIRECTORY, BATCH_ID, BATCH_EXTERNAL_ID, SEARCH_ID, SEARCH_TEXT
+      exists: overwrite # 'overwrite' or 'rename'
+      permissions:
+        mode: ~ # chmod syntax, e.g. 644, 777. does nothing on Windows.
+  groups:
+    default:
+      upload:
+        priority: 500
+        strategy: roundrobin
+        slots: 10
+        limits:
+          queued:
+            files: 150
+            megabytes: 1500
+          daily: ~
+          weekly:
+            files: ~
+            megabytes: ~
+            failures: 150
+    leechers:
+      thresholds:
+        files: 1
+        directories: 1
+      upload:
+        priority: 999
+        strategy: roundrobin
+        slots: 1
+        speed_limit: 500
+        limits:
+          queued:
+            files: 15
+            megabytes: 150
+          daily:
+            files: ~
+            megabytes: ~
+            failures: 10
+          weekly:
+            files: ~
+            megabytes: ~
+            failures: 30
+    blacklisted:
+      members: []
+      patterns: []
+      cidrs: []
+    user_defined:
+      my_buddies:
+        upload:
+          priority: 250
+          strategy: firstinfirstout
+          slots: 10
+          limits:
+            queued:
+              files: 1000 # override global default
+        members: ~
+blacklist:
+  enabled: false
+  file: ~
+filters:
+  search:
+    request:
+      - ^.{1,2}$
+rooms:
+  - ~
+web:
+  port: 6688
+  ip_address: 0.0.0.0,[::]
+  socket: ~
+  https:
+    disabled: true
+    port: 5031
+    ip_address: 127.0.0.1,[::1]
+    force: false
+    certificate:
+      pfx: ~
+      password: ~
+  url_base: /
+  content_path: wwwroot
+  logging: false
+  authentication:
+    disabled: false
+    username: {{ decrypt (include "secrets/slskd-usr.age") | trim }}
+    password: {{ decrypt (include "secrets/slskd-pw.age") | trim }}
+    jwt:
+      key: {{ decrypt (include "secrets/slskd-jwt-key.age") | trim }}
+      ttl: 604800000
+    api_keys:
+      programmatic:
+        key: {{ decrypt (include "secrets/slskd-api-key.age") | trim }}
+        role: administrator
+        cidr: 0.0.0.0/0,::/0
+retention:
+  search: 10080 # 7 days, in minutes
+  transfers:
+    upload:
+      succeeded: 1440 # 1 day, in minutes
+      errored: 30
+      cancelled: 5
+      failed: 180 # any unsuccessful transfer, including errored and cancelled
+    download:
+      succeeded: 1440 # 1 day, in minutes
+      errored: 20160 # 2 weeks, in minutes
+      cancelled: 5
+      failed: 180 # any unsuccessful transfer, including errored and cancelled
+  files:
+    complete: 20160 # 2 weeks, in minutes
+    incomplete: 43200 # 30 days, in minutes
+  logs: 15 # days
+throttling:
+  search:
+    incoming:
+      concurrency: 10 # number of search requests to process at the same time
+      circuit_breaker: 500 # maximum number of pending search requests
+      response_file_limit: 500 # maximum number of files to return in a single search response
+logger:
+  disk: false
+  no_color: false
+  loki: ~
+metrics:
+  enabled: false
+  url: /metrics
+  authentication:
+    disabled: true
+    username: ~
+    password: ~
+feature:
+  swagger: false
+soulseek:
+  address: vps.slsknet.org
+  port: 2271
+  username: {{ decrypt (include "secrets/slsk-usr.age") | trim }}
+  password: {{ decrypt (include "secrets/slsk-pw.age") | trim }}
+  description: ~
+  picture: ~
+  listen_ip_address: 0.0.0.0
+  listen_port: 49153
+  diagnostic_level: Info
+  distributed_network:
+    disabled: false
+    disable_children: false
+    child_limit: 25
+    logging: false
+  connection:
+    timeout:
+      connect: 10000
+      inactivity: 15000
+      transfer: 30000
+    buffer:
+      read: 16384
+      write: 16384
+      transfer: 262144
+      write_queue: 250
+    proxy:
+      enabled: false
+      {{- if eq .os_id "windows" }}
+      address: 127.0.0.1
+      {{- else }}
+      address: {{ if .is_wsl }}{{ .windows_gateway }}{{ else }}127.0.0.1{{ end }}
+      {{- end }}
+      port: 2080
+      username: ~
+      password: ~
+integrations:
+  vpn:
+    enabled: false
+    port_forwarding: false
+    polling_interval: 2500
+    gluetun:
+      url: http://localhost:8000
+      timeout: 1000
+      auth: apikey # or basic or none
+      api_key: <gluetun API key>
+      username: <username if using basic auth>
+      password: <password if using basic auth>
+  webhooks: {}
+  scripts: {}
+  ftp:
+    enabled: false
+    address: ~
+    port: ~
+    username: ~
+    password: ~
+    remote_path: /
+    encryption_mode: auto
+    ignore_certificate_errors: false
+    overwrite_existing: true
+    connection_timeout: 5000
+    retry_attempts: 3
+  pushbullet:
+    enabled: false
+    access_token: ~
+    notification_prefix: "From slskd:"
+    notify_on_private_message: true
+    notify_on_room_mention: true
+    retry_attempts: 3
+    cooldown_time: 900000

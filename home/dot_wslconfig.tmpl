@@ -1,0 +1,14 @@
+[wsl2]
+guiApplications=false
+memory=6GB
+dnsProxy=false
+networkingMode=nat
+{{ if lookPath "scoop" -}}
+kernel={{ (output "scoop" "prefix" "xanmod-WSL2" | trim | replace "\\" "\\\\") }}\\bzImage-x64v3
+kernelModules={{ (output "scoop" "prefix" "xanmod-WSL2-addons" | trim | replace "\\" "\\\\") }}\\bzImage-x64v3-addons.vhdx
+{{ else -}}
+kernel=C:\\Users\\{{ .user_name }}\\scoop\\apps\\xanmod-WSL2\\current\\bzImage-x64v3
+kernelModules=C:\\Users\\{{ .user_name }}\\scoop\\apps\\xanmod-WSL2-addons\\current\\bzImage-x64v3-addons.vhdx
+{{ end -}}
+[experimental]
+bestEffortDnsParsing=true

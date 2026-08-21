@@ -1,0 +1,10 @@
+{{ if hasPrefix "linux" .os_id -}}
+#!/usr/bin/env bash
+set -euo pipefail
+
+systemctl --user daemon-reload
+if command -v listenbrainz-mpd &>/dev/null; then
+    systemctl --user enable --now listenbrainz-mpd.service
+fi
+
+{{ end -}}
