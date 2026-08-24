@@ -25,7 +25,7 @@ export COLORTERM='truecolor'
 export RIPGREP_CONFIG_PATH="$HOME/.config/rg/rg.conf"
 
 # ncurses programs by default have 100ms delay when pressing escape
-export ESCDELAY=0
+export ESCDELAY=5
 
 # mpd
 export MPD_HOST={{ if .is_wsl }}{{ .windows_gateway }}{{ else }}127.0.0.1{{ end }}
