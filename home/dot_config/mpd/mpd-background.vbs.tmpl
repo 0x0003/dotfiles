@@ -9,7 +9,12 @@ WshShell.Run userProfile & "\scoop\apps\mpd\current\mpd.exe """ & userProfile & 
 WScript.Sleep 1000
 listenbrainzExe = userProfile & "\scoop\apps\listenbrainz-mpd\current\listenbrainz-mpd.exe"
 If fso.FileExists(listenbrainzExe) Then
+    ' Set envProcess = WshShell.Environment("PROCESS")
+    ' envProcess("HTTP_PROXY") = "http://127.0.0.1:2080"
+    ' envProcess("HTTPS_PROXY") = "http://127.0.0.1:2080"
     WshShell.Run listenbrainzExe & " -c """ & userProfile & "\.config\listenbrainz-mpd\config.toml""", 0, False
+    ' envProcess.Remove "HTTP_PROXY"
+    ' envProcess.Remove "HTTPS_PROXY"
 End If
 Dim playcountdExe
 playcountdExe = userProfile & "\scoop\apps\mpd-playcountd\current\mpd-playcountd.exe"
