@@ -1,0 +1,15 @@
+{
+  "policies": {
+    "DisableSetDesktopBackground": true,
+    "DisableAppUpdate": true,
+    "DisableBuiltinPDFViewer": true,
+    "DisableFeedbackCommands": true,
+    "DisableFirefoxAccounts": true,
+    "DisableFirefoxStudies": true,
+    "DisablePocket": true,
+    "DisableSystemAddonUpdate": true,
+    "DisableTelemetry": true,
+    "NoDefaultBookmarks": true,
+    "OfferToSaveLogins": false
+  }
+}

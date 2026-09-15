@@ -1,0 +1,9 @@
+﻿Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\background\shell\alacritty_WSL]
+@="Open WSL terminal here"
+"Icon"="C:\\Users\\{{ .user_name }}\\scoop\\persist\\alacritty\\wsl.ico"
+
+[HKEY_CLASSES_ROOT\Directory\background\shell\alacritty_WSL\command]
+@="C:\\Users\\{{ .user_name }}\\scoop\\apps\\alacritty\\current\\alacritty.exe --config-file C:\\Users\\{{ .user_name }}\\scoop\\persist\\alacritty\\alacritty.toml --command wsl"
+

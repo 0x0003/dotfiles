@@ -1,0 +1,15 @@
+[submission]
+token = "{{ decrypt (include "secrets/listenbrainz-api-key.age") | trim }}"
+
+enable_cache = true
+
+# api_url = "https://api.listenbrainz.org"
+
+[mpd]
+
+{{- if eq .os_id "windows" }}
+address = "127.0.0.1:6600"
+{{- else }}
+address = "{{ if .is_wsl }}{{ .windows_gateway }}{{ else }}127.0.0.1{{ end }}:6600"
+{{- end }}
+

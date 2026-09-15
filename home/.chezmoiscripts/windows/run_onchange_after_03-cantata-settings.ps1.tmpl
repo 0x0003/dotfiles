@@ -1,0 +1,256 @@
+{{- if eq .os_id "windows" -}}
+$base = "HKCU:\SOFTWARE\Cantata\Cantata"
+
+# Ensure base key exists
+if (-not (Test-Path $base)) { New-Item -Path $base -Force | Out-Null }
+
+# Main settings
+Set-ItemProperty -Path $base -Name "fetchCovers" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "storeCoversInMpdDir" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "stopOnExit" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "stopFadeDuration" -Value 500 -Type DWord
+Set-ItemProperty -Path $base -Name "volumeStep" -Value 1 -Type DWord
+Set-ItemProperty -Path $base -Name "ignorePrefixes" -Value @("The") -Type MultiString
+Set-ItemProperty -Path $base -Name "composerGenres" -Value @() -Type MultiString
+Set-ItemProperty -Path $base -Name "singleTracksFolders" -Value @() -Type MultiString
+Set-ItemProperty -Path $base -Name "cueSupport" -Value "ignore" -Type String
+Set-ItemProperty -Path $base -Name "useOriginalYear" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "playQueueView" -Value "grouped" -Type String
+Set-ItemProperty -Path $base -Name "playQueueAutoExpand" -Value "true" -Type String
+Set-ItemProperty -Path $base -Name "playQueueStartClosed" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "playQueueScroll" -Value "true" -Type String
+Set-ItemProperty -Path $base -Name "playQueueSearch" -Value "true" -Type String
+Set-ItemProperty -Path $base -Name "playQueueSimpleSort" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "playQueueBackground" -Value 1 -Type DWord
+Set-ItemProperty -Path $base -Name "playQueueBackgroundOpacity" -Value 10 -Type DWord
+Set-ItemProperty -Path $base -Name "playQueueBackgroundBlur" -Value 10 -Type DWord
+Set-ItemProperty -Path $base -Name "playQueueBackgroundFile" -Value "" -Type String
+Set-ItemProperty -Path $base -Name "playQueueConfirmClear" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "forceSingleClick" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "infoTooltips" -Value "true" -Type String
+Set-ItemProperty -Path $base -Name "showStopButton" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "showCoverWidget" -Value "true" -Type String
+Set-ItemProperty -Path $base -Name "showRatingWidget" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "showTechnicalInfo" -Value "true" -Type String
+Set-ItemProperty -Path $base -Name "useSystemTray" -Value "true" -Type String
+Set-ItemProperty -Path $base -Name "showPopups" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "minimiseOnClose" -Value "true" -Type String
+Set-ItemProperty -Path $base -Name "startupState" -Value "prev" -Type String
+Set-ItemProperty -Path $base -Name "coverFilename" -Value "" -Type String
+Set-ItemProperty -Path $base -Name "hiddenPages" -Value @("PlayQueuePage", "OnlineServicesPage", "ContextPage") -Type MultiString
+Set-ItemProperty -Path $base -Name "sidebar" -Value 34 -Type DWord
+Set-ItemProperty -Path $base -Name "splitterAutoHide" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "responsiveSidebar" -Value "true" -Type String
+Set-ItemProperty -Path $base -Name "wikipediaIntroOnly" -Value "true" -Type String
+Set-ItemProperty -Path $base -Name "contextDarkBackground" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "contextAlwaysCollapsed" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "storeLyricsInMpdDir" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "contextBackdrop" -Value 0 -Type DWord
+Set-ItemProperty -Path $base -Name "contextBackdropOpacity" -Value 15 -Type DWord
+Set-ItemProperty -Path $base -Name "contextBackdropBlur" -Value 0 -Type DWord
+Set-ItemProperty -Path $base -Name "contextBackdropFile" -Value "" -Type String
+Set-ItemProperty -Path $base -Name "contextSwitchTime" -Value 0 -Type DWord
+Set-ItemProperty -Path $base -Name "lang" -Value "" -Type String
+{{ $cantataFusion := "" }}{{ if index .theme.palettes .active_theme "dark" }}{{ $cantataFusion = "Fusion" }}{{ end }}
+Set-ItemProperty -Path $base -Name "style" -Value "{{ $cantataFusion }}" -Type String
+Remove-ItemProperty -Path $base -Name "style" -ErrorAction SilentlyContinue
+Set-ItemProperty -Path $base -Name "showFullScreen" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "showPlaylist" -Value "true" -Type String
+Set-ItemProperty -Path $base -Name "showTimeRemaining" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "startHidden" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "wikipediaLangs" -Value @("en:en") -Type MultiString
+Set-ItemProperty -Path $base -Name "contextSlimPage" -Value "" -Type String
+Set-ItemProperty -Path $base -Name "page" -Value "FolderPage" -Type String
+Set-ItemProperty -Path $base -Name "contextAutoScroll" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "contextTrackView" -Value 2 -Type DWord
+Set-ItemProperty -Path $base -Name "hiddenStreamCategories" -Value @() -Type MultiString
+Set-ItemProperty -Path $base -Name "playStream" -Value "false" -Type String
+Set-ItemProperty -Path $base -Name "prevSeekDuration" -Value 0 -Type DWord
+Set-ItemProperty -Path $base -Name "lyricProviders" -Value @() -Type MultiString
+
+# Connection
+$conn = "$base\Connection-Default"
+if (-not (Test-Path $conn)) { New-Item -Path $conn -Force | Out-Null }
+Set-ItemProperty -Path $conn -Name "host" -Value "127.0.0.1" -Type String
+Set-ItemProperty -Path $conn -Name "port" -Value 6600 -Type DWord
+Set-ItemProperty -Path $conn -Name "dir" -Value "F:/Music/" -Type String
+Set-ItemProperty -Path $conn -Name "passwd" -Value "" -Type String
+Set-ItemProperty -Path $conn -Name "partition" -Value "default" -Type String
+Set-ItemProperty -Path $conn -Name "streamUrl" -Value "" -Type String
+Set-ItemProperty -Path $conn -Name "applyReplayGain" -Value "true" -Type String
+Set-ItemProperty -Path $conn -Name "allowLocalStreaming" -Value "true" -Type String
+Set-ItemProperty -Path $conn -Name "autoUpdate" -Value "false" -Type String
+Set-ItemProperty -Path $conn -Name "scheme" -Value "%albumartist%/%album%/%track% %title%" -Type String
+Set-ItemProperty -Path $conn -Name "vfatSafe" -Value "true" -Type String
+Set-ItemProperty -Path $conn -Name "asciiOnly" -Value "false" -Type String
+Set-ItemProperty -Path $conn -Name "ignoreThe" -Value "false" -Type String
+Set-ItemProperty -Path $conn -Name "replaceSpaces" -Value "false" -Type String
+Set-ItemProperty -Path $conn -Name "replayGain" -Value "off" -Type String
+
+# Custom actions
+$actions = "$base\CustomActions"
+if (-not (Test-Path $actions)) { New-Item -Path $actions -Force | Out-Null }
+Set-ItemProperty -Path $actions -Name "count" -Value 3 -Type DWord
+{{ $kid3Fusion := "" }}{{ if index .theme.palettes .active_theme "dark" }}{{ $kid3Fusion = " -style Fusion" }}{{ end }}
+$scoopUserPath = "C:\Users\$env:USERNAME\scoop"
+Set-ItemProperty -Path $actions -Name "0_name" -Value "explorer" -Type String
+Set-ItemProperty -Path $actions -Name "0_cmd" -Value "powershell.exe -NoProfile -File C:\Users\$env:USERNAME\.config\cantata\open_explorer.ps1 %d" -Type String
+Set-ItemProperty -Path $actions -Name "1_name" -Value "kid3" -Type String
+Set-ItemProperty -Path $actions -Name "1_cmd" -Value "$scoopUserPath\apps\kid3\current\kid3.exe -stylesheet C:\Users\$env:USERNAME\.config\kid3\kid3.qss{{$kid3Fusion}} %f" -Type String
+Set-ItemProperty -Path $actions -Name "2_name" -Value "picard" -Type String
+Set-ItemProperty -Path $actions -Name "2_cmd" -Value "$scoopUserPath\apps\picard\current\picard.exe %d" -Type String
+
+# Shortcuts
+$shortcuts = "$base\Shortcuts-Cantata"
+if (-not (Test-Path $shortcuts)) { New-Item -Path $shortcuts -Force | Out-Null }
+Set-ItemProperty -Path $shortcuts -Name "search" -Value "Ctrl+Shift+F" -Type String
+Set-ItemProperty -Path $shortcuts -Name "searchplaylist" -Value "Ctrl+F" -Type String
+Set-ItemProperty -Path $shortcuts -Name "playpausetrack" -Value "Space" -Type String
+Set-ItemProperty -Path $shortcuts -Name "appendtoplayqueue" -Value "Ctrl+T" -Type String
+Set-ItemProperty -Path $shortcuts -Name "insertintoplayqueue" -Value "Ctrl+Shift+T" -Type String
+Set-ItemProperty -Path $shortcuts -Name "centerplaylist" -Value "Ctrl+E" -Type String
+Set-ItemProperty -Path $shortcuts -Name "configure" -Value "Ctrl+P" -Type String
+Set-ItemProperty -Path $shortcuts -Name "quit" -Value "Ctrl+Q" -Type String
+Set-ItemProperty -Path $shortcuts -Name "seekfwd5" -Value "Right" -Type String
+Set-ItemProperty -Path $shortcuts -Name "seekrev5" -Value "Left" -Type String
+Set-ItemProperty -Path $shortcuts -Name "showsonginfo" -Value "F1" -Type String
+Set-ItemProperty -Path $shortcuts -Name "showfolderstab" -Value "Ctrl+2" -Type String
+Set-ItemProperty -Path $shortcuts -Name "showlibrarytab" -Value "Ctrl+1" -Type String
+Set-ItemProperty -Path $shortcuts -Name "showplayliststab" -Value "Ctrl+3" -Type String
+Set-ItemProperty -Path $shortcuts -Name "showsearchtab" -Value "Ctrl+4" -Type String
+Set-ItemProperty -Path $shortcuts -Name "rating0" -Value "Alt+E" -Type String
+Set-ItemProperty -Path $shortcuts -Name "rating5" -Value "Alt+R" -Type String
+Set-ItemProperty -Path $shortcuts -Name "locatealbum" -Value "Alt+A" -Type String
+Set-ItemProperty -Path $shortcuts -Name "locateartist" -Value "Alt+Shift+A" -Type String
+Set-ItemProperty -Path $shortcuts -Name "locatetrack" -Value "Alt+T" -Type String
+
+# Volume
+$vol = "$base\VolumeControl"
+if (-not (Test-Path $vol)) { New-Item -Path $vol -Force | Out-Null }
+Set-ItemProperty -Path $vol -Name "control" -Value "mpd" -Type String
+
+# Proxy
+$proxy = "$base\Proxy"
+if (-not (Test-Path $proxy)) { New-Item -Path $proxy -Force | Out-Null }
+Set-ItemProperty -Path $proxy -Name "mode" -Value 0 -Type DWord
+Set-ItemProperty -Path $proxy -Name "type" -Value 3 -Type DWord
+Set-ItemProperty -Path $proxy -Name "hostname" -Value "127.0.0.1" -Type String
+Set-ItemProperty -Path $proxy -Name "port" -Value 2080 -Type DWord
+Set-ItemProperty -Path $proxy -Name "username" -Value "" -Type String
+Set-ItemProperty -Path $proxy -Name "password" -Value "" -Type String
+
+# Page settings
+function Ensure-Path {
+    param([string]$path)
+    if (-not (Test-Path $path)) { New-Item -Path $path -Force | Out-Null }
+}
+
+function Set-Props {
+    param([string]$path, [hashtable]$props)
+    Ensure-Path $path
+    foreach ($kv in $props.GetEnumerator()) {
+        Set-ItemProperty -Path $path -Name $kv.Key -Value $kv.Value[0] -Type $kv.Value[1]
+    }
+}
+
+Set-Props "$base\DynamicPlaylistsPage" @{
+    "searchActive" = @("false", "String")
+    "viewMode" = @("list", "String")
+    "gridZoom" = @(100, "DWord")
+}
+
+Set-Props "$base\FolderPage" @{
+    "currentPage" = @("mpdbrowse", "String")
+}
+
+Set-Props "$base\LibraryPage" @{
+    "artistImages" = @("false", "String")
+    "grouping" = @("artist", "String")
+    "albumSort" = @("album", "String")
+    "librarySort" = @("year", "String")
+}
+
+Set-Props "$base\LibraryPage\album" @{
+    "searchActive" = @("false", "String")
+    "viewMode" = @("icontop", "String")
+    "gridZoom" = @(100, "DWord")
+}
+
+Set-Props "$base\LibraryPage\artist" @{
+    "searchActive" = @("false", "String")
+    "viewMode" = @("detailedtree", "String")
+    "gridZoom" = @(100, "DWord")
+}
+
+Set-Props "$base\localbrowsehome" @{
+    "searchActive" = @("false", "String")
+    "viewMode" = @("simpletree", "String")
+    "gridZoom" = @(100, "DWord")
+}
+
+Set-Props "$base\localbrowseroot" @{
+    "searchActive" = @("false", "String")
+    "viewMode" = @("simpletree", "String")
+    "gridZoom" = @(100, "DWord")
+}
+
+Set-Props "$base\magnatune" @{
+    "searchActive" = @("false", "String")
+    "viewMode" = @("detailedtree", "String")
+    "gridZoom" = @(100, "DWord")
+    "grouping" = @("genre", "String")
+    "albumSort" = @("album", "String")
+    "librarySort" = @("year", "String")
+}
+
+Set-Props "$base\MpdBrowsePage" @{
+    "searchActive" = @("false", "String")
+    "viewMode" = @("basictree", "String")
+    "gridZoom" = @(100, "DWord")
+}
+
+Set-Props "$base\OnlineServicesPage" @{
+    "currentPage" = @("", "String")
+}
+
+Set-Props "$base\PlaylistsPage" @{
+    "currentPage" = @("smart", "String")
+}
+
+Set-Props "$base\PlayQueuePage" @{
+    "searchActive" = @("false", "String")
+}
+
+Set-Props "$base\PodcastWidget" @{
+    "searchActive" = @("false", "String")
+    "viewMode" = @("detailedtree", "String")
+    "gridZoom" = @(100, "DWord")
+}
+
+Set-Props "$base\SearchPage" @{
+    "searchActive" = @("true", "String")
+    "viewMode" = @("list", "String")
+    "gridZoom" = @(100, "DWord")
+    "searchCategory" = @("file", "String")
+}
+
+Set-Props "$base\SmartPlaylistsPage" @{
+    "searchActive" = @("false", "String")
+    "viewMode" = @("list", "String")
+    "gridZoom" = @(100, "DWord")
+}
+
+Set-Props "$base\StoredPlaylistsPage" @{
+    "searchActive" = @("false", "String")
+    "viewMode" = @("detailedtree", "String")
+    "gridZoom" = @(100, "DWord")
+    "startClosed" = @("true", "String")
+}
+
+Set-Props "$base\StreamsBrowsePage" @{
+    "searchActive" = @("false", "String")
+    "viewMode" = @("detailedtree", "String")
+    "gridZoom" = @(100, "DWord")
+}
+
+{{- end -}}

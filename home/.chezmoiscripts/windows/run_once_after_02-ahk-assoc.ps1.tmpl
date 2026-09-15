@@ -1,0 +1,11 @@
+{{- if and (eq .os_id "windows") .use_scoop -}}
+$ahk = "$env:USERPROFILE\scoop\apps\autohotkey1.1\current\AutoHotkeyU64.exe"
+
+$key = "HKCU:\Software\Classes\.ahk"
+if (-not (Test-Path $key)) { New-Item $key -Force | Out-Null }
+Set-ItemProperty $key -Name "(default)" -Value "AutoHotkey.Script"
+
+$key = "HKCU:\Software\Classes\AutoHotkey.Script\shell\open\command"
+if (-not (Test-Path $key)) { New-Item $key -Force | Out-Null }
+Set-ItemProperty $key -Name "(default)" -Value "`"$ahk`" `"%1`""
+{{- end -}}
