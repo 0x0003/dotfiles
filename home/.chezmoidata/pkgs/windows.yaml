@@ -25,13 +25,13 @@ pkgs:
           - lessmsi
           - librehardwaremonitor
           - smartmontools
+          - btop
           - name: fancontrol
             version: "237"
             hold: true
         net:
           - megatools
           - nmap
-          - btop
           - trippy
           - connect
           - dnscrypt-proxy
