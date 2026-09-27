@@ -16,7 +16,6 @@ pkgs:
           - grep
           - less
           - which
-          - curl
         sys:
           - alacritty
           - fastfetch
@@ -30,6 +29,7 @@ pkgs:
             version: "237"
             hold: true
         net:
+          - curl
           - megatools
           - nmap
           - trippy
