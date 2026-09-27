@@ -54,6 +54,7 @@ pkgs:
           - name: 0x0003/cantata
             version: "3.4.0" # 3.5.0 has buggy album covers in info
             hold: true
+          - 0x0003/picard
           - kid3
           - ffmpeg
           - gallery-dl
