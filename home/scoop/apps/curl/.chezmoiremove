@@ -1,0 +1,11 @@
+current/dep/**
+current/docs/**
+current/include/**
+current/lib/**
+current/BUILD-HASHES.txt
+current/BUILD-MANIFEST.txt
+current/BUILD-README.url
+current/COPYING.txt
+current/mk-ca-bundle.pl
+current/README.txt
+current/RELEASE-NOTES.txt

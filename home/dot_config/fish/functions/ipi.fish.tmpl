@@ -1,0 +1,9 @@
+# ip info
+function ipi --description "Query IP info"
+  set -l api_token "{{ decrypt (include "secrets/ipi-api-key.age") | trim -}}"
+  if test "$argv" = "me"; or not string length --quiet "$argv"
+    curl --compressed -s https://ipinfo.io?token=$api_token
+  else
+    curl --compressed -s https://ipinfo.io/$argv?token=$api_token
+  end
+end
