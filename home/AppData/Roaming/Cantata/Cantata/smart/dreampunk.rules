@@ -1,0 +1,9 @@
+NumTracks:100
+Order:AlbumArtist
+OrderAscending:true
+Rule
+Artist:輕描淡寫
+Exact:false
+Rule
+Exact:false
+Genre:Dreampunk

@@ -1,0 +1,39 @@
+scale = 10
+pi = 3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170676
+
+define t(x) { return s(x)/c(x) }
+define sd(x) { return s(x*pi/180) }
+define cd(x) { return c(x*pi/180) }
+define td(x) { return t(x*pi/180) }
+define as(x) { return 2*a(( 1-sqrt(1-x*x) ) / x) }
+define asd(x) { return as(x)*180/pi }
+define ac(x) { return ( pi*0.5 - as(x) ) }
+define acd(x) { return ac(x)*180/pi }
+define ad(x) { return a(x)*180/pi }
+define i(x) { return 1/x }
+define int(x) {
+  auto s
+    s = scale
+    scale = 0
+    x /= 1
+    scale = s
+    return (x)
+}
+define lb(x,y) { return l(y)/l(x) }
+define p(x,y) {
+  if ( y == int(y) ) {
+    return x^y
+  }
+  return e( y * l(x) )
+}
+
+print "x^y - p(x,y)\n"
+print "sine - s(x) \n"
+print "cosine - c(x) \n"
+print "tangent - t(x) \n"
+print "arcsine - as(x) \n"
+print "arccosine - ac(x) \n"
+print "arcotangent - a(x) \n"
+print "log base e of x - l(x)\n"
+print "log base x of y - lb(x,y)\n"
+print "\n"

@@ -1,0 +1,6 @@
+["profile"]
+    type = "archive"
+    url = "https://github.com/maboroshin/qBittorrentDarktheme/archive/refs/tags/Rev12.zip"
+    format = "zip"
+    stripComponents = 1
+    include = ["*/*.qbtheme"]

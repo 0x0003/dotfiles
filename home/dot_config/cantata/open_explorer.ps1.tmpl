@@ -1,0 +1,6 @@
+{{- if eq .os_id "windows" }}
+# cantata's %d and %f pass forward slashes; explorer.exe needs backslashes
+foreach ($p in $args) {
+    explorer.exe ($p -replace '/', '\')
+}
+{{ end -}}

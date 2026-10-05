@@ -1,0 +1,18 @@
+{{ if and (hasPrefix "linux" .os_id) .has_root -}}
+#!/usr/bin/env bash
+set -euo pipefail
+
+{{ if .use_home_manager | default false -}}
+
+FISH="$HOME/.nix-profile/bin/fish"
+
+if [ ! -x "$FISH" ]; then
+    echo "fish not found at $FISH, skipping login shell change"
+else
+
+if [ "$SHELL" != "$FISH" ]; then
+    sudo chsh -s "$FISH" "$USER"
+fi
+fi
+
+{{ end -}}{{ end -}}
