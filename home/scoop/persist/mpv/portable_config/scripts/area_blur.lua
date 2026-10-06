@@ -520,7 +520,7 @@ local function apply_shader()
         for _, old in ipairs(shader_files) do
             mp.add_timeout(2, function() os.remove(old) end)
         end
-        if #shader_files > 0 then set_shader_list(false) end
+        set_shader_list(false)
         shader_files, last_sources = {}, {}
         return
     end
@@ -911,7 +911,8 @@ mp.register_event('file-loaded', function()
         render_overlay()
         osd(('area_blur: restored %d area(s)'):format(#areas))
     else
-        -- no persisted data: keep current areas (carry over) and save to this file's entry
+        -- no persisted data: keep current areas (carry over) and apply to new file
+        apply()
         if #areas > 0 then
             persist_dirty = true
             persist_save()
