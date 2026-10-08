@@ -179,9 +179,9 @@ retention:
 throttling:
   search:
     incoming:
-      concurrency: 10 # number of search requests to process at the same time
-      circuit_breaker: 500 # maximum number of pending search requests
-      response_file_limit: 500 # maximum number of files to return in a single search response
+      concurrency: 5 # number of search requests to process at the same time
+      circuit_breaker: 100 # maximum number of pending search requests (min=100)
+      response_file_limit: 150 # maximum number of files to return in a single search response
 logger:
   disk: false
   no_color: false
