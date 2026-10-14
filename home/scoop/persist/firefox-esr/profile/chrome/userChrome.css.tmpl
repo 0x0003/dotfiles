@@ -60,7 +60,8 @@ private-browsing-indicator,
   --tab-selected-textcolor: {{ $p.foreground }} !important;
   --toolbar-field-color: {{ $p.foreground }} !important;
   --toolbar-field-focus-color: {{ $p.foreground }} !important;
-  --toolbar-bgcolor: var(--sfsecondary) !important;
+  --toolbar-bgcolor: var(--sfsecondary) !important; /* ESR <=140 */
+  --toolbar-background-color: var(--sfsecondary) !important; /* ESR 153 */
   --tabs-border-color: var(--sfsecondary) !important;
   --lwt-sidebar-background-color: var(--sfwindow) !important;
   --lwt-toolbar-field-focus: var(--sfsecondary) !important;
@@ -170,9 +171,11 @@ private-browsing-indicator,
   --urlbar-min-height: 20px;
 }
 
-#urlbar-background {
+/* ESR 153: #urlbar-background -> .urlbar-background */
+.urlbar-background {
   border: none !important;
   border-radius: 0px !important;
+  outline: none !important;
   box-shadow: none !important;
 }
 
@@ -201,7 +204,7 @@ private-browsing-indicator,
   border: none !important;
 }
 
-#urlbar[focused='true']>#urlbar-background {
+#urlbar[focused='true']>.urlbar-background {
   box-shadow: none !important;
 }
 
@@ -309,6 +312,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 reader-mode-button,
 #urlbar .urlbar-page-action#taskbar-tabs-button,
 #urlbar hbox#taskbar-tabs-button.urlbar-page-action,
+#urlbar hbox#picture-in-picture-button,
 #firefox-view-button,
 #urlbar-searchmode-switcher,
 #unified-extensions-button /* <- ADDONS BUTTON */
@@ -375,7 +379,12 @@ reader-mode-button,
 #context-inspect-a11y,
 #context-translate-selection,
 #context-take-screenshot,
-#context-sep-screenshots {
+#context-sep-screenshots,
+#context-openlinkinsplitview,
+#context-previewlink,
+#context-copy-link-to-highlight,
+#context-sep-highlights,
+#context-ask-chat {
   display: none !important;
 }
 
@@ -409,6 +418,7 @@ reader-mode-button,
 
 /* fix white flash on new tab */
 #tabbrowser-tabpanels,
+.browserContainer,
 #appcontent>#content {
   background: {{ $p.background }} !important;
 }
@@ -592,5 +602,29 @@ reader-mode-button,
 
 #TabsToolbar[brighttext] .tab-throbber[progress]:not([selected=true])::before {
   fill: {{ $p.normal.blue }};
+}
+
+/* ESR 153 */
+
+#tabbrowser-tabs::before {
+  display: none !important;
+}
+
+#sidebar-button {
+  display: none !important;
+}
+
+.searchmode-switcher #main-button {
+  display: none !important;
+}
+
+/* kill panel/menupopup fade-in/out */
+.animatable-menupopup,
+panel[type="arrow"] {
+  transition: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  will-change: auto !important;
 }
 

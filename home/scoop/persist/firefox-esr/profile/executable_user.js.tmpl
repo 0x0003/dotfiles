@@ -181,7 +181,7 @@ user_pref("geo.provider-country.network.url", "");
 user_pref("media.eme.enabled", false); // Disable EME for DRM content
 user_pref("media.navigator.enabled", false); // Mic and camera
 user_pref("media.peerconnection.enabled", false); // WebRTC
-user_pref("privacy.donottrackheader.enabled", true); // Send DNT header
+user_pref("privacy.donottrackheader.enabled", false); // DNT header; ESR 153 deprecated
 user_pref("privacy.resistFingerprinting", false); // RFP (breaks a lot of websites)
 user_pref("privacy.trackingprotection.enabled", false); // Redundant with extensions
 user_pref("privacy.trackingprotection.cryptomining.enabled", false); // ^
@@ -394,4 +394,65 @@ user_pref("browser.urlbar.amp.featureGate", false);
 user_pref("browser.urlbar.wikipedia.featureGate", false);
 user_pref("security.csp.reporting.enabled", false);
 user_pref("privacy.query_stripping.strip_on_share.enabled", false)
+
+// ESR 140 -> 153
+user_pref("browser.profiles.enabled", false);
+user_pref("nimbus.rollouts.enabled", false);
+user_pref("browser.urlbar.quicksuggest.online.enabled", false);
+user_pref("browser.urlbar.suggest.quicksuggest.all", false);
+user_pref("browser.urlbar.flightStatus.featureGate", false);
+user_pref("browser.urlbar.importantDates.featureGate", false);
+user_pref("browser.urlbar.market.featureGate", false);
+user_pref("browser.urlbar.yelpRealtime.featureGate", false);
+user_pref("browser.ml.linkPreview.enabled", false);
+user_pref("privacy.globalprivacycontrol.enabled", true);
+user_pref("privacy.globalprivacycontrol.functionality.enabled", true);
+user_pref("privacy.globalprivacycontrol.pbmode.enabled", true);
+user_pref("services.sync.prefs.sync.privacy.globalprivacycontrol.enabled", false);
+user_pref("browser.ai.control.default", "blocked");
+user_pref("browser.ai.control.linkPreviewKeyPoints", "blocked");
+user_pref("browser.ai.control.pdfjsAltText", "blocked");
+user_pref("browser.ai.control.sidebarChatbot", "blocked");
+user_pref("browser.ai.control.smartTabGroups", "blocked");
+user_pref("browser.ai.control.smartWindow", "blocked");
+user_pref("browser.ai.control.translations", "blocked");
+user_pref("layout.css.fake-webkit-scrollbar.enabled", false);
+user_pref("browser.newtabpage.activity-stream.unifiedAds.ohttp.enabled", false);
+user_pref("browser.newtabpage.activity-stream.unifiedAds.endpoint", "");
+user_pref("browser.newtabpage.activity-stream.discoverystream.ohttp.relayURL", "");
+user_pref("browser.newtabpage.activity-stream.discoverystream.publisherFavicon.enabled", false);
+user_pref("browser.newtabpage.activity-stream.discoverystream.sections.region-content-config", "");
+user_pref("browser.newtabpage.sponsor-protection.enabled", false);
+user_pref("browser.newtabpage.activity-stream.discoverystream.imageProxy.enabled", false);
+user_pref("browser.newtabpage.trainhopAddon.xpiBaseURL", "");
+user_pref("browser.search.visualSearch.featureGate", false);
+user_pref("browser.smartwindow.worldcup.enabled", false);
+user_pref("browser.smartwindow.endpoint", "");
+user_pref("browser.smartwindow.worldcup.endpointURL", "");
+user_pref("browser.aboutwelcome.experimentsGate.enabled", false);
+user_pref("first-startup.category-tasks-enabled", false);
+user_pref("nimbus.firstUpdateComplete", true);
+user_pref("nimbus.profilesdatastoreservice.read.enabled", false);
+user_pref("nimbus.profilesdatastoreservice.sync.enabled", false);
+user_pref("services.sync.prefs.sync.nimbus.rollouts.enabled", false);
+user_pref("privacy.trackingprotection.harmfuladdon.enabled", false);
+user_pref("browser.firefox-view.button-clicks", "{\"count\":0,\"lastCountTime\":\"\"}");
+user_pref("browser.urlbar.suggest.amp", false);
+user_pref("browser.urlbar.suggest.sports", false);
+user_pref("browser.urlbar.suggest.importantDates", false);
+user_pref("browser.urlbar.suggest.wikipedia", false);
+user_pref("browser.urlbar.trustPanel.featureGate", false);
+user_pref("browser.urlbar.trustPanel.breachAlerts", false);
+user_pref("browser.urlbar.trustPanel.breachAlerts.featureGate", false);
+user_pref("browser.urlbar.merino.ohttpConfigURL", "");
+user_pref("browser.urlbar.merino.ohttpRelayURL", "");
+user_pref("browser.urlbar.merino.weather.hourlyEndpointURL", "");
+user_pref("media.gmp-widevinecdm.allow-chromium-update", false);
+user_pref("media.gmp-widevinecdm-l1.allow-chromium-update", false);
+user_pref("browser.ipProtection.blockIPProtectionCallouts", true);
+user_pref("browser.ipProtection.bandwidth.enabled", false);
+user_pref("browser.ipProtection.guardian.endpoint", "");
+user_pref("browser.ipProtection.fxa.useActivateFlow", false);
+user_pref("dap.ohttp.relayURL", "");
+user_pref("dap.ohttp.hpke", "");
 
