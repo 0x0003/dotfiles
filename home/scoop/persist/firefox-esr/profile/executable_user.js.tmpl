@@ -54,6 +54,9 @@ user_pref("reader.parse-on-load.enabled", false); // Disable reader view
 user_pref("browser.link.open_newwindow.restriction", 0); // Open pop-ups in new tabs
 user_pref("layers.acceleration.force-enabled", true); // Forced hwaccel
 user_pref("gfx.webrender.all", true);
+{{ if eq .os_id "windows" -}}
+user_pref("gfx.webrender.compositor", false); // W10LTSC: native DComp compositor burns CPU on every composite (scrolling while video plays = lag)
+{{ end -}}
 user_pref("svg.context-properties.content.enabled", true);
 user_pref("layout.omtp.enabled", true); // Off-main-thread painting
 user_pref("layout.display-list.retain", true);
