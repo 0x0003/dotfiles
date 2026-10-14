@@ -1,0 +1,63 @@
+bind_to_address "0.0.0.0"
+port            "6600"
+log_level       "error"
+{{- if eq .os_id "windows" }}
+
+music_directory    "F:/Music"
+playlist_directory "C:/Users/{{ .user_name }}/.local/share/mpd/playlists"
+db_file            "C:/Users/{{ .user_name }}/.local/share/mpd/mpd.db"
+log_file           "NUL"
+state_file         "C:/Users/{{ .user_name }}/.local/share/mpd/state"
+sticker_file       "C:/Users/{{ .user_name }}/.local/share/mpd/sticker.sqlite"
+{{- else }}
+
+music_directory    "/mnt/media/Music"
+playlist_directory "~/.local/share/mpd/playlists"
+db_file            "~/.local/share/mpd/mpd.db"
+log_file           "/dev/null"
+state_file         "~/.local/share/mpd/state"
+sticker_file       "~/.local/share/mpd/sticker.sqlite"
+{{- end }}
+
+restore_paused "yes"
+state_file_interval "3600" # 1h
+audio_output_format "48000:16:2"
+max_output_buffer_size "40960"
+max_playlist_length    "81920"
+
+audio_output {
+  name "Default Output"
+{{- if eq .os_id "windows" }}
+  type "wasapi" # "winmm"
+  mixer_type "hardware" # "software"
+{{- else }}
+  type "pipewire"
+{{- end }}
+}
+
+audio_output {
+  name        "HTTP flac"
+  type        "httpd"
+  port        "6680"
+  encoder     "flac"
+  compression "0"
+  format      "44100:16:2"
+  always_on   "yes"
+  max_clients "1"
+}
+
+audio_output {
+  name      "HTTP opus"
+  type      "httpd"
+  port      "6680"
+  encoder   "opus"
+  bitrate   "192000"
+  format    "44100:16:2"
+  always_on "yes"
+  max_clients "1"
+}
+
+decoder {
+  plugin  "wildmidi"
+  enabled "no"
+}

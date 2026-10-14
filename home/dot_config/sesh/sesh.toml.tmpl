@@ -1,0 +1,126 @@
+#:schema https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
+cache = false
+dir_length = 2
+
+[default_session]
+startup_command = "clear && ll"
+
+[[session]]
+name = "HOME"
+path = "~"
+startup_command = "clear && la"
+
+{{ decrypt (include "secrets/sesh-personal.toml.age") | trim }}
+
+# frequent locations
+[[session]]
+name = "notes"
+path = "~/notes"
+startup_command = "nvim"
+
+[[session]]
+name = "home-manager cfg"
+path = "~/.config/home-manager/"
+startup_command = "nvim"
+
+[[session]]
+name = "chezmoi"
+path = "~/.local/share/chezmoi/"
+startup_command = "nvim"
+
+[[session]]
+name = "scripts"
+path = "~/scripts/"
+startup_command = "nvim"
+
+[[session]]
+name = "nvim cfg"
+path = "~/.config/nvim/"
+startup_command = "nvim"
+
+[[session]]
+name = "fish cfg"
+path = "~/.config/fish/"
+startup_command = "nvim"
+
+[[session]]
+name = "tmux cfg"
+path = "~/.config/tmux/"
+startup_command = "nvim"
+
+{{ if .is_wsl -}}
+# WSL mount roots
+[[session]]
+name = "/mnt/c"
+path = "/mnt/c"
+
+[[session]]
+name = "/mnt/d"
+path = "/mnt/d"
+
+[[session]]
+name = "/mnt/e"
+path = "/mnt/e"
+
+[[session]]
+name = "/mnt/f"
+path = "/mnt/f/"
+
+[[session]]
+name = "/mnt/g"
+path = "/mnt/g/"
+
+# windows side
+[[session]]
+name = "chezmoi win"
+path = "/mnt/c/Users/{{ .user_name }}/.local/share/chezmoi/"
+startup_command = "ll"
+
+[[session]]
+name = "alacritty cfg"
+path = "/mnt/c/Users/{{ .user_name }}/scoop/persist/alacritty"
+startup_command = "nvim"
+
+[[session]]
+name = "pwsh cfg"
+path = "/mnt/c/Users/{{ .user_name }}/Documents/WindowsPowerShell"
+startup_command = "nvim"
+
+[[session]]
+name = "scoop cfg"
+path = "/mnt/c/Users/{{ .user_name }}/.config/scoop"
+startup_command = "nvim"
+
+[[session]]
+name = "mpv cfg"
+path = "/mnt/c/Users/{{ .user_name }}/scoop/persist/mpv/portable_config"
+startup_command = "nvim"
+
+[[session]]
+name = "sioyek cfg"
+path = "/mnt/c/Users/{{ .user_name }}/scoop/persist/sioyek"
+startup_command = "nvim"
+
+[[session]]
+name = "tor cfg"
+path = "/mnt/c/Users/{{ .user_name }}/scoop/persist/tor"
+startup_command = "nvim"
+
+[[session]]
+name = "ffox cfg"
+path = "/mnt/c/Users/{{ .user_name }}/scoop/persist/firefox-esr/profile"
+startup_command = "nvim"
+
+[[session]]
+name = "dnscrypt-proxy cfg"
+path = "/mnt/c/Users/{{ .user_name }}/scoop/persist/dnscrypt-proxy"
+startup_command = "nvim"
+
+[[session]]
+name = "ahk"
+path = "/mnt/c/Users/{{ .user_name }}/ahk"
+startup_command = "nvim"
+
+{{ decrypt (include "secrets/sesh-personal-wsl.toml.age") | trim }}
+
+{{ end -}}

@@ -1,0 +1,5 @@
+{{- if eq .os_id "windows" -}}
+@echo off
+if not defined SSH_PROXY exit /b 1
+exit /b 0
+{{ end -}}

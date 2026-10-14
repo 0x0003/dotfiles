@@ -1,0 +1,69 @@
+{
+  "policies": {
+    "AIControls": {
+      "Default": {
+        "Value": "blocked",
+        "Locked": true
+      },
+      "LinkPreviewKeyPoints": {
+        "Value": "blocked",
+        "Locked": true
+      },
+      "PDFAltText": {
+        "Value": "blocked",
+        "Locked": true
+      },
+      "SidebarChatbot": {
+        "Value": "blocked",
+        "Locked": true
+      },
+      "SmartTabGroups": {
+        "Value": "blocked",
+        "Locked": true
+      },
+      "SmartWindow": {
+        "Value": "blocked",
+        "Locked": true
+      },
+      "Translations": {
+        "Value": "blocked",
+        "Locked": true
+      }
+    },
+    "BrowserDataBackup": {
+      "AllowBackup": false,
+      "AllowRestore": false
+    },
+    "CaptivePortal": false,
+    "DisableAppUpdate": true,
+    "DisableBuiltinPDFViewer": true,
+    "DisableFeedbackCommands": true,
+    "DisableFirefoxAccounts": true,
+    "DisableFirefoxStudies": true,
+    "DisablePocket": true,
+    "DisableRemoteImprovements": true,
+    "DisableSetDesktopBackground": true,
+    "DisableSystemAddonUpdate": true,
+    "DisableTelemetry": true,
+    "FirefoxSuggest": {
+      "WebSuggestions": false,
+      "SponsoredSuggestions": false,
+      "ImproveSuggest": false,
+      "OnlineEnabled": false,
+      "Locked": true
+    },
+    "GenerativeAI": {
+      "Enabled": false,
+      "Chatbot": false,
+      "SmartWindow": false,
+      "LinkPreviews": false,
+      "TabGroups": false,
+      "Locked": true
+    },
+    "IPProtectionAvailable": false,
+    "NoDefaultBookmarks": true,
+    "OfferToSaveLogins": false,
+    "SkipTermsOfUse": true,
+    "TranslateEnabled": false
+  }
+}

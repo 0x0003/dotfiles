@@ -1,0 +1,132 @@
+{{- $p := index .theme.palettes .active_theme -}}
+# timeline size when fully retracted, 0 will hide it completely
+timeline_size_min=2
+# timeline size when fully expanded, in pixels, 0 to disable
+timeline_size_max=18
+# same as ^ but when in fullscreen
+timeline_size_min_fullscreen=2
+timeline_size_max_fullscreen=20
+# same thing as calling toggle-progress command once on startup
+timeline_start_hidden=yes
+# timeline opacity
+timeline_opacity=0.8
+# top (and bottom in no-border mode) border of background color to help visually
+# separate elapsed bar from a video of similar color or desktop background
+timeline_border=0
+# when scrolling above timeline, wheel will seek by this amount of seconds
+timeline_step=5
+# display seekable buffered ranges for streaming videos, syntax `color:opacity`,
+# color is an BBGGRR hex code, set to `none` to disable
+timeline_cached_ranges={{ $p.applications.mpv.uosc_cached }}:0.5
+# comma separated states when timeline should always be visible. available: paused, audio
+timeline_persistency=
+
+# timeline chapters style: none, dots, lines, lines-top, lines-bottom
+chapters=lines
+chapters_opacity=0.4
+
+# controls all menus, such as context menu, subtitle loader/selector, etc
+menu_item_height=45
+menu_item_height_fullscreen=45
+menu_wasd_navigation=yes
+menu_hjkl_navigation=yes
+menu_opacity=0.8
+
+# where to display volume controls: none, left, right
+volume=none
+volume_size=20
+volume_size_fullscreen=20
+volume_opacity=0.3
+volume_border=0
+# when dragging/scrolling the slider, volume will change by increments of this value
+volume_step=1
+volume_persistency=
+
+# playback speed widget: drag left-right to change, click to reset
+speed=no
+speed_size=35
+speed_size_fullscreen=50
+speed_opacity=1
+# when dragging/scrolling the slider, speed will change by increments of this value
+speed_step=0.1
+speed_persistency=
+
+# top bar with window controls and media title shown only in no-border mode
+top_bar_size=40
+top_bar_size_fullscreen=46
+top_bar_controls=no
+top_bar_title=no
+top_bar_persistency=
+
+# window border drawn in no-boder mode
+window_border_size=0
+window_border_opacity=1
+
+# fonts (float)
+timeline_font_scale=1.2
+volume_font_scale=1
+speed_font_scale=1
+menu_font_scale=1
+
+# pause video on clicks shorter than this number of milliseconds, 0 to disable
+pause_on_click_shorter_than=0
+# flash duration in ms
+flash_duration=500
+# distances in pixels below which elements are fully faded in/out
+proximity_in=25
+proximity_out=80
+# BBGGRR - BLUE GREEN RED hex color codes
+color_foreground={{ $p.applications.mpv.uosc_fg }}
+color_foreground_text={{ $p.applications.mpv.uosc_bg }}
+color_background={{ $p.applications.mpv.uosc_bg }}
+color_background_text={{ $p.applications.mpv.uosc_fg }}
+# show total time instead of time remaining
+total_time=no
+# hide UI when mpv autohides the cursor
+autohide=no
+# can be: none, flash, static
+pause_indicator=none
+# screen dim
+curtain_opacity=0.3
+# load first file when calling next on a last file in a directory and vice versa
+directory_navigation_loops=no
+# file types to display in file explorer when navigating media files
+media_types=3gp,avi,bmp,flac,flv,gif,h264,h265,jpeg,jpg,m4a,m4v,mid,midi,mkv,mov,mp3,mp4,mp4a,mp4v,mpeg,mpg,oga,ogg,ogm,ogv,opus,png,rmvb,svg,tif,tiff,wav,weba,webm,webp,wma,wmv
+# file types to display in file explorer when loading external subtitles
+subtitle_types=aqt,gsub,jss,sub,ttxt,pjs,psb,rt,smi,slt,ssf,srt,ssa,ass,usf,idx,vt
+# used to approximate text width
+# if you are using some wide font and see a lot of right side clipping in menus,
+# try bumping this up
+font_height_to_letter_width_ratio=0.5
+# sizes to list in stream quality menu
+stream_quality_options=4320,2160,1440,1080,720,480,360,240,144
+
+# `chapter_ranges` lets you transform chapter indicators into range indicators.
+#
+# Chapter range definition syntax:
+# ```
+# start_pattern<color:opacity>end_pattern
+# ```
+#
+# Multiple start and end patterns can be defined by separating them with `|`:
+# ```
+# p1|pN<color:opacity>p1|pN
+# ```
+#
+# Multiple chapter ranges can be defined by separating them with comma:
+#
+# chapter_ranges=range1,rangeN
+#
+# One of `start_pattern`s can be a custom keyword `{bof}` that will match
+# beginning of file when it makes sense.
+#
+# One of `end_pattern`s can be a custom keyword `{eof}` that will match end of
+# file when it makes sense.
+#
+# Patterns are lua patterns (http://lua-users.org/wiki/PatternsTutorial).
+# They only need to occur in a title, not match it completely.
+# Matching is case insensitive.
+#
+# `color` is a `bbggrr` hexadecimal color code.
+# `opacity` is a float number from 0 to 1.
+chapter_ranges=^op| op$|opening<968638:0.5>.*, ^ed| ed$|^end|ending$<968638:0.5>.*|{eof}, ^preview| preview$|pre$<3333ff:0.5>.*|{eof}, sponsor start<3535a5:.5>sponsor end

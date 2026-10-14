@@ -1,0 +1,19 @@
+{{ if and (eq .os_id "windows") .use_scoop -}}
+# Install Scoop if not present
+if (-not (Get-Command scoop -ErrorAction SilentlyContinue)) {
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    Invoke-RestMethod -Uri get.scoop.sh | Invoke-Expression
+}
+
+# Add buckets (package install is handled by run_onchange script)
+$buckets = '{{ .pkgs.windows.scoop.buckets | toJson }}' | ConvertFrom-Json
+foreach ($bucket in $buckets) {
+    $name, $repo = $bucket -split ' ', 2
+    if ($repo) {
+        scoop bucket add $name $repo 6>$null
+    } else {
+        scoop bucket add $name 6>$null
+    }
+}
+{{ end -}}
+

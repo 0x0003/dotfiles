@@ -1,0 +1,7 @@
+["ravu-lite-ar-r4.hook"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/0x0003/mpv-prescalers/3f24e7c53085854d122bb5d6629d1d503ba29e35/gather/ravu-lite-ar-r4.hook"
+
+["ravu-zoom-ar-r3.hook"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/0x0003/mpv-prescalers/3f24e7c53085854d122bb5d6629d1d503ba29e35/gather/ravu-zoom-ar-r3.hook"

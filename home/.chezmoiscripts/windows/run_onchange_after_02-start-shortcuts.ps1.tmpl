@@ -1,0 +1,41 @@
+{{- if and (eq .os_id "windows") .use_scoop -}}
+$startup = Join-Path $env:APPDATA "Microsoft\Windows\Start Menu\Programs\Startup"
+$programs = Join-Path $env:APPDATA "Microsoft\Windows\Start Menu\Programs"
+
+$shell = New-Object -ComObject WScript.Shell
+
+function New-Shortcut {
+    param(
+        [string]$Name,
+        [string]$Target,
+        [string]$WorkingDir,
+        [string]$Arguments,
+        [switch]$StartupOnly,
+        [switch]$ProgramsOnly
+    )
+    $dirs = if ($StartupOnly) { @($startup) } elseif ($ProgramsOnly) { @($programs) } else { @($startup, $programs) }
+    foreach ($dir in $dirs) {
+        $sh = $shell.CreateShortcut("$dir\$Name.lnk")
+        $sh.TargetPath = $Target
+        $sh.WorkingDirectory = $WorkingDir
+        if ($Arguments) { $sh.Arguments = $Arguments }
+        $sh.Save()
+    }
+}
+
+{{ $cantataFusion := "" }}{{ if index .theme.palettes .active_theme "dark" }}{{ $cantataFusion = " -style Fusion" }}{{ end }}
+New-Shortcut -Name "Cantata" -Target "$env:USERPROFILE\scoop\apps\cantata\current\cantata.exe" -WorkingDir "$env:USERPROFILE\scoop\apps\cantata\current" -Arguments "-stylesheet $env:USERPROFILE\.config\cantata\cantata.qss{{$cantataFusion}}"
+
+{{- if .create_symlinks }}
+New-Shortcut -Name "main.ahk" -Target "$env:USERPROFILE\ahk\main.ahk" -WorkingDir "$env:USERPROFILE\ahk"
+
+Start-Process -WindowStyle Hidden -WorkingDirectory "$env:USERPROFILE\ahk" "$env:USERPROFILE\ahk\main.ahk"
+{{- end }}
+
+New-Shortcut -Name "mpd-background" -Target "$env:USERPROFILE\.config\mpd\mpd-background.vbs" -WorkingDir "$env:USERPROFILE\.config\mpd"
+
+New-Shortcut -ProgramsOnly -Name "slskd-background" -Target "$env:USERPROFILE\.config\slskd\slskd-background.vbs" -WorkingDir "$env:USERPROFILE\.config\slskd"
+
+New-Shortcut -StartupOnly -Name "Throne" -Target "$env:USERPROFILE\scoop\apps\throne\current\Throne.exe" -WorkingDir "$env:USERPROFILE\scoop\apps\throne\current"
+
+{{- end -}}
