@@ -313,10 +313,9 @@ reader-mode-button,
 #urlbar .urlbar-page-action#taskbar-tabs-button,
 #urlbar hbox#taskbar-tabs-button.urlbar-page-action,
 #urlbar hbox#picture-in-picture-button,
-#firefox-view-button,
-#urlbar-searchmode-switcher,
-#unified-extensions-button /* <- ADDONS BUTTON */
-  {
+#urlbar .searchmode-switcher, /* ESR 153: #urlbar-searchmode-switcher -> .searchmode-switcher */
+#unified-extensions-button, /* <- ADDONS BUTTON */
+#firefox-view-button {
   display: none !important;
 }
 
@@ -611,10 +610,6 @@ reader-mode-button,
 }
 
 #sidebar-button {
-  display: none !important;
-}
-
-.searchmode-switcher #main-button {
   display: none !important;
 }
 
