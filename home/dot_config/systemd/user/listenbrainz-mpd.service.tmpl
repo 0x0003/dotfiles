@@ -1,0 +1,23 @@
+[Unit]
+Description=ListenBrainz submission client for MPD
+Documentation=https://codeberg.org/elomatreb/listenbrainz-mpd
+Documentation=man:listenbrainz-mpd(1)
+After=network-online.target
+
+[Service]
+Type=notify
+Restart=always
+RestartSec=10
+{{- if .use_home_manager | default false }}
+ExecStart=/home/{{ .user_name }}/.nix-profile/bin/listenbrainz-mpd
+{{- else }}
+ExecStart=/usr/bin/listenbrainz-mpd
+{{- end }}
+Environment="http_proxy=http://{{ if .is_wsl }}{{ .windows_gateway }}{{ else }}127.0.0.1{{ end }}:2080"
+Environment="https_proxy=http://{{ if .is_wsl }}{{ .windows_gateway }}{{ else }}127.0.0.1{{ end }}:2080"
+Environment="HTTP_PROXY=http://{{ if .is_wsl }}{{ .windows_gateway }}{{ else }}127.0.0.1{{ end }}:2080"
+Environment="HTTPS_PROXY=http://{{ if .is_wsl }}{{ .windows_gateway }}{{ else }}127.0.0.1{{ end }}:2080"
+Environment="all_proxy=http://{{ if .is_wsl }}{{ .windows_gateway }}{{ else }}127.0.0.1{{ end }}:2080"
+
+[Install]
+WantedBy=default.target
